@@ -1,8 +1,8 @@
 <template>
-  <section id="packages" class="bg-lime py-28 text-forest md:py-40">
+  <section :class="lead ? 'pt-40 md:pt-48' : 'pt-28 md:pt-40'" id="packages" class="bg-lime pb-28 text-forest md:pb-40">
     <div class="mx-auto max-w-7xl px-5 md:px-10">
       <p class="eyebrow mb-6" data-reveal>Packaging</p>
-      <h2 class="display max-w-3xl text-5xl md:text-7xl" data-lines><span class="line-mask"><span class="line-inner">Cartons &amp; punnets,</span></span><span class="line-mask"><span class="line-inner italic">ready for retail.</span></span></h2>
+      <component :is="lead ? 'h1' : 'h2'" class="display max-w-3xl text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Cartons &amp; punnets,</span></span><span class="line-mask"><span class="line-inner italic">ready for retail.</span></span></component>
       <ul class="mt-16 grid gap-px overflow-hidden rounded-3xl bg-forest/20 grid-cols-2 lg:grid-cols-5" data-stagger>
         <li v-for="p in packages" :key="p.code" class="reveal group bg-lime p-4 transition-colors sm:p-6 hover:bg-forest hover:text-cream">
           <div class="flex items-center justify-between"><span class="eyebrow">{{ p.kind }}</span><span class="font-mono text-[11px] opacity-60">{{ p.code }}</span></div>
@@ -15,4 +15,6 @@
     </div>
   </section>
 </template>
-<script setup lang="ts">import { packages } from '~/data'</script>
+<script setup lang="ts">
+defineProps<{ lead?: boolean }>()
+import { packages } from '~/data'</script>

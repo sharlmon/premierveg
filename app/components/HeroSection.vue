@@ -7,7 +7,7 @@
     </div>
     <div class="mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-10 pt-36 md:px-10 md:pb-14">
       <p class="hero-fade eyebrow mb-8 flex items-center gap-3 text-lime"><span class="h-px w-10 bg-lime" /> Premier Veg Mondo · Nairobi &amp; Italy</p>
-      <h1 class="display text-[clamp(3.2rem,9vw,8.6rem)]">
+      <h1 class="display text-[clamp(2.7rem,6.6vw,6rem)]">
         <span class="line-mask"><span class="line-inner hero-line">As fresh</span></span>
         <span class="line-mask"><span class="line-inner hero-line">as it <em class="text-lime">gets.</em></span></span>
       </h1>
@@ -15,8 +15,8 @@
         <div class="lg:col-span-6">
           <p class="hero-fade max-w-lg text-lg text-cream/80">Fresh fruit, vegetables and herbs from Kenya, graded to Category 1 and shipped year-round to importers, wholesalers and retailers.</p>
           <div class="hero-fade mt-8 flex flex-wrap gap-4">
-            <a href="#contact" class="btn btn-lime" data-magnetic>Request a quote <span aria-hidden="true">→</span></a>
-            <a href="#range" class="btn btn-ghost" data-magnetic>See the range</a>
+            <NuxtLink to="/contact" class="btn btn-lime" data-magnetic>Request a quote <span aria-hidden="true">→</span></NuxtLink>
+            <NuxtLink to="/products" class="btn btn-ghost" data-magnetic>See the range</NuxtLink>
           </div>
         </div>
         <div class="hero-fade hidden items-end justify-end gap-5 lg:col-span-6 lg:flex">

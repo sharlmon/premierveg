@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts'],
   css: ['~/assets/css/main.css'],
   ssr: true,
-  nitro: { preset: 'github_pages', prerender: { routes: ['/'] } },
+  nitro: { preset: 'github_pages', prerender: { routes: ['/', '/about', '/products', '/packages', '/team', '/contact'], crawlLinks: true } },
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
