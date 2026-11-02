@@ -17,8 +17,8 @@
         <span class="absolute left-[12.5%] right-[12.5%] top-[1.65rem] h-[3px] rounded-full bg-forest/10" aria-hidden="true" />
         <span class="absolute left-[12.5%] top-[1.65rem] h-[3px] rounded-full bg-leaf transition-[width] duration-700 ease-out" :style="{ width: (sel / (steps.length - 1)) * 75 + '%' }" aria-hidden="true" />
         <li v-for="(s, i) in steps" :key="s.n" class="relative flex flex-col items-center text-center">
-          <button role="tab" :aria-selected="sel === i" :aria-label="'Stage ' + s.n + ': ' + s.t" class="relative z-10 grid h-14 w-14 cursor-pointer place-items-center rounded-full border-[3px] text-sm font-bold transition-all duration-500 hover:scale-110" :class="i <= sel ? 'border-forest bg-lime text-forest' : 'border-forest/20 bg-white text-forest/50'" :style="sel === i ? 'box-shadow:0 0 0 8px rgba(198,240,74,.35)' : ''" @click="go(i)">{{ s.n }}</button>
-          <span class="mt-3 hidden max-w-[10rem] text-sm font-semibold transition-colors md:block" :class="sel === i ? 'text-forest' : 'text-forest/45'">{{ s.t }}</span>
+          <button role="tab" :aria-selected="sel === i" :aria-label="'Stage ' + s.n + ': ' + s.t" class="relative z-10 grid h-14 w-14 cursor-pointer place-items-center rounded-full border-[3px] text-sm font-bold transition-all duration-500 hover:scale-110" :class="i <= sel ? 'border-forest bg-lime text-forest' : 'border-forest/20 bg-white text-forest/70'" :style="sel === i ? 'box-shadow:0 0 0 8px rgba(198,240,74,.35)' : ''" @click="go(i)">{{ s.n }}</button>
+          <span class="mt-3 hidden max-w-[10rem] text-sm font-semibold transition-colors md:block" :class="sel === i ? 'text-forest' : 'text-forest/70'">{{ s.t }}</span>
         </li>
       </ol>
 
@@ -46,8 +46,8 @@
 import { steps } from '~/data'
 const asset = useAsset(); const { open } = useModal()
 const stages = [
-  { img: 'img/beans-bunch.jpg', alt: 'Freshly harvested haricot verts' },
-  { img: 'img/beans-tray.jpg', alt: 'Graded fine green beans in a tray' },
+  { img: 'img/beans-bunch.webp', alt: 'Freshly harvested haricot verts' },
+  { img: 'img/beans-tray.webp', alt: 'Graded fine green beans in a tray' },
   { img: 'img/about/packhouse.jpg', alt: 'The Premier Veg pack-house team' },
   { img: 'img/packages/cxf001-carton.png', alt: 'Export carton, 12 × 250 g', contain: true }
 ]

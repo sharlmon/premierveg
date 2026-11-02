@@ -7,7 +7,7 @@
     </svg>
     <button v-for="f in features" :key="f.label" class="hex-btn absolute grid -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-full" :style="{ left: (f.x / W) * 100 + '%', top: (f.y / H) * 100 + '%', width: R * 1.5 + 'px', height: R * 1.5 + 'px' }" :aria-label="f.label" @mouseenter="act = f.label" @focus="act = f.label" @mouseleave="act = ''" @blur="act = ''" @click="act = act === f.label ? '' : f.label">
       <svg class="h-[46%] w-[46%] transition-transform duration-300" :class="act === f.label ? 'scale-125 text-forest' : 'text-white'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" v-html="icons[f.icon]" />
-      <span class="pointer-events-none absolute left-1/2 top-full z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded-full bg-lime px-3 py-1.5 text-[11px] font-bold text-forest shadow-xl transition-all duration-200" :class="act === f.label ? 'translate-y-0 opacity-100' : '-translate-y-1 opacity-0'">{{ f.label }}</span>
+      <span class="pointer-events-none absolute left-1/2 top-full z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded-full bg-lime px-3 py-1.5 text-xs font-bold text-forest shadow-xl transition-all duration-200" :class="act === f.label ? 'translate-y-0 opacity-100' : '-translate-y-1 opacity-0'">{{ f.label }}</span>
     </button>
   </div>
 </template>

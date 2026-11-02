@@ -7,15 +7,15 @@
         <p class="mt-6 max-w-md text-ink/70" data-reveal>Based in Nairobi, with operations in Italy, we connect Kenyan growers with international markets. Pick a destination to see the route.</p>
 
         <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Choose a destination" data-reveal>
-          <button v-for="d in dests" :key="d" class="cursor-pointer rounded-full border px-4 py-2 text-sm font-semibold transition" :class="active === d ? 'border-forest bg-forest text-cream' : 'border-forest/25 hover:border-forest'" :aria-pressed="active === d" @click="select(d)" @mouseenter="hoverDest = d" @mouseleave="hoverDest = ''">{{ d }}</button>
+          <button v-for="d in dests" :key="d" class="cursor-pointer rounded-full border px-4 py-3 text-sm font-semibold transition" :class="active === d ? 'border-forest bg-forest text-cream' : 'border-forest/25 hover:border-forest'" :aria-pressed="active === d" @click="select(d)" @mouseenter="hoverDest = d" @mouseleave="hoverDest = ''">{{ d }}</button>
         </div>
 
         <div class="mt-8 rounded-3xl bg-forest p-6 text-cream" aria-live="polite" data-reveal>
           <p class="eyebrow text-lime">Nairobi → {{ active }}</p>
-          <p class="display mt-2 text-4xl"><span>{{ km.toLocaleString('en') }}</span> <span class="text-xl text-cream/60">km</span></p>
-          <p class="mt-2 text-sm text-cream/65">{{ active === 'Rome' ? 'Premier Veg operations in Italy.' : 'European market.' }} Straight-line distance from our Nairobi base.</p>
+          <p class="display mt-2 text-4xl"><span>{{ km.toLocaleString('en') }}</span> <span class="text-xl text-cream/70">km</span></p>
+          <p class="mt-2 text-sm text-cream/70">{{ active === 'Rome' ? 'Premier Veg operations in Italy.' : 'European market.' }} Straight-line distance from our Nairobi base.</p>
         </div>
-        <p class="mt-4 text-xs text-ink/45">Hover the map, tap a destination, or move your cursor to light up the dots.</p>
+        <p class="mt-4 text-xs text-ink/70">Hover the map, tap a destination, or move your cursor to light up the dots.</p>
       </div>
 
       <div class="lg:col-span-7">
@@ -27,7 +27,7 @@
               <svg v-if="d.name === 'Nairobi'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c3.3 0 6 2.6 6 5.9 0 4.4-6 12.1-6 12.1S6 12.3 6 7.9C6 4.6 8.7 2 12 2Zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg>
               <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 12h14M13 6l6 6-6 6"/></svg>
             </span>
-            <span class="eyebrow pointer-events-none absolute left-1/2 top-full mt-1 -translate-x-1/2 whitespace-nowrap rounded-full bg-forest px-2.5 py-1 text-[10px] text-cream transition-opacity" :class="d.name === 'Nairobi' || active === d.name || hoverDest === d.name ? 'opacity-100' : 'opacity-0'">{{ d.name }}</span>
+            <span class="eyebrow pointer-events-none absolute left-1/2 top-full mt-1 -translate-x-1/2 whitespace-nowrap rounded-full bg-forest px-2.5 py-1 text-xs text-cream transition-opacity" :class="d.name === 'Nairobi' || active === d.name || hoverDest === d.name ? 'opacity-100' : 'opacity-0'">{{ d.name }}</span>
           </button>
         </div>
       </div>
@@ -130,4 +130,5 @@ onMounted(() => {
 })
 onBeforeUnmount(() => { cancelAnimationFrame(raf); ro?.disconnect(); io?.disconnect(); gsap.killTweensOf(prog) })
 </script>
-<style>.map-pin:focus-visible { outline: 3px solid #FFB627; outline-offset: 3px; }</style>
+<style>.map-pin::after { content: ""; position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); }
+.map-pin:focus-visible { outline: 3px solid #FFB627; outline-offset: 3px; }</style>

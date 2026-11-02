@@ -8,9 +8,9 @@
 
     <!-- tab ribbon (desktop) -->
     <nav class="tab pointer-events-auto absolute left-1/2 hidden -translate-x-1/2 transition-[top] duration-500 lg:block" :style="{ top: flush ? '0.75rem' : '0px' }" aria-label="Main">
-      <ul class="flex items-center gap-1 px-16 pb-4 pt-3.5 text-[13px] font-medium text-cream">
+      <ul class="flex items-center gap-1 px-16 pb-1.5 pt-1.5 text-[13px] font-medium text-cream">
         <li v-for="l in links" :key="l.to">
-          <NuxtLink :to="l.to" class="relative block rounded-full px-4 py-1.5 transition hover:text-lime" :class="isActive(l.to) ? 'text-lime' : ''" :aria-current="isActive(l.to) ? 'page' : undefined">
+          <NuxtLink :to="l.to" class="relative block rounded-full px-4 py-3.5 transition hover:text-lime" :class="isActive(l.to) ? 'text-lime' : ''" :aria-current="isActive(l.to) ? 'page' : undefined">
             {{ l.label }}
             <span class="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-lime transition-all duration-300" :class="isActive(l.to) ? 'scale-100 opacity-100' : 'scale-0 opacity-0'" />
           </NuxtLink>
@@ -28,10 +28,10 @@
         <div v-if="open" id="quick-menu" ref="panel" class="absolute right-0 top-16 w-[19rem] origin-top-right rounded-[1.75rem] bg-forest p-3 text-cream shadow-2xl ring-1 ring-white/10" role="menu">
           <NuxtLink v-for="l in links" :key="l.to" :to="l.to" class="group flex items-center justify-between rounded-2xl px-4 py-3 transition hover:bg-white/10" :class="isActive(l.to) ? 'bg-white/10 text-lime' : ''" role="menuitem">
             <span class="display text-2xl">{{ l.label }}</span>
-            <span class="text-cream/40 transition group-hover:translate-x-1 group-hover:text-lime" aria-hidden="true">→</span>
+            <span class="text-cream/70 transition group-hover:translate-x-1 group-hover:text-lime" aria-hidden="true">→</span>
           </NuxtLink>
           <button class="btn btn-lime mt-2 w-full justify-center" @click="quote">Request a quote <span aria-hidden="true">→</span></button>
-          <div class="mt-3 space-y-1 px-2 pb-1 text-xs text-cream/55"><a href="mailto:info@premierveg.com" class="block hover:text-lime">info@premierveg.com</a><a href="tel:+393512151931" class="block hover:text-lime">+39 351 215 1931</a></div>
+          <div class="mt-3 space-y-1 px-2 pb-1 text-xs text-cream/70"><a href="mailto:info@premierveg.com" class="block hover:text-lime">info@premierveg.com</a><a href="tel:+393512151931" class="block hover:text-lime">+39 351 215 1931</a></div>
         </div>
       </Transition>
     </div>

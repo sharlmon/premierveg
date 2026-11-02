@@ -7,7 +7,7 @@
           <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">From the field</span></span><span class="line-mask"><span class="line-inner italic text-leaf">to the pack-house.</span></span></h2>
         </div>
         <div class="flex items-center gap-3">
-          <span class="display mr-1 text-3xl tabular-nums"><span class="text-forest">0{{ act + 1 }}</span><span class="text-forest/35"> / 0{{ gallery.length }}</span></span>
+          <span class="display mr-1 text-3xl tabular-nums"><span class="text-forest">0{{ act + 1 }}</span><span class="text-forest/60"> / 0{{ gallery.length }}</span></span>
           <button class="gl-btn" aria-label="Previous photo" @click="act = (act - 1 + gallery.length) % gallery.length">←</button>
           <button class="gl-btn" aria-label="Next photo" @click="act = (act + 1) % gallery.length">→</button>
         </div>

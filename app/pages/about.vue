@@ -22,7 +22,7 @@
             <p class="text-lg text-ink/75" data-reveal>We have a pack-house team who packs the day-to-day orders. Our produce is handled and prepared at a fully equipped pack-house where strict quality and hygiene standards are maintained at every stage.</p>
             <p class="mt-6 font-semibold" data-reveal>From arrival to dispatch, all vegetables go through a controlled process that includes:</p>
             <ul class="mt-4 grid gap-4" data-stagger>
-              <li v-for="f in facts" :key="f" class="reveal flex items-start gap-3 border-t border-forest/15 pt-4"><span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-lime text-[10px] text-forest">✓</span><span class="text-sm font-medium">{{ f }}</span></li>
+              <li v-for="f in facts" :key="f" class="reveal flex items-start gap-3 border-t border-forest/15 pt-4"><span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-lime text-xs text-forest">✓</span><span class="text-sm font-medium">{{ f }}</span></li>
             </ul>
             <p class="mt-8 text-ink/75" data-reveal>The pack-house is designed to preserve freshness, reduce handling damage, and ensure full traceability from farm to final market. Temperature control cold rooms, proper ventilation, and efficient workflow allow produce to retain its quality and temperatures during storage and transport.</p>
             <p class="mt-4 text-ink/75" data-reveal>By combining experienced personnel, standardized procedures, and consistent quality control, we ensure our customers receive produce that meets both local and international market requirements.</p>

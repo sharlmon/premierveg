@@ -15,7 +15,7 @@
           <button class="btn btn-dark" data-magnetic @click="open({ type: 'quote' })">Request a quote <span aria-hidden="true">→</span></button>
           <button class="btn !border !border-forest/40 hover:!bg-white/50" data-magnetic @click="copy">{{ done ? 'Email copied ✓' : 'Copy info@premierveg.com' }}</button>
         </div>
-        <p class="mt-6 text-xs text-forest/60" data-reveal>or call <a href="tel:+393512151931" class="font-semibold underline underline-offset-4">+39 351 215 1931</a> · <NuxtLink to="/contact" class="font-semibold underline underline-offset-4">all contact details</NuxtLink></p>
+        <p class="mt-6 text-xs text-forest/70" data-reveal>or call <a href="tel:+393512151931" class="tap font-semibold underline underline-offset-4">+39 351 215 1931</a> · <NuxtLink to="/contact" class="tap font-semibold underline underline-offset-4">all contact details</NuxtLink></p>
       </div>
     </div>
   </section>
@@ -24,10 +24,10 @@
 import gsap from 'gsap'
 const asset = useAsset(); const { open } = useModal()
 const tiles = [
-  { img: 'img/products/mangoes.png', x: '4%', y: '14%', w: 8, r: -8, d: 22 },
-  { img: 'img/packages/pcm001.png', x: '14%', y: '58%', w: 9.5, r: 6, d: 34 },
-  { img: 'img/products/avocados.png', x: '84%', y: '12%', w: 8.5, r: 7, d: 28 },
-  { img: 'img/products/haricot-verts.png', x: '80%', y: '55%', w: 9, r: -6, d: 40 }
+  { img: 'img/products/mangoes.webp', x: '4%', y: '14%', w: 8, r: -8, d: 22 },
+  { img: 'img/packages/pcm001.webp', x: '14%', y: '58%', w: 9.5, r: 6, d: 34 },
+  { img: 'img/products/avocados.webp', x: '84%', y: '12%', w: 8.5, r: 7, d: 28 },
+  { img: 'img/products/haricot-verts.webp', x: '80%', y: '55%', w: 9, r: -6, d: 40 }
 ]
 const els: HTMLElement[] = []; const box = ref<HTMLElement>()
 const done = ref(false); let to: ReturnType<typeof setTimeout>

@@ -3,7 +3,7 @@
     <div class="relative isolate h-[calc(100svh-1.25rem)] min-h-[40rem] overflow-hidden rounded-[1.75rem] bg-forest text-cream sm:h-[calc(100svh-1.5rem)] sm:rounded-[2.25rem]">
       <!-- photo -->
       <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-        <img v-for="(sl, i) in slides" :key="sl.src" :src="asset(sl.src)" :alt="''" class="hero-bg hero-slide absolute inset-0 h-full w-full object-cover" :class="[sl.pos, i === cur ? 'is-on' : '']" :fetchpriority="i === 0 ? 'high' : 'auto'" />
+        <img v-for="(sl, i) in slides" :key="sl.src" :src="asset(sl.src)" :srcset="sl.small ? asset(sl.small) + ' 900w, ' + asset(sl.src) + ' 2000w' : undefined" sizes="100vw" :alt="''" class="hero-bg hero-slide absolute inset-0 h-full w-full object-cover" :class="[sl.pos, i === cur ? 'is-on' : '']" :fetchpriority="i === 0 ? 'high' : 'auto'" />
         <div class="absolute inset-0 bg-gradient-to-br from-forest/30 via-transparent to-forest/20" />
         <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-forest/45" />
         <div class="absolute inset-0 bg-gradient-to-l from-forest/80 via-forest/30 to-transparent" />
@@ -27,14 +27,14 @@
 
       <!-- bottom-left stats -->
       <dl class="hero-fade absolute bottom-5 left-5 hidden gap-6 sm:flex rounded-2xl bg-forest/55 px-5 py-4 backdrop-blur-md md:bottom-8 md:left-8">
-        <div><dt class="eyebrow text-cream/55">Since</dt><dd class="display text-2xl">2022</dd></div>
-        <div><dt class="eyebrow text-cream/55">Products</dt><dd class="display text-2xl">10+</dd></div>
-        <div class="hidden sm:block"><dt class="eyebrow text-cream/55">Supply</dt><dd class="display text-2xl">Year-round</dd></div>
+        <div><dt class="eyebrow text-cream/70">Since</dt><dd class="display text-2xl">2022</dd></div>
+        <div><dt class="eyebrow text-cream/70">Products</dt><dd class="display text-2xl">10+</dd></div>
+        <div class="hidden sm:block"><dt class="eyebrow text-cream/70">Supply</dt><dd class="display text-2xl">Year-round</dd></div>
       </dl>
 
       <!-- slide dots -->
       <div class="hero-fade absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-2 sm:flex" role="group" aria-label="Hero photo">
-        <button v-for="(sl, i) in slides" :key="sl.src" class="h-2 cursor-pointer rounded-full transition-all duration-500" :class="i === cur ? 'w-8 bg-lime' : 'w-2 bg-white/50 hover:bg-white'" :aria-label="'Show photo ' + (i + 1)" :aria-current="i === cur" @click="show(i)" />
+        <button v-for="(sl, i) in slides" :key="sl.src" class="hit h-2 cursor-pointer rounded-full transition-all duration-500" :class="i === cur ? 'w-8 bg-lime' : 'w-2 bg-white/50 hover:bg-white'" :aria-label="'Show photo ' + (i + 1)" :aria-current="i === cur" @click="show(i)" />
       </div>
 
       <!-- bottom-right notched tab -->
@@ -48,8 +48,8 @@
 <script setup lang="ts">
 const asset = useAsset(); const { open } = useModal()
 const slides = [
-  { src: 'img/hero-workers.jpg', pos: 'object-[50%_70%]' },
-  { src: 'img/hero-workers-2.jpg', pos: 'object-[50%_60%]' }
+  { src: 'img/hero-workers.webp', small: 'img/hero-workers-900.webp', pos: 'object-[50%_70%]' },
+  { src: 'img/hero-workers-2.webp', pos: 'object-[50%_60%]' }
 ]
 const cur = ref(0)
 let timer: ReturnType<typeof setInterval> | undefined

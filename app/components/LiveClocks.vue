@@ -9,7 +9,7 @@
         <line x1="0" y1="8" x2="0" y2="-38" stroke="#C6F04A" stroke-width="1.500" stroke-linecap="round" :transform="`rotate(${c.s})`" />
         <circle r="3" fill="#C6F04A" />
       </svg>
-      <figcaption class="mt-3 text-center"><p class="eyebrow text-cream/55">{{ c.city }}</p><p class="display text-2xl tabular-nums">{{ c.text }}</p></figcaption>
+      <figcaption class="mt-3 text-center"><p class="eyebrow text-cream/70">{{ c.city }}</p><p class="display text-2xl tabular-nums">{{ c.text }}</p></figcaption>
     </figure>
   </div>
 </template>

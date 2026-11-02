@@ -17,10 +17,10 @@
               <h3 class="display mt-3 text-4xl">{{ state.item.name }}</h3>
               <p class="mt-4 text-ink/75">{{ state.item.blurb }}</p>
               <dl class="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-forest/15 pt-5 text-sm">
-                <div v-for="r in specRows" :key="r.label" :class="r.label === 'Packaging' ? 'col-span-2' : ''"><dt class="eyebrow text-ink/45">{{ r.label }}</dt><dd :class="r.known ? 'font-semibold' : 'italic text-ink/45'">{{ r.value }}</dd></div>
+                <div v-for="r in specRows" :key="r.label" :class="r.label === 'Packaging' ? 'col-span-2' : ''"><dt class="eyebrow text-ink/70">{{ r.label }}</dt><dd :class="r.known ? 'font-semibold' : 'italic text-ink/70'">{{ r.value }}</dd></div>
               </dl>
               <div v-if="related.length" class="mt-5">
-                <p class="eyebrow mb-3 text-ink/50">Packaging photos</p>
+                <p class="eyebrow mb-3 text-ink/70">Packaging photos</p>
                 <ul class="flex flex-wrap gap-2"><li v-for="r in related" :key="r.id"><button class="flex cursor-pointer items-center gap-2 rounded-full border border-forest/20 bg-white py-1 pl-1 pr-4 text-xs font-semibold transition hover:border-forest" @click="open({ type: 'package', item: r })"><img :src="asset(r.img)" alt="" class="h-8 w-8 rounded-full bg-white object-contain" />{{ r.kind === 'Top cover' ? 'Top cover' : r.name }}</button></li></ul>
               </div>
               <div class="mt-auto pt-7">
@@ -88,7 +88,7 @@
           <div v-else-if="state.type === 'lightbox'" class="bg-ink">
             <div class="grid min-h-[50svh] place-items-center" :class="cur.contain ? 'bg-white' : ''"><img :key="cur.src" :src="asset(cur.src)" :alt="cur.alt" class="lightbox-img max-h-[72svh] w-full" :class="cur.contain ? 'object-contain p-6' : 'object-contain'" /></div>
             <div class="flex items-center gap-4 bg-ink p-5 text-cream">
-              <p class="flex-1 text-sm">{{ cur.cap }} <span class="ml-2 text-cream/40">{{ state.index + 1 }} / {{ state.items.length }}</span></p>
+              <p class="flex-1 text-sm">{{ cur.cap }} <span class="ml-2 text-cream/70">{{ state.index + 1 }} / {{ state.items.length }}</span></p>
               <button class="nav-btn !bg-white/10 !text-cream" aria-label="Previous image" @click="light(-1)">←</button>
               <button class="nav-btn !bg-white/10 !text-cream" aria-label="Next image" @click="light(1)">→</button>
             </div>

@@ -1,20 +1,20 @@
 <template>
   <div>
     <form v-if="!sent" @submit.prevent="send">
-      <h3 class="display text-2xl md:text-3xl">Request a quote</h3>
-      <p class="mt-2 text-sm text-ink/60">Tell us what you need and we'll respond within 24 hours.</p>
+      <component :is="heading || 'h3'" class="display text-2xl md:text-3xl">Request a quote</component>
+      <p class="mt-2 text-sm text-ink/70">Tell us what you need and we'll respond within 24 hours.</p>
 
       <!-- quote list -->
       <div v-if="items.length" class="mt-5 rounded-2xl border border-forest/15 bg-white p-3">
         <p class="eyebrow px-2 pb-2 text-leaf">Your quote list · {{ items.length }}</p>
         <ul class="divide-y divide-forest/10">
           <li v-for="it in items" :key="it.id" class="flex items-center gap-3 px-2 py-2.5">
-            <div class="min-w-0 flex-1"><p class="truncate text-sm font-semibold">{{ it.name }}</p><p class="text-[11px] text-ink/50">{{ it.kind }}<span v-if="it.code"> · {{ it.code }}</span></p></div>
+            <div class="min-w-0 flex-1"><p class="truncate text-sm font-semibold">{{ it.name }}</p><p class="text-xs text-ink/70">{{ it.kind }}<span v-if="it.code"> · {{ it.code }}</span></p></div>
             <input v-model="it.qty" class="w-28 rounded-lg border border-forest/20 px-3 py-2 text-sm" :aria-label="'Quantity for ' + it.name" placeholder="e.g. 500 kg" />
             <button type="button" class="grid h-8 w-8 shrink-0 cursor-pointer place-items-center rounded-full bg-forest/10 text-xs transition hover:bg-forest hover:text-cream" :aria-label="'Remove ' + it.name" @click="remove(it.id)">✕</button>
           </li>
         </ul>
-        <button type="button" class="mt-1 px-2 py-1 text-xs font-semibold text-ink/50 underline-offset-4 hover:underline" @click="clear()">Clear list</button>
+        <button type="button" class="mt-1 px-2 py-1 text-xs font-semibold text-ink/70 underline-offset-4 hover:underline" @click="clear()">Clear list</button>
       </div>
 
       <div class="mt-5 grid gap-4 sm:grid-cols-2">
@@ -24,18 +24,18 @@
         <label v-if="!items.length" class="block text-sm font-semibold sm:col-span-2">Product of interest
           <select v-model="f.product" class="field"><option value="">Select…</option><option v-for="p in products" :key="p.code">{{ p.name }}</option></select>
         </label>
-        <label class="block text-sm font-semibold sm:col-span-2">Message <span v-if="items.length" class="font-normal text-ink/50">(optional)</span><textarea v-model="f.msg" rows="3" :required="!items.length" class="field" placeholder="Quantities, destination, timing…" /></label>
+        <label class="block text-sm font-semibold sm:col-span-2">Message <span v-if="items.length" class="font-normal text-ink/70">(optional)</span><textarea v-model="f.msg" rows="3" :required="!items.length" class="field" placeholder="Quantities, destination, timing…" /></label>
         <!-- honeypot: hidden from people, bots fill it in -->
         <input v-model="f.botcheck" type="checkbox" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
       </div>
       <p v-if="error" class="mt-4 rounded-xl bg-tomato/10 p-3 text-sm text-tomato" role="alert">{{ error }} You can also email <a class="font-semibold underline" :href="mailto">{{ email }}</a> or <a class="font-semibold underline" :href="wa('Hello Premier Veg, I would like a quote.')" target="_blank" rel="noopener">WhatsApp us</a>.</p>
       <button class="btn btn-dark mt-6 w-full justify-center disabled:opacity-60" type="submit" :disabled="sending">{{ sending ? 'Sending…' : 'Send enquiry' }} <span v-if="!sending" aria-hidden="true">→</span></button>
-      <p class="mt-3 text-xs text-ink/50">{{ formKey ? 'Your details are used only to reply to this enquiry.' : 'Opens your email app with the enquiry pre-filled.' }}</p>
+      <p class="mt-3 text-xs text-ink/70">{{ formKey ? 'Your details are used only to reply to this enquiry.' : 'Opens your email app with the enquiry pre-filled.' }}</p>
     </form>
     <div v-else ref="done" class="relative overflow-hidden py-10 text-center" role="status">
       <div class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-lime text-2xl text-forest">✓</div>
       <h3 class="display mt-6 text-3xl">Thank you{{ f.name ? ', ' + f.name.split(' ')[0] : '' }}.</h3>
-      <p class="mx-auto mt-3 max-w-sm text-ink/65">{{ formKey ? "We've received your enquiry and will respond within 24 hours." : 'Your email app should have opened with your enquiry. If not, write to ' + email + '.' }}</p>
+      <p class="mx-auto mt-3 max-w-sm text-ink/70">{{ formKey ? "We've received your enquiry and will respond within 24 hours." : 'Your email app should have opened with your enquiry. If not, write to ' + email + '.' }}</p>
       <div class="mt-6 flex flex-wrap justify-center gap-3">
         <a class="btn btn-dark" :href="wa('Hello Premier Veg, I just sent a quote request' + (f.name ? ' (' + f.name + ')' : '') + '.')" target="_blank" rel="noopener">Chat on WhatsApp</a>
         <button class="btn btn-ghost !text-forest" type="button" @click="sent = false">Send another</button>
@@ -46,7 +46,7 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 import { products } from '~/data'
-const props = defineProps<{ product?: string }>()
+const props = defineProps<{ product?: string; heading?: string }>()
 const { formKey, email, wa } = useSite()
 const { items, remove, clear } = useQuote()
 const f = reactive({ name: '', company: '', email: '', product: props.product || '', msg: '', botcheck: false })

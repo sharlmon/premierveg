@@ -7,11 +7,11 @@
         <dl class="grid grid-cols-2 gap-6 lg:col-span-3 lg:grid-cols-1 lg:gap-10" data-stagger>
           <div class="reveal border-t border-forest/20 pt-5">
             <dd class="display text-5xl text-forest md:text-6xl">2022</dd>
-            <dt class="mt-2 text-sm text-ink/60">Established in Nairobi, with operations also in Italy</dt>
+            <dt class="mt-2 text-sm text-ink/70">Established in Nairobi, with operations also in Italy</dt>
           </div>
           <div class="reveal border-t border-forest/20 pt-5">
             <dd class="display text-5xl text-forest md:text-6xl"><span data-count="10">10</span><span class="text-leaf">+</span></dd>
-            <dt class="mt-2 text-sm text-ink/60">Product lines of vegetables, fruits and herbs</dt>
+            <dt class="mt-2 text-sm text-ink/70">Product lines of vegetables, fruits and herbs</dt>
           </div>
         </dl>
 
@@ -26,6 +26,7 @@
         <!-- copy + accordion -->
         <div class="lg:col-span-5 lg:pl-6">
           <p class="text-lg text-ink/75" data-reveal>We work closely with farms located in tropical climatic regions, which provide ideal growing conditions throughout the year. This enables us to offer our clients a reliable, year-round supply of fresh, high-quality produce.</p>
+          <h2 class="sr-only">Quality at every stage</h2>
           <ul class="mt-8 divide-y divide-forest/20 border-y border-forest/20" data-reveal>
             <li v-for="(f, i) in features" :key="f.t">
               <h3>

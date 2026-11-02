@@ -8,7 +8,7 @@
           <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Picked, graded,</span></span><span class="line-mask"><span class="line-inner italic text-lime">packed to perfection.</span></span></h2>
         </div>
         <div class="flex items-center gap-3" data-reveal>
-          <span class="display mr-2 text-3xl tabular-nums"><span class="text-lime">0{{ idx + 1 }}</span><span class="text-cream/40"> / 0{{ panels.length }}</span></span>
+          <span class="display mr-2 text-3xl tabular-nums"><span class="text-lime">0{{ idx + 1 }}</span><span class="text-cream/60"> / 0{{ panels.length }}</span></span>
           <button class="sw-btn" aria-label="Previous product" @click="go(idx - 1)">←</button>
           <button class="sw-btn" aria-label="Next product" @click="go(idx + 1)">→</button>
         </div>
@@ -34,8 +34,8 @@
           <li v-for="(p, i) in panels" :key="p.code" class="border-t border-white/15 last:border-b">
             <button role="tab" :aria-selected="i === idx" class="group relative block w-full cursor-pointer py-6 text-left" @click="go(i)">
               <span class="flex items-baseline gap-4">
-                <span class="display text-2xl transition-colors" :class="i === idx ? 'text-lime' : 'text-cream/35'">0{{ i + 1 }}</span>
-                <span class="display text-3xl transition-all duration-300 md:text-4xl" :class="i === idx ? 'translate-x-1 text-cream' : 'text-cream/55 group-hover:text-cream/80'">{{ p.product.name }}</span>
+                <span class="display text-2xl transition-colors" :class="i === idx ? 'text-lime' : 'text-cream/70'">0{{ i + 1 }}</span>
+                <span class="display text-3xl transition-all duration-300 md:text-4xl" :class="i === idx ? 'translate-x-1 text-cream' : 'text-cream/70 group-hover:text-cream/80'">{{ p.product.name }}</span>
               </span>
               <span class="grid transition-[grid-template-rows] duration-500 ease-out" :class="i === idx ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'">
                 <span class="overflow-hidden">
@@ -56,9 +56,9 @@
 import { products } from '~/data'
 const asset = useAsset(); const { open } = useModal()
 const panels = [
-  { code: 'PVHV100', img: 'img/beans-tray.jpg', alt: 'Tray of fine green beans' },
-  { code: 'PVMT100', img: 'img/snow-peas.jpg', alt: 'Tray of snow peas' },
-  { code: 'PVSS100', img: 'img/sugar-snaps.jpg', alt: 'Tray of sugar snap peas' }
+  { code: 'PVHV100', img: 'img/beans-tray.webp', alt: 'Tray of fine green beans' },
+  { code: 'PVMT100', img: 'img/snow-peas.webp', alt: 'Tray of snow peas' },
+  { code: 'PVSS100', img: 'img/sugar-snaps.webp', alt: 'Tray of sugar snap peas' }
 ].map((p) => ({ ...p, product: products.find((x) => x.code === p.code)! }))
 const idx = ref(0); const tick = ref(0); const hold = ref(false); const auto = ref(true)
 const cur = computed(() => panels[idx.value])

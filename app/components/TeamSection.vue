@@ -9,9 +9,9 @@
           <p class="max-w-sm text-ink/70 lg:col-span-4 lg:justify-self-end" data-reveal>A team with a strong commitment to exceptional customer service, so every client is professionally supported and well served.</p>
         </div>
         <dl class="mt-14 grid grid-cols-3 gap-4 border-t border-forest/20 pt-8 md:max-w-2xl" data-stagger>
-          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><span data-count="6">6</span></dd><dt class="mt-1 text-xs text-ink/60 md:text-sm">Team members</dt></div>
-          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><span data-count="17">17</span><span class="text-leaf">+</span></dd><dt class="mt-1 text-xs text-ink/60 md:text-sm">Years of produce experience (our director)</dt></div>
-          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl">2</dd><dt class="mt-1 text-xs text-ink/60 md:text-sm">Countries: Kenya &amp; Italy</dt></div>
+          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><span data-count="6">6</span></dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Team members</dt></div>
+          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><span data-count="17">17</span><span class="text-leaf">+</span></dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Years of produce experience (our director)</dt></div>
+          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl">2</dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Countries: Kenya &amp; Italy</dt></div>
         </dl>
       </div>
     </section>
@@ -22,13 +22,13 @@
         <ul class="lg:col-span-7" role="list" data-stagger>
           <li v-for="(m, i) in team" :key="m.name" class="reveal border-t border-forest/15 last:border-b">
             <button class="row group relative flex w-full cursor-pointer items-center gap-4 py-5 text-left md:gap-6 md:py-7" :aria-label="'Read about ' + m.name" data-cursor="Read bio" @mouseenter="sel = i" @focus="sel = i" @click="open({ type: 'team', item: m })">
-              <span class="font-mono text-xs text-forest/40">0{{ i + 1 }}</span>
+              <span class="font-mono text-xs text-forest/70">0{{ i + 1 }}</span>
               <span class="avatar h-14 w-14 shrink-0 overflow-hidden rounded-full lg:hidden" :class="['bg-forest', 'bg-leaf', 'bg-tomato'][i % 3]">
                 <img v-if="m.photo" :src="asset(m.photo)" :alt="''" loading="lazy" class="h-full w-full object-cover object-top" />
                 <span v-else class="display grid h-full w-full place-items-center text-xl text-cream">{{ initials(m.name) }}</span>
               </span>
               <span class="min-w-0 flex-1">
-                <span class="display block text-2xl transition-all duration-300 group-hover:translate-x-2 md:text-4xl" :class="sel === i ? 'text-forest' : 'text-forest/60'">{{ m.name }}</span>
+                <span class="display block text-2xl transition-all duration-300 group-hover:translate-x-2 md:text-4xl" :class="sel === i ? 'text-forest' : 'text-forest/70'">{{ m.name }}</span>
                 <span class="eyebrow mt-1 block text-leaf">{{ m.role }}</span>
               </span>
               <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-forest/20 transition-all duration-300 group-hover:rotate-[-45deg] group-hover:border-forest group-hover:bg-forest group-hover:text-lime" aria-hidden="true">→</span>
@@ -50,8 +50,8 @@
                 <p class="display mt-2 text-3xl">{{ cur.name }}</p>
                 <p v-if="cur.quote" class="display mt-3 text-lg italic text-cream/85">“{{ cur.quote }}”</p>
                 <div class="mt-5 flex flex-wrap gap-2">
-                  <button class="btn btn-lime !px-5 !py-2.5 text-xs" @click="open({ type: 'team', item: cur })">Read bio →</button>
-                  <button class="btn btn-ghost !px-5 !py-2.5 text-xs" @click="copy(cur.email)">{{ copied === cur.email ? 'Copied ✓' : 'Copy email' }}</button>
+                  <button class="btn btn-lime !px-5 !py-3.5 text-xs" @click="open({ type: 'team', item: cur })">Read bio →</button>
+                  <button class="btn btn-ghost !px-5 !py-3.5 text-xs" @click="copy(cur.email)">{{ copied === cur.email ? 'Copied ✓' : 'Copy email' }}</button>
                 </div>
               </div>
             </div>
@@ -65,12 +65,12 @@
       <div class="mx-auto max-w-7xl px-5 md:px-10">
         <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <h2 class="display text-3xl md:text-5xl" data-lines><span class="line-mask"><span class="line-inner">Talk to the right</span></span><span class="line-mask"><span class="line-inner italic text-lime">person, directly.</span></span></h2>
-          <p class="max-w-xs text-sm text-cream/60" data-reveal>Click a card to copy an email address.</p>
+          <p class="max-w-xs text-sm text-cream/70" data-reveal>Click a card to copy an email address.</p>
         </div>
         <ul class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
           <li v-for="m in team" :key="m.email" class="reveal">
             <button v-spot class="spot group flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl border border-white/15 bg-white/5 p-5 text-left transition hover:border-lime/60" :aria-label="'Copy email for ' + m.name" data-cursor="Copy" @click="copy(m.email)">
-              <span class="min-w-0"><span class="eyebrow block text-cream/50">{{ m.role }}</span><span class="display mt-1 block text-xl">{{ m.name }}</span><span class="mt-1 block truncate text-sm text-lime">{{ m.email }}</span><span v-if="m.phone" class="block text-xs text-cream/50">{{ m.phone }}</span></span>
+              <span class="min-w-0"><span class="eyebrow block text-cream/70">{{ m.role }}</span><span class="display mt-1 block text-xl">{{ m.name }}</span><span class="mt-1 block truncate text-sm text-lime">{{ m.email }}</span><span v-if="m.phone" class="block text-xs text-cream/70">{{ m.phone }}</span></span>
               <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold transition group-hover:bg-lime group-hover:text-forest">{{ copied === m.email ? '✓' : '⧉' }}</span>
             </button>
           </li>

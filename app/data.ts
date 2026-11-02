@@ -6,31 +6,31 @@ export type Pack = { id: string; code: string; name: string; note: string; kind:
 export type Member = { name: string; role: string; email: string; phone: string; quote?: string; photo?: string; bio: string[] }
 
 export const products: Product[] = [
-  { code: 'PVHV100', name: 'Haricot Verts', cat: 'Vegetables', blurb: 'Also known as French beans, they are planted from seedling and give tender produce and a dependable supply.', color: '#1F5B3A', img: 'img/products/haricot-verts.png', pack: ['CHV001', 'PXF001'] },
-  { code: 'PVMT100', name: 'Mangetouts', cat: 'Vegetables', blurb: 'A flat-podded variety of pea with an excellent fibre content.', color: '#3F8F4F', img: 'img/products/mangetouts.png', pack: ['CMT001-T', 'CMT001-C', 'PSS001'] },
-  { code: 'PVSS100', name: 'Sugar Snaps', cat: 'Vegetables', blurb: 'Rounded-shape peas, with fibre content.', color: '#6DB33F', img: 'img/products/sugar-snaps.png', pack: ['PMT001'] },
-  { code: 'PVCT100', name: 'Carrots', cat: 'Vegetables', blurb: 'Rich in beta-carotene, which is good for eyesight.', color: '#E8700A', img: 'img/products/carrots.png', pack: [] },
-  { code: 'PVAV100', name: 'Avocados', cat: 'Fruits', blurb: 'The fruit of the avocado plant, rich in oil.', color: '#2E5A2B', img: 'img/products/avocados.png', pack: [] },
-  { code: 'PVMG100', name: 'Mangoes', cat: 'Fruits', blurb: 'Mangoes have juicy, edible fruit and make great puddings.', color: '#E09A00', img: 'img/products/mangoes.png', pack: [] },
-  { code: 'PVPF100', name: 'Passion Fruits', cat: 'Fruits', blurb: 'Rich in vitamin C, riboflavin and potassium.', color: '#7B2D8E', img: 'img/products/passion-fruits.png', pack: [] },
-  { code: 'PVCH100', name: 'Chillies', cat: 'Herbs', blurb: 'These peppers are a rich source of vitamin C and vitamin B6, with the desired amount of heat.', color: '#C8102E', img: 'img/products/chillies.png', pack: ['PCG001', 'PCR001', 'PCM001'] },
-  { code: 'PVRM100', name: 'Rosemary', cat: 'Herbs', blurb: 'Loved for its anti-microbial, anti-inflammatory and anti-oxidant properties.', color: '#4C7A5B', img: 'img/products/rosemary.png', pack: [] },
-  { code: 'PVCV100', name: 'Chives', cat: 'Herbs', blurb: 'Used for flavouring and as a garnish on egg dishes. They pair well with a variety of cheeses.', color: '#2F8F6B', img: 'img/products/chives.png', pack: [] }
+  { code: 'PVHV100', name: 'Haricot Verts', cat: 'Vegetables', blurb: 'Also known as French beans, they are planted from seedling and give tender produce and a dependable supply.', color: '#1F5B3A', img: 'img/products/haricot-verts.webp', pack: ['CHV001', 'PXF001'] },
+  { code: 'PVMT100', name: 'Mangetouts', cat: 'Vegetables', blurb: 'A flat-podded variety of pea with an excellent fibre content.', color: '#3F8F4F', img: 'img/products/mangetouts.webp', pack: ['CMT001-T', 'CMT001-C', 'PSS001'] },
+  { code: 'PVSS100', name: 'Sugar Snaps', cat: 'Vegetables', blurb: 'Rounded-shape peas, with fibre content.', color: '#6DB33F', img: 'img/products/sugar-snaps.webp', pack: ['PMT001'] },
+  { code: 'PVCT100', name: 'Carrots', cat: 'Vegetables', blurb: 'Rich in beta-carotene, which is good for eyesight.', color: '#E8700A', img: 'img/products/carrots.webp', pack: [] },
+  { code: 'PVAV100', name: 'Avocados', cat: 'Fruits', blurb: 'The fruit of the avocado plant, rich in oil.', color: '#2E5A2B', img: 'img/products/avocados.webp', pack: [] },
+  { code: 'PVMG100', name: 'Mangoes', cat: 'Fruits', blurb: 'Mangoes have juicy, edible fruit and make great puddings.', color: '#E09A00', img: 'img/products/mangoes.webp', pack: [] },
+  { code: 'PVPF100', name: 'Passion Fruits', cat: 'Fruits', blurb: 'Rich in vitamin C, riboflavin and potassium.', color: '#7B2D8E', img: 'img/products/passion-fruits.webp', pack: [] },
+  { code: 'PVCH100', name: 'Chillies', cat: 'Herbs', blurb: 'These peppers are a rich source of vitamin C and vitamin B6, with the desired amount of heat.', color: '#C8102E', img: 'img/products/chillies.webp', pack: ['PCG001', 'PCR001', 'PCM001'] },
+  { code: 'PVRM100', name: 'Rosemary', cat: 'Herbs', blurb: 'Loved for its anti-microbial, anti-inflammatory and anti-oxidant properties.', color: '#4C7A5B', img: 'img/products/rosemary.webp', pack: [] },
+  { code: 'PVCV100', name: 'Chives', cat: 'Herbs', blurb: 'Used for flavouring and as a garnish on egg dishes. They pair well with a variety of cheeses.', color: '#2F8F6B', img: 'img/products/chives.webp', pack: [] }
 ]
 
 export const packages: Pack[] = [
-  { id: 'CHV001', code: 'CHV001', name: 'Haricot verts carton', note: 'This carton is meant to contain haricot verts.', kind: 'Carton', img: 'img/packages/chv001.png', product: 'Haricot Verts' },
-  { id: 'CXF001-T', code: 'CXF001', name: 'Extra fine beans', note: 'Top cover for extra fine beans.', kind: 'Top cover', img: 'img/packages/cxf001-top.png', product: 'Haricot Verts' },
+  { id: 'CHV001', code: 'CHV001', name: 'Haricot verts carton', note: 'This carton is meant to contain haricot verts.', kind: 'Carton', img: 'img/packages/chv001.webp', product: 'Haricot Verts' },
+  { id: 'CXF001-T', code: 'CXF001', name: 'Extra fine beans', note: 'Top cover for extra fine beans.', kind: 'Top cover', img: 'img/packages/cxf001-top.webp', product: 'Haricot Verts' },
   { id: 'CXF001-C', code: 'CXF001', name: 'Extra fine beans', note: 'This holds 12 × 250 g extra fine beans.', kind: 'Carton', img: 'img/packages/cxf001-carton.png', product: 'Haricot Verts' },
-  { id: 'CMT001-T', code: 'CMT001', name: 'Mangetouts', note: 'Top cover for mangetouts.', kind: 'Top cover', img: 'img/packages/cmt001-top.png', product: 'Mangetouts' },
-  { id: 'CMT001-C', code: 'CMT001', name: 'Mangetouts', note: 'This holds 12 × 250 g mangetouts.', kind: 'Carton', img: 'img/packages/cmt001-carton.png', product: 'Mangetouts' },
-  { id: 'PBC001', code: 'PBC001', name: 'Baby corn', note: 'Punnet of baby corn.', kind: 'Punnet', img: 'img/packages/pbc001.png' },
-  { id: 'PXF001', code: 'PXF001', name: 'Fine beans TT', note: 'Punnet of fine beans TT.', kind: 'Punnet', img: 'img/packages/pxf001.png', product: 'Haricot Verts' },
-  { id: 'PMT001', code: 'PMT001', name: 'Sugar snaps', note: 'Punnet of sugar snaps.', kind: 'Punnet', img: 'img/packages/pmt001.png', product: 'Sugar Snaps' },
-  { id: 'PSS001', code: 'PSS001', name: 'Snow peas', note: 'Punnet of snow peas.', kind: 'Punnet', img: 'img/packages/pss001.png', product: 'Mangetouts' },
-  { id: 'PCG001', code: 'PCG001', name: 'Green chillies', note: 'Punnet of green chillies.', kind: 'Punnet', img: 'img/packages/pcg001.png', product: 'Chillies' },
-  { id: 'PCR001', code: 'PCR001', name: 'Red chillies', note: 'Punnet of red chillies.', kind: 'Punnet', img: 'img/packages/pcr001.png', product: 'Chillies' },
-  { id: 'PCM001', code: 'PCM001', name: 'Red & green chillies', note: 'Punnet of red and green chillies.', kind: 'Punnet', img: 'img/packages/pcm001.png', product: 'Chillies' }
+  { id: 'CMT001-T', code: 'CMT001', name: 'Mangetouts', note: 'Top cover for mangetouts.', kind: 'Top cover', img: 'img/packages/cmt001-top.webp', product: 'Mangetouts' },
+  { id: 'CMT001-C', code: 'CMT001', name: 'Mangetouts', note: 'This holds 12 × 250 g mangetouts.', kind: 'Carton', img: 'img/packages/cmt001-carton.webp', product: 'Mangetouts' },
+  { id: 'PBC001', code: 'PBC001', name: 'Baby corn', note: 'Punnet of baby corn.', kind: 'Punnet', img: 'img/packages/pbc001.webp' },
+  { id: 'PXF001', code: 'PXF001', name: 'Fine beans TT', note: 'Punnet of fine beans TT.', kind: 'Punnet', img: 'img/packages/pxf001.webp', product: 'Haricot Verts' },
+  { id: 'PMT001', code: 'PMT001', name: 'Sugar snaps', note: 'Punnet of sugar snaps.', kind: 'Punnet', img: 'img/packages/pmt001.webp', product: 'Sugar Snaps' },
+  { id: 'PSS001', code: 'PSS001', name: 'Snow peas', note: 'Punnet of snow peas.', kind: 'Punnet', img: 'img/packages/pss001.webp', product: 'Mangetouts' },
+  { id: 'PCG001', code: 'PCG001', name: 'Green chillies', note: 'Punnet of green chillies.', kind: 'Punnet', img: 'img/packages/pcg001.webp', product: 'Chillies' },
+  { id: 'PCR001', code: 'PCR001', name: 'Red chillies', note: 'Punnet of red chillies.', kind: 'Punnet', img: 'img/packages/pcr001.webp', product: 'Chillies' },
+  { id: 'PCM001', code: 'PCM001', name: 'Red & green chillies', note: 'Punnet of red and green chillies.', kind: 'Punnet', img: 'img/packages/pcm001.webp', product: 'Chillies' }
 ]
 
 export const team: Member[] = [
@@ -63,16 +63,16 @@ export const steps = [
 ]
 
 export const categories = [
-  { name: 'Vegetables', blurb: 'Our vegetables are grown and packed with energy, minerals and vitamins.', color: '#1F5B3A', imgs: ['img/products/haricot-verts.png', 'img/products/carrots.png', 'img/products/mangetouts.png'] },
-  { name: 'Fruits', blurb: 'Fruits are foods that are grown to be eaten raw. These have rich vitamin content.', color: '#C2410C', imgs: ['img/products/avocados.png', 'img/products/mangoes.png', 'img/products/passion-fruits.png'] },
-  { name: 'Herbs', blurb: 'Our herbs’ essential properties turn simple meals into a delicious experience.', color: '#7C2D3A', imgs: ['img/products/chillies.png', 'img/products/rosemary.png', 'img/products/chives.png'] }
+  { name: 'Vegetables', blurb: 'Our vegetables are grown and packed with energy, minerals and vitamins.', color: '#1F5B3A', imgs: ['img/products/haricot-verts.webp', 'img/products/carrots.webp', 'img/products/mangetouts.webp'] },
+  { name: 'Fruits', blurb: 'Fruits are foods that are grown to be eaten raw. These have rich vitamin content.', color: '#AE3A0A', imgs: ['img/products/avocados.webp', 'img/products/mangoes.webp', 'img/products/passion-fruits.webp'] },
+  { name: 'Herbs', blurb: 'Our herbs’ essential properties turn simple meals into a delicious experience.', color: '#7C2D3A', imgs: ['img/products/chillies.webp', 'img/products/rosemary.webp', 'img/products/chives.webp'] }
 ]
 
 export const gallery = [
   { src: 'img/about/packhouse.jpg', alt: 'The Premier Veg pack-house team at work', cap: 'The pack-house: sorting, grading and packing the day-to-day orders', tag: 'Pack-house' },
-  { src: 'img/hero-workers.jpg', alt: 'Premier Veg team sorting haricot verts', cap: 'Our team sorting and packing haricot verts', tag: 'Our team' },
-  { src: 'img/beans-bunch.jpg', alt: 'Freshly harvested haricot verts', cap: 'Haricot verts, freshly harvested', tag: 'Haricot verts' },
-  { src: 'img/snow-peas.jpg', alt: 'Tray of snow peas', cap: 'Mangetouts, packed in retail trays', tag: 'Mangetouts' },
+  { src: 'img/hero-workers.webp', alt: 'Premier Veg team sorting haricot verts', cap: 'Our team sorting and packing haricot verts', tag: 'Our team' },
+  { src: 'img/beans-bunch.webp', alt: 'Freshly harvested haricot verts', cap: 'Haricot verts, freshly harvested', tag: 'Haricot verts' },
+  { src: 'img/snow-peas.webp', alt: 'Tray of snow peas', cap: 'Mangetouts, packed in retail trays', tag: 'Mangetouts' },
   { src: 'img/packages/cxf001-carton.png', alt: 'Extra fine beans carton, 12 × 250 g', cap: 'Extra fine beans carton, 12 × 250 g', tag: 'Packaging', contain: true },
-  { src: 'img/sugar-closeup.jpg', alt: 'Close-up of sugar snap peas', cap: 'Sugar snaps up close', tag: 'Sugar snaps' }
+  { src: 'img/sugar-closeup.webp', alt: 'Close-up of sugar snap peas', cap: 'Sugar snaps up close', tag: 'Sugar snaps' }
 ]
