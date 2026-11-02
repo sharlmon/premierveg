@@ -13,7 +13,7 @@ npm run generate   # static build -> .output/public
 | Variable | What it does |
 |---|---|
 | `WEB3FORMS_KEY` | Access key from web3forms.com (free; created with the email that should receive enquiries). Empty = form falls back to opening the visitor's email app. |
-| `WHATSAPP_NUMBER` | WhatsApp number, digits only with country code (default `393512151931`, the number on the old site, unconfirmed). |
+| `WHATSAPP_NUMBER` | WhatsApp number, digits only with country code (default `393512151931`, confirmed by the project owner). |
 | `SITE_URL` | Public site URL used for canonical links, sitemap and social images. Change when the custom domain goes live. |
 
 ## Content to fill in later
