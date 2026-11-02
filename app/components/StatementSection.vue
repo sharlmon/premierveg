@@ -1,18 +1,8 @@
 <template>
   <section id="about" class="bg-[#DCE5DA]">
     <div class="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-32">
-      <!-- statement -->
-      <div class="grid gap-8 lg:grid-cols-12">
-        <div class="lg:col-span-3">
-          <p class="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs font-semibold" data-reveal><span class="h-1.5 w-1.5 rounded-full bg-forest" /> About us</p>
-        </div>
-        <p class="display text-[clamp(1.7rem,3.3vw,3rem)] !leading-[1.12] tracking-tight lg:col-span-9" :aria-label="text">
-          <span v-for="(w, i) in words" :key="i" class="word inline-block" aria-hidden="true">{{ w }}&nbsp;</span>
-        </p>
-      </div>
-
       <!-- details -->
-      <div class="mt-16 grid items-start gap-10 md:mt-24 lg:grid-cols-12">
+      <div class="grid items-start gap-10 lg:grid-cols-12">
         <!-- stats -->
         <dl class="grid grid-cols-2 gap-6 lg:col-span-3 lg:grid-cols-1 lg:gap-10" data-stagger>
           <div class="reveal border-t border-forest/20 pt-5">
@@ -58,8 +48,6 @@
 <script setup lang="ts">
 import { gallery } from '~/data'
 const asset = useAsset(); const { open } = useModal()
-const text = 'We connect Kenyan growers with international markets, with the highest standards of freshness, quality and consistency.'
-const words = text.split(' ')
 const features = [
   { t: 'Category 1 grading', d: 'Careful sorting and grading to meet Category 1 export standards, with quality checks to ensure freshness, size uniformity and appearance.' },
   { t: 'Temperature-controlled cold rooms', d: 'Temperature control cold rooms, proper ventilation and an efficient workflow allow produce to retain its quality and temperature during storage and transport.' },
