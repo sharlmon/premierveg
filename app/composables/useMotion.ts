@@ -61,9 +61,11 @@ export function useMotion() {
     el.addEventListener('pointerleave', () => { xTo(0); yTo(0) })
   })
 
+  window.addEventListener('load', () => ScrollTrigger.refresh())
   // intro sequence
   const intro = () => {
     const tl = gsap.timeline()
+    gsap.from('.hero-bg', { scale: 1.3, duration: 2.6, ease: 'power3.out' })
     tl.to('#loader-bar', { scaleX: 1, duration: 1.1, ease: 'power2.inOut' })
       .to('#loader-logo', { scale: 1.1, opacity: 0, duration: 0.4 }, '-=0.1')
       .to('#loader', { yPercent: -100, duration: 0.9, ease: 'power4.inOut' })
@@ -78,6 +80,6 @@ export function useMotion() {
     gsap.to(el, { y: i % 2 ? -14 : 14, rotate: i % 2 ? 3 : -3, duration: 3 + i, ease: 'sine.inOut', yoyo: true, repeat: -1 })
   })
   // hero scroll depth
-  gsap.to('.hero-media', { yPercent: -12, ease: 'none', scrollTrigger: { trigger: '#top', scrub: true, start: 'top top', end: 'bottom top' } })
+  gsap.to('.hero-bg', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '#top', scrub: true, start: 'top top', end: 'bottom top' } })
   return { reduce, intro, lenis }
 }

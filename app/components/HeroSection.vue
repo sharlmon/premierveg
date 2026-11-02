@@ -1,34 +1,38 @@
 <template>
-  <section id="top" class="grain relative min-h-[100svh] overflow-hidden bg-forest text-cream">
-    <div class="pointer-events-none absolute -left-40 top-1/3 h-[34rem] w-[34rem] rounded-full bg-leaf/60 blur-3xl" />
-    <div class="pointer-events-none absolute -right-32 -top-20 h-[26rem] w-[26rem] rounded-full bg-lime/20 blur-3xl" />
-    <div class="relative mx-auto grid max-w-7xl gap-10 px-5 pb-20 pt-36 md:px-10 lg:grid-cols-12 lg:pt-44">
-      <div class="lg:col-span-7">
-        <p class="hero-fade eyebrow mb-8 flex items-center gap-3 text-lime"><span class="h-px w-10 bg-lime" /> Nairobi · Italy · Worldwide</p>
-        <h1 class="display text-[clamp(2.9rem,6.4vw,6.2rem)]">
-          <span class="line-mask"><span class="line-inner hero-line">Fresh from</span></span>
-          <span class="line-mask"><span class="line-inner hero-line italic text-lime">Kenya,</span></span>
-          <span class="line-mask"><span class="line-inner hero-line">on your shelf.</span></span>
-        </h1>
-        <p class="hero-fade mt-8 max-w-xl text-lg text-cream/75">Year-round fruit, vegetables and herbs from tropical partner farms — graded to Category 1, packed in a temperature-controlled pack-house and fully traceable to the field.</p>
-        <div class="hero-fade mt-10 flex flex-wrap gap-4">
-          <a href="#contact" class="btn btn-lime" data-magnetic>Request a quote <span aria-hidden="true">→</span></a>
-          <a href="#products" class="btn btn-ghost" data-magnetic>Explore products</a>
+  <section id="top" class="relative isolate min-h-[100svh] overflow-hidden bg-forest text-cream">
+    <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+      <img :src="asset('img/beans-bunch.jpg')" alt="" class="hero-bg absolute inset-x-0 -top-[8%] h-[118%] w-full object-cover" fetchpriority="high" />
+      <div class="absolute inset-0 bg-gradient-to-r from-forest/90 via-forest/40 to-transparent" />
+      <div class="absolute inset-0 bg-gradient-to-t from-forest/90 via-transparent to-forest/30" />
+    </div>
+    <div class="mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-10 pt-36 md:px-10 md:pb-14">
+      <p class="hero-fade eyebrow mb-8 flex items-center gap-3 text-lime"><span class="h-px w-10 bg-lime" /> Premier Veg Mondo · Nairobi &amp; Italy</p>
+      <h1 class="display text-[clamp(3.2rem,9vw,8.6rem)]">
+        <span class="line-mask"><span class="line-inner hero-line">As fresh</span></span>
+        <span class="line-mask"><span class="line-inner hero-line">as it <em class="text-lime">gets.</em></span></span>
+      </h1>
+      <div class="mt-10 grid items-end gap-10 md:mt-14 lg:grid-cols-12">
+        <div class="lg:col-span-6">
+          <p class="hero-fade max-w-lg text-lg text-cream/80">Fresh fruit, vegetables and herbs from Kenya, graded to Category 1 and shipped year-round to importers, wholesalers and retailers.</p>
+          <div class="hero-fade mt-8 flex flex-wrap gap-4">
+            <a href="#contact" class="btn btn-lime" data-magnetic>Request a quote <span aria-hidden="true">→</span></a>
+            <a href="#range" class="btn btn-ghost" data-magnetic>See the range</a>
+          </div>
         </div>
-        <dl class="hero-fade mt-14 grid max-w-xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
-          <div><dt class="eyebrow text-cream/55">Since</dt><dd class="display mt-1 text-4xl">2022</dd></div>
-          <div><dt class="eyebrow text-cream/55">Products</dt><dd class="display mt-1 text-4xl"><span data-count="10">10</span>+</dd></div>
-          <div><dt class="eyebrow text-cream/55">Supply</dt><dd class="display mt-1 text-4xl">365<span class="text-lime">d</span></dd></div>
-        </dl>
-      </div>
-      <div class="hero-media relative min-h-[26rem] lg:col-span-5" aria-hidden="true">
-        <div class="hero-card float absolute right-0 top-0 h-[22rem] w-[48%] overflow-hidden rounded-t-full border border-white/15 shadow-2xl sm:h-[26rem]"><img :src="asset('img/vegetables_peas.jpg')" alt="" class="h-full w-full object-cover" /></div>
-        <div class="hero-card float absolute bottom-0 left-0 h-[20rem] w-[48%] overflow-hidden rounded-t-full border border-white/15 shadow-2xl sm:h-[24rem]"><img :src="asset('img/herbs_chillis.jpg')" alt="" class="h-full w-full object-cover" /></div>
-        <div class="hero-card float absolute left-[38%] top-[34%] grid h-28 w-28 place-items-center rounded-full bg-lime text-center text-forest shadow-xl">
-          <span class="eyebrow leading-tight">Cat. 1<br />Export</span>
+        <div class="hero-fade hidden items-end justify-end gap-5 lg:col-span-6 lg:flex">
+          <figure class="hero-card float mb-14 w-36 overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
+            <img :src="asset('img/sugar-snaps.jpg')" alt="Tray of sugar snap peas" class="aspect-[3/4] w-full object-cover" />
+            <figcaption class="eyebrow bg-forest px-4 py-3 text-lime">Sugar snaps</figcaption>
+          </figure>
+          <figure class="hero-card float mb-24 w-28 overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
+            <img :src="asset('img/snow-peas.jpg')" alt="Tray of snow peas" class="aspect-[3/4] w-full object-cover" />
+            <figcaption class="eyebrow bg-forest px-4 py-3 text-lime">Snow peas</figcaption>
+          </figure>
         </div>
       </div>
+      <div class="hero-fade mt-12 flex items-center gap-3 text-xs uppercase tracking-[.22em] text-cream/60"><span class="relative h-10 w-px overflow-hidden bg-white/20"><span class="absolute inset-x-0 top-0 h-1/2 animate-[drop_1.8s_ease-in-out_infinite] bg-lime" /></span> Scroll</div>
     </div>
   </section>
 </template>
 <script setup lang="ts">const asset = useAsset()</script>
+<style>@keyframes drop { 0% { transform: translateY(-100%) } 100% { transform: translateY(200%) } }</style>

@@ -20,6 +20,6 @@
 <script setup lang="ts">
 const asset = useAsset()
 const open = ref(false); const scrolled = ref(false)
-const links = [{ href: '#about', label: 'About' }, { href: '#products', label: 'Products' }, { href: '#process', label: 'Process' }, { href: '#packages', label: 'Packages' }, { href: '#team', label: 'Team' }]
+const links = [{ href: '#about', label: 'About' }, { href: '#range', label: 'Products' }, { href: '#process', label: 'Process' }, { href: '#packages', label: 'Packages' }, { href: '#team', label: 'Team' }]
 onMounted(() => { const f = () => (scrolled.value = window.scrollY > 40); f(); window.addEventListener('scroll', f, { passive: true }) })
 </script>

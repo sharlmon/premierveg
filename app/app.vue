@@ -9,7 +9,8 @@
     <main>
       <HeroSection />
       <MarqueeStrip />
-      <AboutSection />
+      <StatementSection />
+      <ShowcaseSection />
       <ProductsSection />
       <ProcessSection />
       <PackagesSection />
