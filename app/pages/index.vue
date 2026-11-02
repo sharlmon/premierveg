@@ -11,6 +11,6 @@
   </div>
 </template>
 <script setup lang="ts">
-useHead({ title: 'Premier Veg — Fresh fruit, vegetables & herbs from Kenya' })
+usePageSeo({ title: 'Premier Veg — Fresh fruit, vegetables & herbs from Kenya', description: 'Premier Veg Mondo Fresh exports year-round fresh fruit, vegetables and herbs from Kenya to Europe and beyond. Category 1 grading, full traceability, cold-chain handling.', path: '/' })
 onMounted(async () => { await nextTick(); usePageMotion() })
 </script>

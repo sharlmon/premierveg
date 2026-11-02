@@ -2,6 +2,6 @@
   <div><ContactSection lead /></div>
 </template>
 <script setup lang="ts">
-useHead({ title: 'Contact — Premier Veg', meta: [{ name: 'description', content: 'Request a quote or place an order with Premier Veg Mondo Fresh, Nairobi.' }] })
+usePageSeo({ title: 'Contact & quotes — Premier Veg Mondo Fresh', description: 'Request a quote or place an order with Premier Veg Mondo Fresh, Nairobi, Kenya. Email, phone and WhatsApp.', path: '/contact/' })
 onMounted(async () => { await nextTick(); usePageMotion() })
 </script>

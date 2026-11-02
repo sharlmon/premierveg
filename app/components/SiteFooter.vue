@@ -18,6 +18,7 @@
           <div class="text-sm lg:col-span-3"><p class="eyebrow mb-5 text-cream/45">Contact</p>
             <p><a href="mailto:info@premierveg.com" class="hover:text-lime">info@premierveg.com</a></p>
             <p class="mt-2"><a href="tel:+393512151931" class="hover:text-lime">+39 351 215 1931</a></p>
+            <p class="mt-2"><a :href="wa('Hello Premier Veg, I would like to enquire about your fresh produce.')" target="_blank" rel="noopener" class="hover:text-lime">WhatsApp ↗</a></p>
             <p class="mt-4 leading-relaxed text-cream/60">Premier Veg Mondo Fresh<br />P. O. Box 3468-00200, Kileleshwa Birchwoods<br />Nairobi, Kenya</p>
           </div>
         </div>
@@ -34,7 +35,7 @@
   </footer>
 </template>
 <script setup lang="ts">
-const asset = useAsset(); const { open } = useModal()
+const asset = useAsset(); const { open } = useModal(); const { wa } = useSite()
 const links = [{ to: '/', label: 'Home' }, { to: '/products', label: 'Products' }, { to: '/packages', label: 'Packages' }, { to: '/about', label: 'About' }, { to: '/team', label: 'Team' }, { to: '/contact', label: 'Contact' }]
 const done = ref(false); let t: ReturnType<typeof setTimeout>
 const copy = async () => { try { await navigator.clipboard.writeText('info@premierveg.com') } catch { window.location.href = 'mailto:info@premierveg.com'; return } done.value = true; clearTimeout(t); t = setTimeout(() => (done.value = false), 1800) }

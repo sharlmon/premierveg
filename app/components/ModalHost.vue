@@ -16,15 +16,25 @@
               <p class="eyebrow text-leaf">{{ state.item.cat }} · {{ state.item.code }}</p>
               <h3 class="display mt-3 text-4xl">{{ state.item.name }}</h3>
               <p class="mt-4 text-ink/75">{{ state.item.blurb }}</p>
-              <div v-if="related.length" class="mt-6">
-                <p class="eyebrow mb-3 text-ink/50">Packaging</p>
+              <dl class="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-forest/15 pt-5 text-sm">
+                <div v-for="r in specRows" :key="r.label" :class="r.label === 'Packaging' ? 'col-span-2' : ''"><dt class="eyebrow text-ink/45">{{ r.label }}</dt><dd :class="r.known ? 'font-semibold' : 'italic text-ink/45'">{{ r.value }}</dd></div>
+              </dl>
+              <div v-if="related.length" class="mt-5">
+                <p class="eyebrow mb-3 text-ink/50">Packaging photos</p>
                 <ul class="flex flex-wrap gap-2"><li v-for="r in related" :key="r.id"><button class="flex cursor-pointer items-center gap-2 rounded-full border border-forest/20 bg-white py-1 pl-1 pr-4 text-xs font-semibold transition hover:border-forest" @click="open({ type: 'package', item: r })"><img :src="asset(r.img)" alt="" class="h-8 w-8 rounded-full bg-white object-contain" />{{ r.kind === 'Top cover' ? 'Top cover' : r.name }}</button></li></ul>
               </div>
-              <div class="mt-auto flex flex-wrap items-center gap-3 pt-8">
-                <button class="btn btn-dark" @click="quote(state.item.name)">Request a quote <span aria-hidden="true">→</span></button>
-                <div class="ml-auto flex gap-2">
-                  <button class="nav-btn" aria-label="Previous product" @click="step(-1)">←</button>
-                  <button class="nav-btn" aria-label="Next product" @click="step(1)">→</button>
+              <div class="mt-auto pt-7">
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <button class="btn" :class="inList(state.item.code) ? 'btn-lime' : 'btn-dark'" :aria-pressed="inList(state.item.code)" @click="toggleProduct(state.item)">{{ inList(state.item.code) ? 'Added to quote ✓' : 'Add to quote +' }}</button>
+                  <a class="btn btn-wa" :href="wa('Hello Premier Veg, I would like to enquire about ' + state.item.name + ' (' + state.item.code + ').')" target="_blank" rel="noopener">WhatsApp</a>
+                  <button class="btn btn-ghost !text-forest" :disabled="pdfBusy" @click="spec(state.item)">{{ pdfBusy ? 'Preparing…' : 'Spec sheet PDF ↓' }}</button>
+                </div>
+                <div class="mt-4 flex items-center gap-3">
+                  <button v-if="items.length" class="text-sm font-semibold underline underline-offset-4" @click="open({ type: 'quote' })">View quote list ({{ items.length }}) →</button>
+                  <div class="ml-auto flex gap-2">
+                    <button class="nav-btn" aria-label="Previous product" @click="step(-1)">←</button>
+                    <button class="nav-btn" aria-label="Next product" @click="step(1)">→</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -37,11 +47,17 @@
               <p class="eyebrow text-leaf">{{ state.item.kind }} · {{ state.item.code }}</p>
               <h3 class="display mt-3 text-3xl md:text-4xl">{{ state.item.name }}</h3>
               <p class="mt-4 text-ink/75">{{ state.item.note }}</p>
-              <div class="mt-auto flex flex-wrap items-center gap-3 pt-8">
-                <button class="btn btn-dark" @click="quote(state.item.product || '')">Request a quote <span aria-hidden="true">→</span></button>
-                <div class="ml-auto flex gap-2">
-                  <button class="nav-btn" aria-label="Previous package" @click="stepPack(-1)">←</button>
-                  <button class="nav-btn" aria-label="Next package" @click="stepPack(1)">→</button>
+              <div class="mt-auto pt-8">
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <button class="btn" :class="inList(state.item.id) ? 'btn-lime' : 'btn-dark'" :aria-pressed="inList(state.item.id)" @click="togglePack(state.item)">{{ inList(state.item.id) ? 'Added to quote ✓' : 'Add to quote +' }}</button>
+                  <a class="btn btn-wa" :href="wa('Hello Premier Veg, I would like to enquire about the ' + state.item.name + ' ' + state.item.kind.toLowerCase() + ' (' + state.item.code + ').')" target="_blank" rel="noopener">WhatsApp</a>
+                </div>
+                <div class="mt-4 flex items-center gap-3">
+                  <button v-if="items.length" class="text-sm font-semibold underline underline-offset-4" @click="open({ type: 'quote' })">View quote list ({{ items.length }}) →</button>
+                  <div class="ml-auto flex gap-2">
+                    <button class="nav-btn" aria-label="Previous package" @click="stepPack(-1)">←</button>
+                    <button class="nav-btn" aria-label="Next package" @click="stepPack(1)">→</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -83,8 +99,16 @@
   </Teleport>
 </template>
 <script setup lang="ts">
-import { products, packages } from '~/data'
+import { products, packages, type Product, type Pack } from '~/data'
 const asset = useAsset()
+const { wa } = useSite()
+const { items, has, toggle } = useQuote()
+const inList = (id: string) => has(id)
+const toggleProduct = (p: Product) => toggle({ id: p.code, name: p.name, kind: 'Product', code: p.code })
+const togglePack = (p: Pack) => toggle({ id: p.id, name: p.name + (p.kind === 'Top cover' ? ' (top cover)' : ' ' + p.kind.toLowerCase()), kind: 'Package', code: p.code })
+const pdfBusy = ref(false)
+const spec = async (p: Product) => { pdfBusy.value = true; try { await downloadSpecSheet(p, asset) } finally { pdfBusy.value = false } }
+const specRows = computed(() => (state.value?.type === 'product' ? productSpecRows(state.value.item) : []))
 const { state, open, close } = useModal()
 const panel = ref<HTMLElement>()
 let lastFocus: HTMLElement | null = null
@@ -124,6 +148,8 @@ onMounted(() => window.addEventListener('keydown', onKey))
 onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
 </script>
 <style>
+.btn-wa { background: #25D366; color: #06331a; }
+.btn-wa:hover { background: #1fb957; }
 .nav-btn { display: grid; height: 2.75rem; width: 2.75rem; cursor: pointer; place-items: center; border-radius: 9999px; background: #E8E3D3; color: #0E2A1C; transition: background .2s, transform .2s; }
 .nav-btn:hover { background: #C6F04A; transform: scale(1.06); }
 .modal-enter-active .modal-panel { transition: transform .5s cubic-bezier(.2,.9,.2,1), opacity .35s; }

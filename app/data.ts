@@ -1,5 +1,7 @@
 // Content taken from premierveg.com (copy lightly cleaned for typos only).
-export type Product = { code: string; name: string; cat: 'Vegetables' | 'Fruits' | 'Herbs'; blurb: string; color: string; img: string; pack: string[] }
+// Product.specs (shelfLife / season / sizes) are intentionally empty: fill them in once the client supplies real data.
+// Anything left empty shows as "On request" in the product popup and the PDF spec sheet.
+export type Product = { code: string; name: string; cat: 'Vegetables' | 'Fruits' | 'Herbs'; blurb: string; color: string; img: string; pack: string[]; specs?: { shelfLife?: string; season?: string; sizes?: string } }
 export type Pack = { id: string; code: string; name: string; note: string; kind: 'Carton' | 'Top cover' | 'Punnet'; img: string; product?: string }
 export type Member = { name: string; role: string; email: string; phone: string; quote?: string; photo?: string; bio: string[] }
 

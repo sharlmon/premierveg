@@ -50,7 +50,7 @@
 <script setup lang="ts">
 import { gallery } from '~/data'
 const asset = useAsset(); const { open } = useModal()
-useHead({ title: 'About — Premier Veg', meta: [{ name: 'description', content: 'Premier Veg Mondo Fresh: Kenyan growers connected to international markets since 2022.' }] })
+usePageSeo({ title: 'About — Premier Veg Mondo Fresh', description: 'Established in 2022 in Nairobi with operations in Italy, Premier Veg Mondo Fresh connects Kenyan growers with international markets. Category 1 grading and full traceability.', path: '/about/' })
 const facts = ['Careful sorting and grading to meet Category 1 export standards;', 'Quality checks to ensure freshness, size uniformity, and appearance;', 'Hygienic handling by trained staff following food safety protocols.']
 onMounted(async () => { await nextTick(); usePageMotion() })
 </script>

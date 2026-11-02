@@ -2,24 +2,44 @@
   <div>
     <form v-if="!sent" @submit.prevent="send">
       <h3 class="display text-2xl md:text-3xl">Request a quote</h3>
-      <p class="mt-2 text-sm text-ink/60">Tell us what you need and we'll come back to you.</p>
-      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      <p class="mt-2 text-sm text-ink/60">Tell us what you need and we'll respond within 24 hours.</p>
+
+      <!-- quote list -->
+      <div v-if="items.length" class="mt-5 rounded-2xl border border-forest/15 bg-white p-3">
+        <p class="eyebrow px-2 pb-2 text-leaf">Your quote list · {{ items.length }}</p>
+        <ul class="divide-y divide-forest/10">
+          <li v-for="it in items" :key="it.id" class="flex items-center gap-3 px-2 py-2.5">
+            <div class="min-w-0 flex-1"><p class="truncate text-sm font-semibold">{{ it.name }}</p><p class="text-[11px] text-ink/50">{{ it.kind }}<span v-if="it.code"> · {{ it.code }}</span></p></div>
+            <input v-model="it.qty" class="w-28 rounded-lg border border-forest/20 px-3 py-2 text-sm" :aria-label="'Quantity for ' + it.name" placeholder="e.g. 500 kg" />
+            <button type="button" class="grid h-8 w-8 shrink-0 cursor-pointer place-items-center rounded-full bg-forest/10 text-xs transition hover:bg-forest hover:text-cream" :aria-label="'Remove ' + it.name" @click="remove(it.id)">✕</button>
+          </li>
+        </ul>
+        <button type="button" class="mt-1 px-2 py-1 text-xs font-semibold text-ink/50 underline-offset-4 hover:underline" @click="clear()">Clear list</button>
+      </div>
+
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
         <label class="block text-sm font-semibold">Name<input v-model="f.name" required autocomplete="name" class="field" /></label>
         <label class="block text-sm font-semibold">Company<input v-model="f.company" autocomplete="organization" class="field" /></label>
         <label class="block text-sm font-semibold sm:col-span-2">Email<input v-model="f.email" type="email" required autocomplete="email" class="field" /></label>
-        <label class="block text-sm font-semibold sm:col-span-2">Product of interest
+        <label v-if="!items.length" class="block text-sm font-semibold sm:col-span-2">Product of interest
           <select v-model="f.product" class="field"><option value="">Select…</option><option v-for="p in products" :key="p.code">{{ p.name }}</option></select>
         </label>
-        <label class="block text-sm font-semibold sm:col-span-2">Message<textarea v-model="f.msg" rows="3" required class="field" /></label>
+        <label class="block text-sm font-semibold sm:col-span-2">Message <span v-if="items.length" class="font-normal text-ink/50">(optional)</span><textarea v-model="f.msg" rows="3" :required="!items.length" class="field" placeholder="Quantities, destination, timing…" /></label>
+        <!-- honeypot: hidden from people, bots fill it in -->
+        <input v-model="f.botcheck" type="checkbox" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
       </div>
-      <button class="btn btn-dark mt-6 w-full justify-center" type="submit">Send enquiry <span aria-hidden="true">→</span></button>
-      <p class="mt-3 text-xs text-ink/50">Opens your email app with the enquiry pre-filled. (Prototype — a hosted form service replaces this at launch.)</p>
+      <p v-if="error" class="mt-4 rounded-xl bg-tomato/10 p-3 text-sm text-tomato" role="alert">{{ error }} You can also email <a class="font-semibold underline" :href="mailto">{{ email }}</a> or <a class="font-semibold underline" :href="wa('Hello Premier Veg, I would like a quote.')" target="_blank" rel="noopener">WhatsApp us</a>.</p>
+      <button class="btn btn-dark mt-6 w-full justify-center disabled:opacity-60" type="submit" :disabled="sending">{{ sending ? 'Sending…' : 'Send enquiry' }} <span v-if="!sending" aria-hidden="true">→</span></button>
+      <p class="mt-3 text-xs text-ink/50">{{ formKey ? 'Your details are used only to reply to this enquiry.' : 'Opens your email app with the enquiry pre-filled.' }}</p>
     </form>
     <div v-else ref="done" class="relative overflow-hidden py-10 text-center" role="status">
       <div class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-lime text-2xl text-forest">✓</div>
       <h3 class="display mt-6 text-3xl">Thank you{{ f.name ? ', ' + f.name.split(' ')[0] : '' }}.</h3>
-      <p class="mx-auto mt-3 max-w-sm text-ink/65">Your email app should have opened with your enquiry. If not, write to <a class="underline" href="mailto:info@premierveg.com">info@premierveg.com</a>.</p>
-      <button class="btn btn-ghost mt-6 !text-forest" type="button" @click="sent = false">Send another</button>
+      <p class="mx-auto mt-3 max-w-sm text-ink/65">{{ formKey ? "We've received your enquiry and will respond within 24 hours." : 'Your email app should have opened with your enquiry. If not, write to ' + email + '.' }}</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a class="btn btn-dark" :href="wa('Hello Premier Veg, I just sent a quote request' + (f.name ? ' (' + f.name + ')' : '') + '.')" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <button class="btn btn-ghost !text-forest" type="button" @click="sent = false">Send another</button>
+      </div>
     </div>
   </div>
 </template>
@@ -27,16 +47,41 @@
 import gsap from 'gsap'
 import { products } from '~/data'
 const props = defineProps<{ product?: string }>()
-const f = reactive({ name: '', company: '', email: '', product: props.product || '', msg: '' })
+const { formKey, email, wa } = useSite()
+const { items, remove, clear } = useQuote()
+const f = reactive({ name: '', company: '', email: '', product: props.product || '', msg: '', botcheck: false })
 const enquiry = useState<string>('enquiry', () => '')
 watch(enquiry, (v) => { if (v) f.product = v }, { immediate: true })
 watch(() => props.product, (v) => { if (v) f.product = v })
-const sent = ref(false); const done = ref<HTMLElement>()
-const send = () => {
-  const body = `Name: ${f.name}\nCompany: ${f.company}\nEmail: ${f.email}\nProduct: ${f.product}\n\n${f.msg}`
-  window.location.href = `mailto:info@premierveg.com?subject=${encodeURIComponent('Quote request — ' + (f.product || 'General'))}&body=${encodeURIComponent(body)}`
-  sent.value = true
-  nextTick(burst)
+const sent = ref(false); const sending = ref(false); const error = ref(''); const done = ref<HTMLElement>()
+
+const compose = () => {
+  const lines = [`Name: ${f.name}`, `Company: ${f.company || '-'}`, `Email: ${f.email}`]
+  if (items.value.length) lines.push('', 'Quote list:', ...items.value.map((i, n) => `${n + 1}. ${i.name} (${i.kind}${i.code ? ', ' + i.code : ''}) — quantity: ${i.qty || 'to be discussed'}`))
+  else if (f.product) lines.push(`Product: ${f.product}`)
+  if (f.msg) lines.push('', f.msg)
+  return lines.join('\n')
+}
+const subject = () => 'Quote request — ' + (items.value.length ? items.value.map((i) => i.name).slice(0, 3).join(', ') + (items.value.length > 3 ? ` +${items.value.length - 3}` : '') : f.product || 'General')
+const mailto = computed(() => `mailto:${email}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(compose())}`)
+
+const finish = () => { sent.value = true; clear(); nextTick(burst) }
+const send = async () => {
+  error.value = ''
+  if (f.botcheck) return finish() // bot: pretend success, send nothing
+  if (!formKey) { window.location.href = mailto.value; return finish() }
+  sending.value = true
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ access_key: formKey, subject: subject(), from_name: 'Premier Veg website', name: f.name, email: f.email, company: f.company, message: compose(), botcheck: '' })
+    })
+    const j = await res.json().catch(() => ({}))
+    if (!res.ok || j.success === false) throw new Error(j.message || 'failed')
+    finish()
+  } catch {
+    error.value = "Sorry, we couldn't send that just now."
+  } finally { sending.value = false }
 }
 const burst = () => {
   if (!done.value || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return

@@ -4,7 +4,17 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts'],
   css: ['~/assets/css/main.css'],
   ssr: true,
-  nitro: { preset: 'github_pages', prerender: { routes: ['/', '/about', '/products', '/packages', '/team', '/contact'], crawlLinks: true } },
+  runtimeConfig: {
+    public: {
+      // Absolute site URL (used for canonical links, sitemap, social images). Change when the custom domain goes live.
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://sharlmon.github.io/premierveg',
+      // Free key from web3forms.com tied to the client's inbox. Empty = form falls back to opening the visitor's email app.
+      web3formsKey: process.env.NUXT_PUBLIC_WEB3FORMS_KEY || '',
+      // WhatsApp number, digits only with country code. TODO: confirm with the client.
+      whatsapp: process.env.NUXT_PUBLIC_WHATSAPP || '393512151931'
+    }
+  },
+  nitro: { preset: 'github_pages', prerender: { routes: ['/', '/about', '/products', '/packages', '/team', '/contact', '/sitemap.xml', '/robots.txt'], crawlLinks: true } },
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {

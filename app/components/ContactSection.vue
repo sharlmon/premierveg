@@ -12,6 +12,7 @@
         <dl class="mt-12 space-y-6" data-reveal>
           <div><dt class="eyebrow text-cream/50">E-mail</dt><dd class="display text-xl"><a href="mailto:info@premierveg.com" class="hover:text-lime">info@premierveg.com</a></dd></div>
           <div><dt class="eyebrow text-cream/50">Phone</dt><dd class="display text-xl"><a href="tel:+393512151931" class="hover:text-lime">+39 351 215 1931</a></dd></div>
+          <div><dt class="eyebrow text-cream/50">WhatsApp</dt><dd class="display text-xl"><a :href="wa('Hello Premier Veg, I would like to enquire about your fresh produce.')" target="_blank" rel="noopener" class="hover:text-lime">Chat with us ↗</a></dd></div>
           <div><dt class="eyebrow text-cream/50">Location</dt><dd class="text-cream/85">Premier Veg Mondo Fresh<br />P. O. Box 3468-00200, Kileleshwa Birchwoods<br />Nairobi, Kenya</dd></div>
         </dl>
         <div class="mt-10 max-w-sm" data-reveal><LiveClocks /></div>
@@ -23,4 +24,5 @@
 <script setup lang="ts">
 defineProps<{ lead?: boolean }>()
 const asset = useAsset()
+const { wa } = useSite()
 </script>

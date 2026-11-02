@@ -5,6 +5,6 @@
   </div>
 </template>
 <script setup lang="ts">
-useHead({ title: 'Team — Premier Veg', meta: [{ name: 'description', content: 'The people behind Premier Veg Mondo Fresh.' }] })
+usePageSeo({ title: 'Team — Premier Veg Mondo Fresh', description: 'Meet the Premier Veg team: owner, administration, compliance, quality assurance and finance.', path: '/team/' })
 onMounted(async () => { await nextTick(); usePageMotion() })
 </script>

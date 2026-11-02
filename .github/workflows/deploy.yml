@@ -23,6 +23,9 @@ jobs:
       - run: npx nuxt generate
         env:
           NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
+          NUXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
+          NUXT_PUBLIC_WHATSAPP: ${{ vars.WHATSAPP_NUMBER }}
+          NUXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
       - run: touch .output/public/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

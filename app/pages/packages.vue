@@ -6,6 +6,6 @@
   </div>
 </template>
 <script setup lang="ts">
-useHead({ title: 'Packages — Premier Veg', meta: [{ name: 'description', content: 'Export cartons and retail punnets, ready for shelf.' }] })
+usePageSeo({ title: 'Packages — Export cartons & retail punnets | Premier Veg', description: 'Export cartons and retail punnets for beans, mangetouts, baby corn and chillies, ready for shelf.', path: '/packages/' })
 onMounted(async () => { await nextTick(); usePageMotion() })
 </script>
