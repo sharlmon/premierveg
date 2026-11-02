@@ -67,12 +67,10 @@ export const categories = [
 ]
 
 export const gallery = [
-  { src: 'img/about/packhouse.jpg', alt: 'The Premier Veg pack-house team at work', cap: 'The pack-house: sorting, grading and packing the day-to-day orders' },
-  { src: 'img/beans-bunch.jpg', alt: 'Freshly harvested haricot verts', cap: 'Haricot verts, freshly harvested' },
-  { src: 'img/packages/cxf001-carton.png', alt: 'Extra fine beans carton, 12 × 250 g', cap: 'Extra fine beans carton, 12 × 250 g', contain: true },
-  { src: 'img/snow-peas.jpg', alt: 'Tray of snow peas', cap: 'Mangetouts, packed in retail trays' },
-  { src: 'img/packages/pcm001.png', alt: 'Punnet of red and green chillies', cap: 'Red and green chillies punnet', contain: true },
-  { src: 'img/sugar-snaps.jpg', alt: 'Tray of sugar snaps', cap: 'Sugar snaps, ready to ship' },
-  { src: 'img/beans-tray.jpg', alt: 'Tray of fine green beans', cap: 'Fine green beans, graded to Category 1' },
-  { src: 'img/sugar-closeup.jpg', alt: 'Close-up of sugar snap peas', cap: 'Sugar snaps up close' }
+  { src: 'img/about/packhouse.jpg', alt: 'The Premier Veg pack-house team at work', cap: 'The pack-house: sorting, grading and packing the day-to-day orders', tag: 'Pack-house' },
+  { src: 'img/hero-workers.jpg', alt: 'Premier Veg team sorting haricot verts', cap: 'Our team sorting and packing haricot verts', tag: 'Our team' },
+  { src: 'img/beans-bunch.jpg', alt: 'Freshly harvested haricot verts', cap: 'Haricot verts, freshly harvested', tag: 'Haricot verts' },
+  { src: 'img/snow-peas.jpg', alt: 'Tray of snow peas', cap: 'Mangetouts, packed in retail trays', tag: 'Mangetouts' },
+  { src: 'img/packages/cxf001-carton.png', alt: 'Extra fine beans carton, 12 × 250 g', cap: 'Extra fine beans carton, 12 × 250 g', tag: 'Packaging', contain: true },
+  { src: 'img/sugar-closeup.jpg', alt: 'Close-up of sugar snap peas', cap: 'Sugar snaps up close', tag: 'Sugar snaps' }
 ]

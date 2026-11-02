@@ -3,10 +3,10 @@
     <div class="relative isolate h-[calc(100svh-1.25rem)] min-h-[40rem] overflow-hidden rounded-[1.75rem] bg-forest text-cream sm:h-[calc(100svh-1.5rem)] sm:rounded-[2.25rem]">
       <!-- photo -->
       <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-        <img :src="asset('img/hero-workers.jpg')" alt="" class="hero-bg absolute inset-x-0 -top-[8%] h-[118%] w-full object-cover object-[50%_74%]" fetchpriority="high" />
-        <div class="absolute inset-0 bg-gradient-to-br from-leaf/50 via-forest/10 to-forest/60" />
-        <div class="absolute inset-0 bg-gradient-to-t from-forest/85 via-transparent to-forest/70" />
-        <div class="absolute inset-0 bg-gradient-to-l from-forest/70 via-forest/25 to-transparent" />
+        <img :src="asset('img/hero-workers.jpg')" alt="" class="hero-bg absolute inset-0 h-full w-full object-cover object-[50%_70%]" fetchpriority="high" />
+        <div class="absolute inset-0 bg-gradient-to-br from-forest/30 via-transparent to-forest/20" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-forest/45" />
+        <div class="absolute inset-0 bg-gradient-to-l from-forest/80 via-forest/30 to-transparent" />
       </div>
 
       <!-- interactive hexagons -->
@@ -19,7 +19,7 @@
           <span class="line-mask"><span class="line-inner hero-line">As fresh</span></span>
           <span class="line-mask"><span class="line-inner hero-line">as it <em class="text-lime">gets.</em></span></span>
         </h1>
-        <p class="hero-fade mt-6 max-w-md text-base text-cream/85 md:ml-auto md:text-lg">Trusted exporter of fresh fruits, vegetables and herbs. Whatever we grow, you receive it fresh.</p>
+        <p class="hero-fade mt-6 max-w-md text-base text-cream md:ml-auto md:text-lg [text-shadow:0_1px_12px_rgba(7,24,15,.8)]">Trusted exporter of fresh fruits, vegetables and herbs. Whatever we grow, you receive it fresh.</p>
         <div class="hero-fade mt-7 flex flex-wrap gap-3 md:justify-end">
           <button class="btn btn-lime" data-magnetic @click="open({ type: 'quote' })">Request a quote <span aria-hidden="true">→</span></button>
         </div>
