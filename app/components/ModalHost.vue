@@ -8,9 +8,9 @@
 
           <!-- PRODUCT -->
           <div v-if="state.type === 'product'" class="grid sm:grid-cols-2">
-            <div class="relative grid min-h-[16rem] place-items-center p-8 sm:min-h-[28rem]" :style="{ background: state.item.color }">
-              <div class="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-white/10" />
-              <img :src="asset(state.item.img)" :alt="state.item.name" class="relative max-h-72 w-full object-contain drop-shadow-2xl" />
+            <div class="relative grid min-h-[16rem] place-items-center bg-white p-8 sm:min-h-[28rem]">
+              <span class="absolute inset-x-0 bottom-0 h-2" :style="{ background: state.item.color }" />
+              <img :src="asset(state.item.img)" :alt="state.item.name" class="relative max-h-72 w-full object-contain" />
             </div>
             <div class="flex flex-col p-7 sm:p-9">
               <p class="eyebrow text-leaf">{{ state.item.cat }} · {{ state.item.code }}</p>
@@ -32,7 +32,7 @@
 
           <!-- PACKAGE -->
           <div v-else-if="state.type === 'package'" class="grid sm:grid-cols-2">
-            <div class="grid min-h-[16rem] place-items-center bg-[#f5f5f5] p-6 sm:min-h-[26rem]"><img :src="asset(state.item.img)" :alt="state.item.name + ' packaging'" class="max-h-72 w-full object-contain" /></div>
+            <div class="grid min-h-[16rem] place-items-center bg-white p-6 sm:min-h-[26rem]"><img :src="asset(state.item.img)" :alt="state.item.name + ' packaging'" class="max-h-72 w-full object-contain" /></div>
             <div class="flex flex-col p-7 sm:p-9">
               <p class="eyebrow text-leaf">{{ state.item.kind }} · {{ state.item.code }}</p>
               <h3 class="display mt-3 text-3xl md:text-4xl">{{ state.item.name }}</h3>

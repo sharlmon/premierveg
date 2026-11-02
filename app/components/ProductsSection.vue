@@ -17,12 +17,14 @@
 
     <ul ref="list" class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
       <li v-for="p in products" :key="p.code" class="reveal" :class="match(p) ? '' : 'hidden'">
-        <button v-tilt="8" class="tilt group relative flex h-full min-h-[22rem] w-full cursor-pointer flex-col overflow-hidden rounded-3xl p-6 text-left text-white shadow-[0_18px_40px_-22px_rgba(14,42,28,.55)]" :style="{ background: p.color }" :aria-label="'View ' + p.name" data-cursor="View" @click="open({ type: 'product', item: p })">
+        <button v-tilt="8" class="tilt group relative flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-white text-left shadow-[0_18px_40px_-22px_rgba(14,42,28,.45)] ring-1 ring-forest/10" :aria-label="'View ' + p.name" data-cursor="View" @click="open({ type: 'product', item: p })">
           <span class="glare" />
-          <div class="pointer-events-none absolute -right-14 -top-14 h-56 w-56 rounded-full bg-white/10 transition-transform duration-700 group-hover:scale-[2.2]" />
-          <div class="relative flex items-center justify-between"><span class="eyebrow rounded-full bg-black/25 px-3 py-1.5">{{ p.cat }}</span><span class="font-mono text-xs opacity-70">{{ p.code }}</span></div>
-          <div class="relative my-4 grid flex-1 place-items-center"><img :src="asset(p.img)" :alt="p.name" loading="lazy" class="depth max-h-44 w-full object-contain drop-shadow-2xl" /></div>
-          <div class="relative flex items-end justify-between gap-3"><h3 class="display text-3xl">{{ p.name }}</h3><span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/20 transition group-hover:bg-lime group-hover:text-forest" aria-hidden="true">+</span></div>
+          <div class="relative grid aspect-[4/3] place-items-center bg-white p-6">
+            <span class="eyebrow absolute left-4 top-4 rounded-full px-3 py-1.5 text-white" :style="{ background: p.color }">{{ p.cat }}</span>
+            <span class="absolute right-4 top-4 font-mono text-xs text-forest/45">{{ p.code }}</span>
+            <img :src="asset(p.img)" :alt="p.name" loading="lazy" class="depth max-h-40 w-full object-contain" />
+          </div>
+          <div class="flex items-center justify-between gap-3 px-6 py-5 text-white transition-[padding] duration-300 group-hover:py-6" :style="{ background: p.color }"><h3 class="display text-3xl">{{ p.name }}</h3><span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/25 transition group-hover:bg-white group-hover:text-forest" aria-hidden="true">+</span></div>
         </button>
       </li>
     </ul>

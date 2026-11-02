@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="lg:col-span-7">
-        <div ref="stage" class="relative mx-auto aspect-[454/385] w-full max-w-2xl cursor-grab touch-none overflow-hidden rounded-[2rem] bg-[#f5f5f5] shadow-2xl active:cursor-grabbing" @pointerdown="down" @pointermove="drag" @pointerup="up" @pointerleave="up">
+        <div ref="stage" class="relative mx-auto aspect-[454/385] w-full max-w-2xl cursor-grab touch-none overflow-hidden rounded-[2rem] bg-white shadow-2xl active:cursor-grabbing" @pointerdown="down" @pointermove="drag" @pointerup="up" @pointerleave="up">
           <img :src="asset(cartons[sel].tray)" :alt="cartons[sel].name + ' carton tray'" class="absolute inset-0 h-full w-full object-contain" draggable="false" />
           <img :src="asset(cartons[sel].lid)" :alt="cartons[sel].name + ' carton lid'" class="absolute inset-0 h-full w-full object-contain will-change-transform" :style="lidStyle" draggable="false" />
           <span class="eyebrow pointer-events-none absolute bottom-4 left-4 rounded-full bg-forest px-3 py-1.5 text-[10px] text-lime">{{ v < 0.5 ? 'Top cover' : 'Tray · 12 × 250 g' }}</span>

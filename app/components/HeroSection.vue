@@ -3,10 +3,10 @@
     <div class="relative isolate h-[calc(100svh-1.25rem)] min-h-[40rem] overflow-hidden rounded-[1.75rem] bg-forest text-cream sm:h-[calc(100svh-1.5rem)] sm:rounded-[2.25rem]">
       <!-- photo -->
       <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-        <img :src="asset('img/hero-snaps.jpg')" alt="" class="hero-bg absolute inset-x-0 -top-[8%] h-[118%] w-full object-cover" fetchpriority="high" />
-        <div class="absolute inset-0 bg-gradient-to-br from-leaf/55 via-forest/15 to-forest/55" />
-        <div class="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-forest/30" />
-        <div class="absolute inset-0 bg-gradient-to-l from-forest/60 via-forest/15 to-transparent" />
+        <img :src="asset('img/hero-workers.jpg')" alt="" class="hero-bg absolute inset-x-0 -top-[8%] h-[118%] w-full object-cover object-[50%_74%]" fetchpriority="high" />
+        <div class="absolute inset-0 bg-gradient-to-br from-leaf/50 via-forest/10 to-forest/60" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/85 via-transparent to-forest/70" />
+        <div class="absolute inset-0 bg-gradient-to-l from-forest/70 via-forest/25 to-transparent" />
       </div>
 
       <!-- interactive hexagons -->

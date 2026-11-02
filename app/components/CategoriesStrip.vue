@@ -6,14 +6,13 @@
     </div>
     <ul class="mt-14 grid gap-5 md:grid-cols-3" data-stagger>
       <li v-for="c in categories" :key="c.name" class="reveal">
-        <NuxtLink :to="{ path: '/products', query: { cat: c.name } }" class="card-lift group relative flex min-h-[26rem] flex-col justify-between overflow-hidden rounded-3xl p-7 text-white" :style="{ background: c.color }">
-          <div class="pointer-events-none absolute -right-12 -top-12 h-52 w-52 rounded-full bg-white/10 transition-transform duration-700 group-hover:scale-[2.4]" />
-          <div class="relative h-44">
-            <img :src="asset(c.imgs[0])" alt="" loading="lazy" class="absolute left-0 top-4 h-32 w-40 -rotate-6 object-contain transition-transform duration-500 group-hover:-translate-x-2 group-hover:-rotate-12" />
-            <img :src="asset(c.imgs[1])" alt="" loading="lazy" class="absolute left-1/3 top-0 h-36 w-44 object-contain drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-2" />
-            <img :src="asset(c.imgs[2])" alt="" loading="lazy" class="absolute right-0 top-6 h-32 w-40 rotate-6 object-contain transition-transform duration-500 group-hover:translate-x-2 group-hover:rotate-12" />
+        <NuxtLink :to="{ path: '/products', query: { cat: c.name } }" class="card-lift group flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-[0_18px_40px_-24px_rgba(14,42,28,.45)] ring-1 ring-forest/10">
+          <div class="relative h-56 bg-white">
+            <img :src="asset(c.imgs[0])" alt="" loading="lazy" class="absolute left-2 top-10 h-36 w-40 -rotate-6 object-contain transition-transform duration-500 group-hover:-translate-x-2 group-hover:-rotate-12" />
+            <img :src="asset(c.imgs[1])" alt="" loading="lazy" class="absolute left-1/3 top-5 h-40 w-44 object-contain transition-transform duration-500 group-hover:-translate-y-2" />
+            <img :src="asset(c.imgs[2])" alt="" loading="lazy" class="absolute right-2 top-10 h-36 w-40 rotate-6 object-contain transition-transform duration-500 group-hover:translate-x-2 group-hover:rotate-12" />
           </div>
-          <div class="relative"><h3 class="display text-4xl">{{ c.name }}</h3><p class="mt-2 max-w-xs text-sm text-white/85">{{ c.blurb }}</p><span class="eyebrow mt-5 inline-block">Explore →</span></div>
+          <div class="flex-1 p-7 text-white" :style="{ background: c.color }"><h3 class="display text-4xl">{{ c.name }}</h3><p class="mt-2 max-w-xs text-sm text-white/85">{{ c.blurb }}</p><span class="eyebrow mt-5 inline-block">Explore <span class="inline-block transition-transform group-hover:translate-x-1">→</span></span></div>
         </NuxtLink>
       </li>
     </ul>

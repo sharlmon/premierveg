@@ -10,7 +10,7 @@
         <li v-for="p in packages" :key="p.id" class="reveal" :class="kind === 'All' || p.kind === kind ? '' : 'hidden'">
           <button v-tilt="7" class="tilt group relative flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-white text-left shadow-[0_18px_40px_-26px_rgba(14,42,28,.6)]" :aria-label="'View ' + p.name + ' ' + p.kind" data-cursor="View" @click="open({ type: 'package', item: p })">
             <span class="glare" />
-            <div class="relative grid aspect-[4/3] place-items-center overflow-hidden bg-[#f5f5f5]"><img :src="asset(p.img)" :alt="p.name + ' ' + p.kind.toLowerCase()" loading="lazy" class="depth h-full w-full object-contain" /><span class="eyebrow absolute left-3 top-3 rounded-full bg-forest px-2.5 py-1 text-[10px] text-lime">{{ p.kind }}</span></div>
+            <div class="relative grid aspect-[4/3] place-items-center overflow-hidden bg-white"><img :src="asset(p.img)" :alt="p.name + ' ' + p.kind.toLowerCase()" loading="lazy" class="depth h-full w-full object-contain" /><span class="eyebrow absolute left-3 top-3 rounded-full bg-forest px-2.5 py-1 text-[10px] text-lime">{{ p.kind }}</span></div>
             <div class="flex flex-1 flex-col border-t border-forest/10 p-4 sm:p-5"><p class="font-mono text-[11px] text-forest/50">{{ p.code }}</p><h3 class="display mt-1 text-lg leading-tight sm:text-xl">{{ p.name }}</h3><p class="mt-1 text-xs text-forest/65">{{ p.note }}</p></div>
           </button>
         </li>
