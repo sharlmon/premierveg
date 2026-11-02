@@ -43,3 +43,16 @@ body { @apply bg-cream text-ink font-sans antialiased; overflow-x: hidden; }
 .page-leave-active { transition: opacity .25s ease; }
 .page-enter-from { opacity: 0; transform: translateY(24px); }
 .page-leave-to { opacity: 0; }
+
+/* tilt glare + depth layers */
+.tilt { transform-style: preserve-3d; will-change: transform; }
+.tilt .glare { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,.28), transparent 55%); }
+.tilt:hover .glare { opacity: 1; }
+.tilt .depth { transform: translate3d(calc(var(--px, 0) * -18px), calc(var(--py, 0) * -18px), 40px); transition: transform .12s ease-out; }
+/* spotlight card */
+.spot { position: relative; isolation: isolate; }
+.spot::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(198,240,74,.35), transparent 60%); }
+.spot:hover::before { opacity: 1; }
+@media (pointer: coarse) { .tilt .glare { display: none; } }

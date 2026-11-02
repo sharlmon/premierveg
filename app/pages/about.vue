@@ -9,7 +9,7 @@
           <p class="mt-5 max-w-xl text-ink/70" data-reveal>At Premier Veg, we are committed to connecting Kenyan growers with international markets while maintaining the highest standards of freshness, quality, and consistency.</p>
         </div>
         <div class="lg:col-span-5">
-          <button class="group block w-full cursor-zoom-in overflow-hidden rounded-[2rem] bg-forest" data-clip aria-label="View the pack-house photo larger" @click="open({ type: 'lightbox', index: 0, items: gallery })"><img :src="asset('img/about/packhouse.jpg')" alt="The Premier Veg pack-house team at work" class="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" /></button>
+          <button class="group block w-full cursor-zoom-in overflow-hidden rounded-[2rem] bg-forest" data-cursor="Zoom" data-clip aria-label="View the pack-house photo larger" @click="open({ type: 'lightbox', index: 0, items: gallery })"><img :src="asset('img/about/packhouse.jpg')" alt="The Premier Veg pack-house team at work" class="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" /></button>
         </div>
       </div>
     </section>
@@ -42,7 +42,7 @@
         </figure>
       </div>
     </section>
-    <ProcessSection />
+    <JourneyPath />
     <GallerySection />
     <CtaBand />
   </div>

@@ -15,7 +15,7 @@
       <button class="btn btn-dark mt-6 w-full justify-center" type="submit">Send enquiry <span aria-hidden="true">→</span></button>
       <p class="mt-3 text-xs text-ink/50">Opens your email app with the enquiry pre-filled. (Prototype — a hosted form service replaces this at launch.)</p>
     </form>
-    <div v-else class="py-10 text-center" role="status">
+    <div v-else ref="done" class="relative overflow-hidden py-10 text-center" role="status">
       <div class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-lime text-2xl text-forest">✓</div>
       <h3 class="display mt-6 text-3xl">Thank you{{ f.name ? ', ' + f.name.split(' ')[0] : '' }}.</h3>
       <p class="mx-auto mt-3 max-w-sm text-ink/65">Your email app should have opened with your enquiry. If not, write to <a class="underline" href="mailto:info@premierveg.com">info@premierveg.com</a>.</p>
@@ -24,17 +24,31 @@
   </div>
 </template>
 <script setup lang="ts">
+import gsap from 'gsap'
 import { products } from '~/data'
 const props = defineProps<{ product?: string }>()
 const f = reactive({ name: '', company: '', email: '', product: props.product || '', msg: '' })
 const enquiry = useState<string>('enquiry', () => '')
 watch(enquiry, (v) => { if (v) f.product = v }, { immediate: true })
 watch(() => props.product, (v) => { if (v) f.product = v })
-const sent = ref(false)
+const sent = ref(false); const done = ref<HTMLElement>()
 const send = () => {
   const body = `Name: ${f.name}\nCompany: ${f.company}\nEmail: ${f.email}\nProduct: ${f.product}\n\n${f.msg}`
   window.location.href = `mailto:info@premierveg.com?subject=${encodeURIComponent('Quote request — ' + (f.product || 'General'))}&body=${encodeURIComponent(body)}`
   sent.value = true
+  nextTick(burst)
+}
+const burst = () => {
+  if (!done.value || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  const colors = ['#C6F04A', '#1F5B3A', '#FFB627', '#FF5A36', '#0E2A1C']
+  for (let i = 0; i < 36; i++) {
+    const el = document.createElement('span'); const sz = 6 + Math.random() * 8
+    el.style.cssText = `position:absolute;left:50%;top:80px;width:${sz}px;height:${sz * (Math.random() > .5 ? 1 : .45)}px;border-radius:${Math.random() > .5 ? '50%' : '2px'};background:${colors[i % 5]};pointer-events:none`
+    done.value.appendChild(el)
+    const a = Math.random() * Math.PI * 2, dist = 90 + Math.random() * 190
+    gsap.fromTo(el, { x: 0, y: 0, scale: 0, rotate: 0 }, { x: Math.cos(a) * dist, y: Math.sin(a) * dist + 140, scale: 1, rotate: Math.random() * 540, duration: 1.4 + Math.random() * .6, ease: 'power3.out' })
+    gsap.to(el, { opacity: 0, delay: 1.1, duration: .7, onComplete: () => el.remove() })
+  }
 }
 </script>
 <style>

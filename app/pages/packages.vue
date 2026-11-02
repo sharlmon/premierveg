@@ -1,6 +1,7 @@
 <template>
   <div>
     <PackagesSection lead />
+    <BoxExplorer />
     <CtaBand />
   </div>
 </template>

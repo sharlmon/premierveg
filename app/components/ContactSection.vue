@@ -1,6 +1,7 @@
 <template>
-  <section id="contact" :class="lead ? 'pt-40 md:pt-48' : 'pt-28 md:pt-40'" class="grain relative overflow-hidden bg-forest pb-28 text-cream md:pb-40">
+  <section id="contact" v-spot :class="lead ? 'pt-40 md:pt-48' : 'pt-28 md:pt-40'" class="grain relative overflow-hidden bg-forest pb-28 text-cream md:pb-40">
     <div class="pointer-events-none absolute -bottom-40 -left-40 h-[36rem] w-[36rem] rounded-full bg-leaf/50 blur-3xl" />
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(520px circle at var(--mx, 70%) var(--my, 20%), rgba(198,240,74,.13), transparent 60%)" />
     <div class="relative mx-auto grid max-w-7xl gap-16 px-5 md:px-10 lg:grid-cols-12">
       <div class="lg:col-span-6">
         <p class="eyebrow mb-6 text-lime" data-reveal>Contact us</p>
@@ -11,6 +12,7 @@
           <div><dt class="eyebrow text-cream/50">Phone</dt><dd class="display text-xl"><a href="tel:+393512151931" class="hover:text-lime">+39 351 215 1931</a></dd></div>
           <div><dt class="eyebrow text-cream/50">Location</dt><dd class="text-cream/85">Premier Veg Mondo Fresh<br />P. O. Box 3468-00200, Kileleshwa Birchwoods<br />Nairobi, Kenya</dd></div>
         </dl>
+        <div class="mt-10 max-w-sm" data-reveal><LiveClocks /></div>
       </div>
       <div class="rounded-[2rem] bg-cream p-8 text-ink md:p-10 lg:col-span-6" data-reveal><QuoteForm /></div>
     </div>

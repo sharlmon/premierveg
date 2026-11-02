@@ -56,8 +56,6 @@ export function usePageMotion() {
     const end = Number(el.dataset.count); const o = { v: 0 }
     gsap.to(o, { v: end, duration: 2, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 92%' }, onUpdate: () => { el.textContent = String(Math.round(o.v)) } })
   })
-  if (document.querySelector('#process-line'))
-    gsap.fromTo('#process-line', { scaleY: 0 }, { scaleY: 1, ease: 'none', transformOrigin: 'top', scrollTrigger: { trigger: '#process', start: 'top 60%', end: 'bottom 70%', scrub: true } })
   q('[data-magnetic]').forEach((el) => {
     const xTo = gsap.quickTo(el, 'x', { duration: 0.5, ease: 'power3' }); const yTo = gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power3' })
     el.addEventListener('pointermove', (e) => { const r = el.getBoundingClientRect(); xTo((e.clientX - r.left - r.width / 2) * 0.3); yTo((e.clientY - r.top - r.height / 2) * 0.3) })

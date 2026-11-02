@@ -9,6 +9,7 @@
     <main><NuxtPage :transition="transition" /></main>
     <SiteFooter />
     <ModalHost />
+    <CursorFollower />
     <PromoToast />
   </div>
 </template>

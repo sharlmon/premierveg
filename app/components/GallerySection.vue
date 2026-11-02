@@ -10,7 +10,7 @@
       </div>
       <ul class="mt-12 grid auto-rows-[10rem] grid-cols-2 gap-3 sm:auto-rows-[12rem] md:grid-cols-4" data-stagger>
         <li v-for="(g, i) in gallery" :key="g.src" class="reveal" :class="spans[i]">
-          <button class="group relative h-full w-full cursor-zoom-in overflow-hidden rounded-2xl" :class="g.contain ? 'bg-white' : 'bg-leaf'" :aria-label="'View: ' + g.cap" @click="open({ type: 'lightbox', index: i, items: gallery })">
+          <button class="group relative h-full w-full cursor-zoom-in overflow-hidden rounded-2xl" data-cursor="Zoom" :class="g.contain ? 'bg-white' : 'bg-leaf'" :aria-label="'View: ' + g.cap" @click="open({ type: 'lightbox', index: i, items: gallery })">
             <img :src="asset(g.src)" :alt="g.alt" loading="lazy" class="h-full w-full transition-transform duration-700 group-hover:scale-110" :class="g.contain ? 'object-contain p-3' : 'object-cover'" />
             <span class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             <span class="eyebrow absolute bottom-3 left-3 translate-y-2 text-[10px] opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">View ↗</span>

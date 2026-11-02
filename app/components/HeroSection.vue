@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="hero-fade hidden items-end justify-end gap-5 lg:col-span-6 lg:flex">
-          <figure class="hero-card float mb-14 w-36 cursor-zoom-in overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
+          <figure data-cursor="Fresh" class="hero-card float mb-14 w-36 cursor-zoom-in overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
             <img :src="asset('img/sugar-snaps.jpg')" alt="Tray of sugar snap peas" class="aspect-[3/4] w-full object-cover" />
             <figcaption class="eyebrow bg-forest px-4 py-3 text-lime">Sugar snaps</figcaption>
           </figure>
