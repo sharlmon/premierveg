@@ -7,7 +7,7 @@
     </NuxtLink>
 
     <!-- tab ribbon (desktop) -->
-    <nav class="tab pointer-events-auto absolute left-1/2 top-0 hidden -translate-x-1/2 lg:block" aria-label="Main">
+    <nav class="tab pointer-events-auto absolute left-1/2 hidden -translate-x-1/2 transition-[top] duration-500 lg:block" :style="{ top: flush ? '0.75rem' : '0px' }" aria-label="Main">
       <ul class="flex items-center gap-1 px-16 pb-4 pt-3.5 text-[13px] font-medium text-cream">
         <li v-for="l in links" :key="l.to">
           <NuxtLink :to="l.to" class="relative block rounded-full px-4 py-1.5 transition hover:text-lime" :class="isActive(l.to) ? 'text-lime' : ''" :aria-current="isActive(l.to) ? 'page' : undefined">
@@ -41,6 +41,8 @@
 const asset = useAsset()
 const route = useRoute()
 const { open: openModal } = useModal()
+const scrollY = ref(0)
+const flush = computed(() => route.path === '/' && scrollY.value < 40) // sit exactly on the hero frame's top edge (frame inset = 0.75rem)
 const open = ref(false); const btn = ref<HTMLElement>(); const panel = ref<HTMLElement>()
 const links = [{ to: '/', label: 'Home' }, { to: '/products', label: 'Products' }, { to: '/packages', label: 'Packages' }, { to: '/about', label: 'About' }, { to: '/team', label: 'Team' }, { to: '/contact', label: 'Contact' }]
 const isActive = (to: string) => (to === '/' ? route.path === '/' : route.path.startsWith(to))
@@ -48,8 +50,9 @@ const quote = () => { open.value = false; openModal({ type: 'quote' }) }
 watch(() => route.path, () => (open.value = false))
 const outside = (e: PointerEvent) => { if (open.value && !panel.value?.contains(e.target as Node) && !btn.value?.contains(e.target as Node)) open.value = false }
 const esc = (e: KeyboardEvent) => { if (e.key === 'Escape') open.value = false }
-onMounted(() => { document.addEventListener('pointerdown', outside); window.addEventListener('keydown', esc) })
-onBeforeUnmount(() => { document.removeEventListener('pointerdown', outside); window.removeEventListener('keydown', esc) })
+const onScroll = () => { scrollY.value = window.scrollY }
+onMounted(() => { onScroll(); document.addEventListener('pointerdown', outside); window.addEventListener('keydown', esc); window.addEventListener('scroll', onScroll, { passive: true }) })
+onBeforeUnmount(() => { document.removeEventListener('pointerdown', outside); window.removeEventListener('keydown', esc); window.removeEventListener('scroll', onScroll) })
 </script>
 <style>
 .tab { background: rgba(14, 42, 28, .82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); clip-path: polygon(0 0, 100% 0, calc(100% - 30px) 100%, 30px 100%); filter: drop-shadow(0 10px 20px rgba(0,0,0,.25)); }
