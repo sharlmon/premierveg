@@ -6,14 +6,14 @@
         <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Picked, graded,</span></span><span class="line-mask"><span class="line-inner italic text-lime">packed to perfection.</span></span></h2>
       </div>
       <div ref="track" class="mt-10 flex flex-col gap-8 px-5 md:px-10 lg:w-max lg:flex-row lg:gap-10 lg:pl-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))] lg:pr-24">
-        <article v-for="(p, i) in panels" :key="p.name" class="grid items-center gap-6 rounded-[2rem] bg-white/[.04] p-4 ring-1 ring-white/10 sm:grid-cols-2 lg:w-[46rem] lg:shrink-0 lg:p-5">
+        <article v-for="(p, i) in panels" :key="p.code" class="grid items-center gap-6 rounded-[2rem] bg-white/[.04] p-4 ring-1 ring-white/10 sm:grid-cols-2 lg:w-[46rem] lg:shrink-0 lg:p-5">
           <div class="aspect-[4/5] overflow-hidden rounded-3xl"><img :src="asset(p.img)" :alt="p.alt" loading="lazy" class="panel-img h-full w-full object-cover" /></div>
           <div class="p-2 sm:p-4">
             <span class="display text-5xl text-lime/90">0{{ i + 1 }}</span>
-            <h3 class="display mt-3 text-4xl md:text-5xl">{{ p.name }}</h3>
+            <h3 class="display mt-3 text-4xl md:text-5xl">{{ p.product.name }}</h3>
             <p class="eyebrow mt-3 text-lime">{{ p.code }}</p>
-            <p class="mt-5 text-cream/70">{{ p.text }}</p>
-            <NuxtLink to="/contact" class="btn btn-lime mt-7" @click="pick(p.name)">Enquire <span aria-hidden="true">→</span></NuxtLink>
+            <p class="mt-5 text-cream/70">{{ p.product.blurb }}</p>
+            <button class="btn btn-lime mt-7" @click="open({ type: 'product', item: p.product })">View details <span aria-hidden="true">+</span></button>
           </div>
         </article>
         <NuxtLink to="/products" class="grid min-h-[16rem] place-content-center rounded-[2rem] bg-lime p-10 text-forest lg:w-[22rem] lg:shrink-0">
@@ -28,13 +28,14 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { products } from '~/data'
+const { open } = useModal()
 const asset = useAsset()
 const panels = [
-  { name: 'Haricot Verts', code: 'PVHV100', img: 'img/beans-tray.jpg', alt: 'Tray of fine green beans', text: 'French beans grown from seedling: slim, tender and uniform, packed straight into retail trays.' },
-  { name: 'Mangetouts', code: 'PVMT100', img: 'img/snow-peas.jpg', alt: 'Tray of snow peas', text: 'Flat-podded peas with excellent fibre content and a clean, sweet snap.' },
-  { name: 'Sugar Snaps', code: 'PVSS100', img: 'img/sugar-snaps.jpg', alt: 'Tray of sugar snap peas', text: 'Rounded, crisp, naturally sweet. A retail favourite available year-round.' }
-]
-const pick = (n: string) => { useState('enquiry').value = n }
+  { code: 'PVHV100', img: 'img/beans-tray.jpg', alt: 'Tray of fine green beans' },
+  { code: 'PVMT100', img: 'img/snow-peas.jpg', alt: 'Tray of snow peas' },
+  { code: 'PVSS100', img: 'img/sugar-snaps.jpg', alt: 'Tray of sugar snap peas' }
+].map((p) => ({ ...p, product: products.find((x) => x.code === p.code)! }))
 const root = ref<HTMLElement>(); const pin = ref<HTMLElement>(); const track = ref<HTMLElement>()
 let mm: gsap.MatchMedia | undefined
 onMounted(() => {

@@ -4,7 +4,9 @@
     <MarqueeStrip />
     <StatementSection />
     <ShowcaseSection />
+    <RouteMap />
     <CategoriesStrip />
+    <GallerySection />
     <CtaBand />
   </div>
 </template>

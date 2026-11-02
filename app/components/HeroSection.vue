@@ -13,14 +13,14 @@
       </h1>
       <div class="mt-10 grid items-end gap-10 md:mt-14 lg:grid-cols-12">
         <div class="lg:col-span-6">
-          <p class="hero-fade max-w-lg text-lg text-cream/80">Fresh fruit, vegetables and herbs from Kenya, graded to Category 1 and shipped year-round to importers, wholesalers and retailers.</p>
+          <p class="hero-fade max-w-lg text-lg text-cream/80">Trusted exporter of fresh fruits, vegetables and herbs. Whatever we grow, you receive it fresh.</p>
           <div class="hero-fade mt-8 flex flex-wrap gap-4">
-            <NuxtLink to="/contact" class="btn btn-lime" data-magnetic>Request a quote <span aria-hidden="true">→</span></NuxtLink>
-            <NuxtLink to="/products" class="btn btn-ghost" data-magnetic>See the range</NuxtLink>
+            <button class="btn btn-lime" data-magnetic @click="open({ type: 'quote' })">Request a quote <span aria-hidden="true">→</span></button>
+            <NuxtLink to="/products" class="btn btn-ghost" data-magnetic>See our products</NuxtLink>
           </div>
         </div>
         <div class="hero-fade hidden items-end justify-end gap-5 lg:col-span-6 lg:flex">
-          <figure class="hero-card float mb-14 w-36 overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
+          <figure class="hero-card float mb-14 w-36 cursor-zoom-in overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
             <img :src="asset('img/sugar-snaps.jpg')" alt="Tray of sugar snap peas" class="aspect-[3/4] w-full object-cover" />
             <figcaption class="eyebrow bg-forest px-4 py-3 text-lime">Sugar snaps</figcaption>
           </figure>
@@ -34,5 +34,5 @@
     </div>
   </section>
 </template>
-<script setup lang="ts">const asset = useAsset()</script>
+<script setup lang="ts">const asset = useAsset(); const { open } = useModal()</script>
 <style>@keyframes drop { 0% { transform: translateY(-100%) } 100% { transform: translateY(200%) } }</style>

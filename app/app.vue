@@ -8,6 +8,8 @@
     <SiteNav />
     <main><NuxtPage :transition="transition" /></main>
     <SiteFooter />
+    <ModalHost />
+    <PromoToast />
   </div>
 </template>
 <script setup lang="ts">

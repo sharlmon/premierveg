@@ -1,35 +1,78 @@
-export const products = [
-  { code: 'PVHV100', name: 'Haricot Verts', cat: 'Vegetables', blurb: 'French beans grown from seedling — tender, slim and consistent.', color: '#1F5B3A' },
-  { code: 'PVMT100', name: 'Mangetouts', cat: 'Vegetables', blurb: 'Flat-podded peas with excellent fibre content and a clean snap.', color: '#3F8F4F' },
-  { code: 'PVSS100', name: 'Sugar Snaps', cat: 'Vegetables', blurb: 'Rounded, sweet, crisp peas — a retail favourite year-round.', color: '#6DB33F' },
-  { code: 'PVCT100', name: 'Carrots', cat: 'Vegetables', blurb: 'Rich in beta-carotene, graded for size and colour.', color: '#F2790F' },
-  { code: 'PVAV100', name: 'Avocados', cat: 'Fruits', blurb: 'Creamy, oil-rich fruit packed and shipped at the right maturity.', color: '#2E5A2B' },
-  { code: 'PVMG100', name: 'Mangoes', cat: 'Fruits', blurb: 'Juicy tropical mangoes with the sweetness your customers expect.', color: '#FFB627' },
-  { code: 'PVPF100', name: 'Passion Fruits', cat: 'Fruits', blurb: 'Aromatic and rich in vitamin C, riboflavin and potassium.', color: '#7B2D8E' },
-  { code: 'PVCH100', name: 'Chillies', cat: 'Herbs', blurb: 'Red and green peppers with the desired amount of heat.', color: '#D7263D' },
-  { code: 'PVRM100', name: 'Rosemary', cat: 'Herbs', blurb: 'Fragrant, resinous sprigs prized for flavour and properties.', color: '#4C7A5B' },
-  { code: 'PVCV100', name: 'Chives', cat: 'Herbs', blurb: 'Delicate garnish that pairs with eggs, cheese and fine dining.', color: '#2F8F6B' }
+// Content taken from premierveg.com (copy lightly cleaned for typos only).
+export type Product = { code: string; name: string; cat: 'Vegetables' | 'Fruits' | 'Herbs'; blurb: string; color: string; img: string; pack: string[] }
+export type Pack = { id: string; code: string; name: string; note: string; kind: 'Carton' | 'Top cover' | 'Punnet'; img: string; product?: string }
+export type Member = { name: string; role: string; email: string; phone: string; quote?: string; photo?: string; bio: string[] }
+
+export const products: Product[] = [
+  { code: 'PVHV100', name: 'Haricot Verts', cat: 'Vegetables', blurb: 'Also known as French beans, they are planted from seedling and give tender produce and a dependable supply.', color: '#1F5B3A', img: 'img/products/haricot-verts.png', pack: ['CHV001', 'PXF001'] },
+  { code: 'PVMT100', name: 'Mangetouts', cat: 'Vegetables', blurb: 'A flat-podded variety of pea with an excellent fibre content.', color: '#3F8F4F', img: 'img/products/mangetouts.png', pack: ['CMT001-T', 'CMT001-C', 'PSS001'] },
+  { code: 'PVSS100', name: 'Sugar Snaps', cat: 'Vegetables', blurb: 'Rounded-shape peas, with fibre content.', color: '#6DB33F', img: 'img/products/sugar-snaps.png', pack: ['PMT001'] },
+  { code: 'PVCT100', name: 'Carrots', cat: 'Vegetables', blurb: 'Rich in beta-carotene, which is good for eyesight.', color: '#E8700A', img: 'img/products/carrots.png', pack: [] },
+  { code: 'PVAV100', name: 'Avocados', cat: 'Fruits', blurb: 'The fruit of the avocado plant, rich in oil.', color: '#2E5A2B', img: 'img/products/avocados.png', pack: [] },
+  { code: 'PVMG100', name: 'Mangoes', cat: 'Fruits', blurb: 'Mangoes have juicy, edible fruit and make great puddings.', color: '#E09A00', img: 'img/products/mangoes.png', pack: [] },
+  { code: 'PVPF100', name: 'Passion Fruits', cat: 'Fruits', blurb: 'Rich in vitamin C, riboflavin and potassium.', color: '#7B2D8E', img: 'img/products/passion-fruits.png', pack: [] },
+  { code: 'PVCH100', name: 'Chillies', cat: 'Herbs', blurb: 'These peppers are a rich source of vitamin C and vitamin B6, with the desired amount of heat.', color: '#C8102E', img: 'img/products/chillies.png', pack: ['PCG001', 'PCR001', 'PCM001'] },
+  { code: 'PVRM100', name: 'Rosemary', cat: 'Herbs', blurb: 'Loved for its anti-microbial, anti-inflammatory and anti-oxidant properties.', color: '#4C7A5B', img: 'img/products/rosemary.png', pack: [] },
+  { code: 'PVCV100', name: 'Chives', cat: 'Herbs', blurb: 'Used for flavouring and as a garnish on egg dishes. They pair well with a variety of cheeses.', color: '#2F8F6B', img: 'img/products/chives.png', pack: [] }
 ]
-export const packages = [
-  { code: 'CHV001', name: 'Haricot verts carton', note: 'Master carton for haricot verts', kind: 'Carton' },
-  { code: 'CXF001', name: 'Extra fine beans', note: '12 × 250 g, with top cover', kind: 'Carton' },
-  { code: 'CMT001', name: 'Mangetouts', note: '12 × 250 g, with top cover', kind: 'Carton' },
-  { code: 'PBC001', name: 'Baby corn', note: 'Retail punnet', kind: 'Punnet' },
-  { code: 'PXF001', name: 'Fine beans TT', note: 'Retail punnet', kind: 'Punnet' },
-  { code: 'PMT001', name: 'Sugar snaps', note: 'Retail punnet', kind: 'Punnet' },
-  { code: 'PSS001', name: 'Snow peas', note: 'Retail punnet', kind: 'Punnet' },
-  { code: 'PCG001', name: 'Green chillies', note: 'Retail punnet', kind: 'Punnet' },
-  { code: 'PCR001', name: 'Red chillies', note: 'Retail punnet', kind: 'Punnet' },
-  { code: 'PCM001', name: 'Red & green chillies', note: 'Retail punnet', kind: 'Punnet' }
+
+export const packages: Pack[] = [
+  { id: 'CHV001', code: 'CHV001', name: 'Haricot verts carton', note: 'This carton is meant to contain haricot verts.', kind: 'Carton', img: 'img/packages/chv001.png', product: 'Haricot Verts' },
+  { id: 'CXF001-T', code: 'CXF001', name: 'Extra fine beans', note: 'Top cover for extra fine beans.', kind: 'Top cover', img: 'img/packages/cxf001-top.png', product: 'Haricot Verts' },
+  { id: 'CXF001-C', code: 'CXF001', name: 'Extra fine beans', note: 'This holds 12 × 250 g extra fine beans.', kind: 'Carton', img: 'img/packages/cxf001-carton.png', product: 'Haricot Verts' },
+  { id: 'CMT001-T', code: 'CMT001', name: 'Mangetouts', note: 'Top cover for mangetouts.', kind: 'Top cover', img: 'img/packages/cmt001-top.png', product: 'Mangetouts' },
+  { id: 'CMT001-C', code: 'CMT001', name: 'Mangetouts', note: 'This holds 12 × 250 g mangetouts.', kind: 'Carton', img: 'img/packages/cmt001-carton.png', product: 'Mangetouts' },
+  { id: 'PBC001', code: 'PBC001', name: 'Baby corn', note: 'Punnet of baby corn.', kind: 'Punnet', img: 'img/packages/pbc001.png' },
+  { id: 'PXF001', code: 'PXF001', name: 'Fine beans TT', note: 'Punnet of fine beans TT.', kind: 'Punnet', img: 'img/packages/pxf001.png', product: 'Haricot Verts' },
+  { id: 'PMT001', code: 'PMT001', name: 'Sugar snaps', note: 'Punnet of sugar snaps.', kind: 'Punnet', img: 'img/packages/pmt001.png', product: 'Sugar Snaps' },
+  { id: 'PSS001', code: 'PSS001', name: 'Snow peas', note: 'Punnet of snow peas.', kind: 'Punnet', img: 'img/packages/pss001.png', product: 'Mangetouts' },
+  { id: 'PCG001', code: 'PCG001', name: 'Green chillies', note: 'Punnet of green chillies.', kind: 'Punnet', img: 'img/packages/pcg001.png', product: 'Chillies' },
+  { id: 'PCR001', code: 'PCR001', name: 'Red chillies', note: 'Punnet of red chillies.', kind: 'Punnet', img: 'img/packages/pcr001.png', product: 'Chillies' },
+  { id: 'PCM001', code: 'PCM001', name: 'Red & green chillies', note: 'Punnet of red and green chillies.', kind: 'Punnet', img: 'img/packages/pcm001.png', product: 'Chillies' }
 ]
-export const team = [
-  { name: 'Brenda Ogollah', role: 'Owner & Director', quote: 'Expert in global fresh produce markets', bio: '17+ years in fresh produce across Kenya and the Netherlands, including Green Food Benelux Group and Fruit Advisor Group.', email: 'brenda@premierveg.com', phone: '+39 351 215 1931' },
-  { name: 'Andrea Ogada', role: 'Administrator', quote: 'Core efficiency', bio: 'Coordinates documentation, operations and client support so every order moves smoothly from farm to port.', email: 'andrea@premierveg.com', phone: '+254 707 095 533' },
-  { name: 'Dominic Mwanya', role: 'Compliance & Agronomy Partner', quote: 'Standards, from soil to shipment', bio: 'Keeps growers and packhouse aligned with export compliance and good agricultural practice.', email: 'dominic.mwanya@premierveg.com', phone: '' }
+
+export const team: Member[] = [
+  { name: 'Brenda Ogollah', role: 'Owner & Director', email: 'brenda@premierveg.com', phone: '+39 351 215 1931', photo: 'img/team/brenda.jpg', quote: 'Expert in global fresh produce markets',
+    bio: ['Brenda Ogollah is the Owner and Director of Premier Veg, bringing over 17 years of extensive experience in the fresh produce industry across both Kenya and the Netherlands.',
+      'She has worked with leading international companies, including Green Food Benelux Group and Fruit Advisor Group, where she served as an Account Manager in the Netherlands. Through these roles, she gained in-depth expertise in global fresh produce markets, quality standards, and international client management.',
+      'Brenda is currently actively engaged with well-established companies in Kenya, with a key focus on promoting and supporting fast-growing Kenyan exporters of fresh fruits and vegetables. Her passion lies in connecting Kenyan producers to international markets while ensuring reliability, quality, and long-term partnerships.',
+      'Her core principle and driving force is a strong commitment to exceptional customer service, ensuring that every client is professionally supported and well served.'] },
+  { name: 'Andrea Ogada', role: 'Administrator', email: 'andrea@premierveg.com', phone: '+254 707 095 533', photo: 'img/team/andrea.jpg', quote: 'Core efficiency',
+    bio: ['Andrea Ogada serves as the Administrator at Premier Veg Mondo, supporting the day-to-day operations and ensuring smooth internal and external communication.',
+      'She plays a key role in coordinating administrative processes, documentation, and client support, helping to maintain efficiency and organization across the company’s operations.',
+      'Andrea is committed to supporting the company’s growth by ensuring strong administrative systems, professional client interactions, and reliable operational support that contributes to Premier Veg’s overall success.'] },
+  { name: 'Dominic Mwanya', role: 'Compliance & Agronomy Partner', email: 'dominic.mwanya@premierveg.com', phone: '+254 725 666 205', quote: 'Traceability, food safety, and ethical compliance',
+    bio: ['Dominic Mwanya is an experienced Agronomist and Compliance Auditor, providing professional compliance and agronomy support to Premier Veg and its partner farms.'] },
+  { name: 'Allan Omondi', role: 'Compliance Officer', email: 'allan@premierveg.com', phone: '+254 721 730 756', photo: 'img/team/allan.jpg', quote: 'Compliance with industry regulation',
+    bio: ['Allan Omondi serves as the Compliance Officer at Premier Veg Mondo Ltd, where he is responsible for ensuring that all fresh produce meets the required quality, safety, and regulatory standards for both local and international markets.',
+      'In his role, Allan oversees product inspection and coordinates the collection and submission of fresh produce samples for laboratory testing to ensure compliance with industry regulations and export requirements. He works closely with relevant regulatory bodies and testing facilities to verify that all products meet the necessary food safety and phytosanitary standards before shipment.',
+      'Through his commitment to quality control and regulatory compliance, Allan helps ensure that Premier Veg Mondo Ltd consistently delivers safe, high-quality fresh produce that meets the expectations of global markets.'] },
+  { name: 'Fidelis Nduta', role: 'Accountant', email: 'finance@premierveg.com', phone: '+254 740 717 714',
+    bio: ['Fidelis is our Accountant. Her role is managing financial records, tracking transactions, and supporting budgeting and reporting, helping to maintain financial stability and transparency within our organization.'] },
+  { name: 'Susan Ayoo', role: 'Quality Assurance', email: 'qualityassurance@premierveg.com', phone: '+254 707 498 237',
+    bio: ['Susan Ayoo is our Quality Assurance Officer.'] }
 ]
+
 export const steps = [
-  { n: '01', t: 'Grown on partner farms', d: 'Tropical regions with ideal conditions throughout the year give us reliable, year-round supply.' },
-  { n: '02', t: 'Sorted & graded', d: 'Careful sorting to Category 1 export standard — size, uniformity and appearance checked.' },
-  { n: '03', t: 'Packed in the pack-house', d: 'Hygienic handling by trained staff in temperature-controlled cold rooms.' },
-  { n: '04', t: 'Traced & dispatched', d: 'Full traceability from farm to final market, shipped as fast as your order is processed.' }
+  { n: '01', t: 'Grown on partner farms', d: 'We work closely with farms in tropical climatic regions, which provide ideal growing conditions throughout the year.' },
+  { n: '02', t: 'Sorted & graded', d: 'Careful sorting and grading to meet Category 1 export standards.' },
+  { n: '03', t: 'Checked & packed', d: 'Quality checks for freshness, size uniformity and appearance, with hygienic handling by trained staff following food safety protocols.' },
+  { n: '04', t: 'Cold-stored & shipped', d: 'Temperature-controlled cold rooms, proper ventilation and efficient workflow, with full traceability from farm to final market.' }
+]
+
+export const categories = [
+  { name: 'Vegetables', blurb: 'Our vegetables are grown and packed with energy, minerals and vitamins.', color: '#1F5B3A', imgs: ['img/products/haricot-verts.png', 'img/products/carrots.png', 'img/products/mangetouts.png'] },
+  { name: 'Fruits', blurb: 'Fruits are foods that are grown to be eaten raw. These have rich vitamin content.', color: '#C2410C', imgs: ['img/products/avocados.png', 'img/products/mangoes.png', 'img/products/passion-fruits.png'] },
+  { name: 'Herbs', blurb: 'Our herbs’ essential properties turn simple meals into a delicious experience.', color: '#7C2D3A', imgs: ['img/products/chillies.png', 'img/products/rosemary.png', 'img/products/chives.png'] }
+]
+
+export const gallery = [
+  { src: 'img/about/packhouse.jpg', alt: 'The Premier Veg pack-house team at work', cap: 'The pack-house: sorting, grading and packing the day-to-day orders' },
+  { src: 'img/beans-bunch.jpg', alt: 'Freshly harvested haricot verts', cap: 'Haricot verts, freshly harvested' },
+  { src: 'img/packages/cxf001-carton.png', alt: 'Extra fine beans carton, 12 × 250 g', cap: 'Extra fine beans carton, 12 × 250 g', contain: true },
+  { src: 'img/snow-peas.jpg', alt: 'Tray of snow peas', cap: 'Mangetouts, packed in retail trays' },
+  { src: 'img/packages/pcm001.png', alt: 'Punnet of red and green chillies', cap: 'Red and green chillies punnet', contain: true },
+  { src: 'img/sugar-snaps.jpg', alt: 'Tray of sugar snaps', cap: 'Sugar snaps, ready to ship' },
+  { src: 'img/beans-tray.jpg', alt: 'Tray of fine green beans', cap: 'Fine green beans, graded to Category 1' },
+  { src: 'img/sugar-closeup.jpg', alt: 'Close-up of sugar snap peas', cap: 'Sugar snaps up close' }
 ]

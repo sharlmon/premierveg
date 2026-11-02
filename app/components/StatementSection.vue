@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-const text = 'Premier Veg Mondo connects Kenyan growers with international markets. Category 1 produce, sorted, graded and packed in a temperature-controlled pack-house, and fully traceable from farm to final market.'
+const text = 'Premier Veg Mondo Fresh connects Kenyan growers with international markets, with the highest standards of freshness, quality and consistency: Category 1 grading, temperature-controlled cold rooms and full traceability from farm to final market.'
 const words = text.split(' ')
 const stats = [
   { count: 2022, suffix: '', l: 'Established' },
