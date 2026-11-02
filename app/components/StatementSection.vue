@@ -1,17 +1,17 @@
 <template>
-  <section id="about" class="mx-auto max-w-7xl px-5 py-28 md:px-10 md:py-44">
-    <p class="eyebrow mb-8 text-leaf" data-reveal>About us</p>
+  <section id="about" class="bg-[#DCE5DA]"><div class="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-36">
+    <p class="mb-8 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs font-semibold" data-reveal><span class="h-1.5 w-1.5 rounded-full bg-forest" /> About us</p>
     <p ref="para" class="display text-[clamp(1.6rem,3.4vw,3.2rem)] !leading-[1.08] tracking-tight" aria-label="Premier Veg Mondo connects Kenyan growers with international markets: Category 1 produce, sorted, graded and packed in a temperature-controlled pack-house, traceable from farm to final market.">
       <span v-for="(w, i) in words" :key="i" class="word inline-block" aria-hidden="true">{{ w }}&nbsp;</span>
     </p>
     <NuxtLink to="/about" class="btn btn-dark mt-10" data-magnetic>More about us <span aria-hidden="true">→</span></NuxtLink>
-    <dl class="mt-20 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-forest/15 pt-10 md:grid-cols-4" data-stagger>
+    <dl class="mt-20 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-forest/20 pt-10 md:grid-cols-4" data-stagger>
       <div v-for="s in stats" :key="s.l" class="reveal">
         <dd class="display text-4xl text-forest md:text-6xl"><span v-if="s.count" :data-count="s.count">{{ s.count }}</span><span v-else>{{ s.v }}</span><span class="text-leaf">{{ s.suffix }}</span></dd>
         <dt class="eyebrow mt-3 text-ink/55">{{ s.l }}</dt>
       </div>
     </dl>
-  </section>
+  </div></section>
 </template>
 <script setup lang="ts">
 import gsap from 'gsap'

@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-ink pb-24 text-cream sm:pb-28">
+  <footer class="bg-ink text-cream">
     <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-12 md:px-10">
       <div class="md:col-span-5">
         <div class="flex items-center gap-3"><img :src="asset('img/logo.jpg')" alt="" class="h-10 w-10 rounded-full" /><span class="display text-xl">Premier Veg Mondo Fresh</span></div>

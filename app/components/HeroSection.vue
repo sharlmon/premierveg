@@ -1,38 +1,45 @@
 <template>
-  <section id="top" class="relative isolate min-h-[100svh] overflow-hidden bg-forest text-cream">
-    <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-      <img :src="asset('img/beans-bunch.jpg')" alt="" class="hero-bg absolute inset-x-0 -top-[8%] h-[118%] w-full object-cover" fetchpriority="high" />
-      <div class="absolute inset-0 bg-gradient-to-r from-forest/90 via-forest/40 to-transparent" />
-      <div class="absolute inset-0 bg-gradient-to-t from-forest/90 via-transparent to-forest/30" />
-    </div>
-    <div class="mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-10 pt-36 md:px-10 md:pb-14">
-      <p class="hero-fade eyebrow mb-8 flex items-center gap-3 text-lime"><span class="h-px w-10 bg-lime" /> Premier Veg Mondo · Nairobi &amp; Italy</p>
-      <h1 class="display text-[clamp(2.7rem,6.6vw,6rem)]">
-        <span class="line-mask"><span class="line-inner hero-line">As fresh</span></span>
-        <span class="line-mask"><span class="line-inner hero-line">as it <em class="text-lime">gets.</em></span></span>
-      </h1>
-      <div class="mt-10 grid items-end gap-10 md:mt-14 lg:grid-cols-12">
-        <div class="lg:col-span-6">
-          <p class="hero-fade max-w-lg text-lg text-cream/80">Trusted exporter of fresh fruits, vegetables and herbs. Whatever we grow, you receive it fresh.</p>
-          <div class="hero-fade mt-8 flex flex-wrap gap-4">
-            <button class="btn btn-lime" data-magnetic @click="open({ type: 'quote' })">Request a quote <span aria-hidden="true">→</span></button>
-            <NuxtLink to="/products" class="btn btn-ghost" data-magnetic>See our products</NuxtLink>
-          </div>
-        </div>
-        <div class="hero-fade hidden items-end justify-end gap-5 lg:col-span-6 lg:flex">
-          <figure data-cursor="Fresh" class="hero-card float mb-14 w-36 cursor-zoom-in overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
-            <img :src="asset('img/sugar-snaps.jpg')" alt="Tray of sugar snap peas" class="aspect-[3/4] w-full object-cover" />
-            <figcaption class="eyebrow bg-forest px-4 py-3 text-lime">Sugar snaps</figcaption>
-          </figure>
-          <figure class="hero-card float mb-24 w-28 overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
-            <img :src="asset('img/snow-peas.jpg')" alt="Tray of snow peas" class="aspect-[3/4] w-full object-cover" />
-            <figcaption class="eyebrow bg-forest px-4 py-3 text-lime">Snow peas</figcaption>
-          </figure>
+  <section id="top" class="bg-[#DCE5DA] p-2.5 sm:p-3">
+    <div class="relative isolate h-[calc(100svh-1.25rem)] min-h-[40rem] overflow-hidden rounded-[1.75rem] bg-forest text-cream sm:h-[calc(100svh-1.5rem)] sm:rounded-[2.25rem]">
+      <!-- photo -->
+      <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+        <img :src="asset('img/beans-bunch.jpg')" alt="" class="hero-bg absolute inset-x-0 -top-[8%] h-[118%] w-full object-cover" fetchpriority="high" />
+        <div class="absolute inset-0 bg-gradient-to-br from-leaf/55 via-forest/15 to-forest/55" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-forest/30" />
+      </div>
+
+      <!-- interactive hexagons -->
+      <div class="hero-fade absolute left-[3%] top-1/2 hidden w-[min(33rem,46vw)] -translate-y-[42%] md:block"><HexCluster /></div>
+
+      <!-- headline (top right) -->
+      <div class="absolute inset-x-5 top-28 md:inset-x-auto md:right-10 md:top-32 md:max-w-[min(46rem,56%)] md:text-right lg:top-36">
+        <p class="hero-fade eyebrow mb-5 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-lime backdrop-blur"><span class="h-1.5 w-1.5 rounded-full bg-lime" /> Nairobi · Italy · Worldwide</p>
+        <h1 class="display text-[clamp(2.7rem,5.6vw,5.4rem)]">
+          <span class="line-mask"><span class="line-inner hero-line">As fresh</span></span>
+          <span class="line-mask"><span class="line-inner hero-line">as it <em class="text-lime">gets.</em></span></span>
+        </h1>
+        <p class="hero-fade mt-6 max-w-md text-base text-cream/85 md:ml-auto md:text-lg">Trusted exporter of fresh fruits, vegetables and herbs. Whatever we grow, you receive it fresh.</p>
+        <div class="hero-fade mt-7 flex flex-wrap gap-3 md:justify-end">
+          <button class="btn btn-lime" data-magnetic @click="open({ type: 'quote' })">Request a quote <span aria-hidden="true">→</span></button>
         </div>
       </div>
-      <div class="hero-fade mt-12 flex items-center gap-3 text-xs uppercase tracking-[.22em] text-cream/60"><span class="relative h-10 w-px overflow-hidden bg-white/20"><span class="absolute inset-x-0 top-0 h-1/2 animate-[drop_1.8s_ease-in-out_infinite] bg-lime" /></span> Scroll</div>
+
+      <!-- bottom-left stats -->
+      <dl class="hero-fade absolute bottom-5 left-5 hidden gap-6 sm:flex rounded-2xl bg-forest/55 px-5 py-4 backdrop-blur-md md:bottom-8 md:left-8">
+        <div><dt class="eyebrow text-cream/55">Since</dt><dd class="display text-2xl">2022</dd></div>
+        <div><dt class="eyebrow text-cream/55">Products</dt><dd class="display text-2xl">10+</dd></div>
+        <div class="hidden sm:block"><dt class="eyebrow text-cream/55">Supply</dt><dd class="display text-2xl">Year-round</dd></div>
+      </dl>
+
+      <!-- bottom-right notched tab -->
+      <NuxtLink to="/products" class="hero-fade tab-cta group absolute bottom-0 right-0 flex items-center gap-3 bg-forest py-4 pl-12 pr-6 text-sm font-semibold text-cream transition-colors hover:bg-leaf" data-cursor="Explore">
+        <svg class="h-4 w-4 text-lime transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 19 12 5l8 14H4z" transform="rotate(90 12 12)"/></svg>
+        Explore our products
+      </NuxtLink>
     </div>
   </section>
 </template>
 <script setup lang="ts">const asset = useAsset(); const { open } = useModal()</script>
-<style>@keyframes drop { 0% { transform: translateY(-100%) } 100% { transform: translateY(200%) } }</style>
+<style>
+.tab-cta { clip-path: polygon(28px 0, 100% 0, 100% 100%, 0 100%); border-top-left-radius: 0; }
+</style>

@@ -30,7 +30,7 @@ export function useMotionGlobal() {
     if (document.querySelector('.hero-line')) {
       tl.from('.hero-line', { yPercent: 115, duration: 1.2, ease: 'power4.out', stagger: 0.12 }, '-=0.35')
         .from('.hero-fade', { opacity: 0, y: 24, duration: 0.9, ease: 'power3.out', stagger: 0.1 }, '-=0.8')
-        .from('.hero-card', { y: 160, opacity: 0, rotate: 6, duration: 1.3, ease: 'power4.out', stagger: 0.14 }, '-=1.1')
+        
     }
     tl.set('#loader', { display: 'none' })
     return tl

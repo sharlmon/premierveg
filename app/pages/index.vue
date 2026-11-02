@@ -1,8 +1,8 @@
 <template>
   <div>
     <HeroSection />
-    <MarqueeStrip />
     <StatementSection />
+    <MarqueeStrip />
     <ShowcaseSection />
     <RouteMap />
     <CategoriesStrip />
