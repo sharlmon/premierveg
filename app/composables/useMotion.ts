@@ -8,7 +8,7 @@ export function useMotionGlobal() {
   if (reduce) return { reduce, intro: () => {} }
   const intro = () => {
     const tl = gsap.timeline()
-    if (document.querySelector('.hero-bg')) tl.from('.hero-bg', { scale: 1.06, duration: 1.6, ease: 'power3.out' }, 0)
+    if (document.querySelector('.hero-bg')) tl.from('.hero-bg.is-on', { scale: 1.06, duration: 1.6, ease: 'power3.out' }, 0)
     if (document.querySelector('.hero-line')) {
       tl.from('.hero-line', { yPercent: 115, duration: 1, ease: 'power4.out', stagger: 0.12 }, 0.1)
         .from('.hero-fade', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out', stagger: 0.08 }, 0.3)
