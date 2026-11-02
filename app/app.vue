@@ -2,7 +2,7 @@
   <div>
     <div id="progress" class="fixed left-0 top-0 z-[70] h-[3px] w-full origin-left scale-x-0 bg-lime" />
     <div id="loader" class="fixed inset-0 z-[80] flex flex-col items-center justify-center gap-6 bg-forest" aria-hidden="true">
-      <img id="loader-logo" :src="asset('img/logo.png')" alt="" class="h-20 w-20 rounded-full" />
+      <img id="loader-logo" :src="asset('img/logo.jpg')" alt="" class="h-20 w-20 rounded-full" />
       <div class="h-[2px] w-48 overflow-hidden bg-white/15"><div id="loader-bar" class="h-full origin-left scale-x-0 bg-lime" /></div>
     </div>
     <SiteNav />

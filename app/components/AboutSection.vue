@@ -13,7 +13,7 @@
           <div v-for="f in facts" :key="f" class="reveal flex items-start gap-3 border-t border-forest/15 pt-4"><span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-lime text-[10px] text-forest">✓</span><span class="text-sm font-medium">{{ f }}</span></div>
         </div>
       </div>
-      <div class="relative lg:col-span-6">
+      <div class="relative mx-auto w-full max-w-md lg:col-span-6 lg:max-w-none">
         <div class="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-forest" data-clip>
           <img :src="asset('img/passion-framed-narrow.png')" alt="Passion fruit, one of Premier Veg's export lines" class="h-full w-full object-cover" />
         </div>

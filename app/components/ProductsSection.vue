@@ -11,7 +11,7 @@
         </div>
       </div>
       <ul ref="grid" class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
-        <li v-for="p in shown" :key="p.code" class="reveal card-lift group relative flex min-h-[19rem] flex-col justify-between overflow-hidden rounded-3xl p-7" :style="{ background: p.color }">
+        <li v-for="p in shown" :key="p.code" class="reveal card-lift group relative flex min-h-[15rem] flex-col justify-between gap-8 overflow-hidden rounded-3xl p-6 md:min-h-[19rem] md:p-7" :style="{ background: p.color }">
           <div class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-white/10 transition-transform duration-700 group-hover:scale-[2.2]" />
           <div class="relative flex items-center justify-between"><span class="eyebrow rounded-full bg-black/25 px-3 py-1.5">{{ p.cat }}</span><span class="font-mono text-xs opacity-70">{{ p.code }}</span></div>
           <div class="relative">

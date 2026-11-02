@@ -14,7 +14,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Premier Veg Mondo Fresh exports year-round fresh fruit, vegetables and herbs from Kenya to Europe and beyond. Category 1 grading, full traceability, cold-chain handling.' },
         { name: 'theme-color', content: '#0E2A1C' }
       ],
-      link: [{ rel: 'icon', href: (process.env.NUXT_APP_BASE_URL || '/') + 'img/logo.png' }]
+      link: [{ rel: 'icon', href: (process.env.NUXT_APP_BASE_URL || '/') + 'img/logo.jpg' }]
     }
   },
   fonts: { families: [{ name: 'Fraunces', provider: 'google' }, { name: 'Inter Tight', provider: 'google' }] }

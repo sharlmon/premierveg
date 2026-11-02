@@ -13,10 +13,13 @@ body { @apply bg-cream text-ink font-sans antialiased; overflow-x: hidden; }
 .line-mask { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
 .line-inner { display: block; will-change: transform; }
 
+@layer components {
 .btn { @apply relative inline-flex items-center gap-3 rounded-full px-7 py-4 text-sm font-semibold cursor-pointer select-none; transition: background-color .3s, color .3s, transform .3s; }
 .btn-lime { @apply bg-lime text-forest hover:bg-white; }
 .btn-dark { @apply bg-forest text-cream hover:bg-leaf; }
 .btn-ghost { @apply border border-current hover:bg-white/10; }
+}
+
 .btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid #FFB627; outline-offset: 3px; }
 
 .grain::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
