@@ -1,51 +1,65 @@
 <template>
-  <section ref="root" class="overflow-hidden bg-white py-24 md:py-32">
+  <section class="bg-white py-24 md:py-32">
     <div class="mx-auto max-w-7xl px-5 md:px-10">
-      <p class="eyebrow mb-6 text-leaf" data-reveal>The journey</p>
-      <h2 class="display max-w-2xl text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">From the farm</span></span><span class="line-mask"><span class="line-inner italic text-leaf">to final market.</span></span></h2>
-
-      <div class="relative mt-12">
-        <svg viewBox="0 0 1000 230" class="h-auto w-full" role="img" aria-label="Route from farm to market with four stages">
-          <path ref="track" :d="d" fill="none" stroke="#0E2A1C" stroke-opacity=".12" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9" />
-          <path ref="line" :d="d" fill="none" stroke="#1F5B3A" stroke-width="4" stroke-linecap="round" />
-          <g v-for="(s, i) in pts" :key="i" :style="{ opacity: ready ? 1 : 0 }">
-            <circle :cx="s.x" :cy="s.y" r="22" :fill="activeIdx >= i ? '#C6F04A' : '#fff'" :stroke="activeIdx >= i ? '#0E2A1C' : '#0E2A1C33'" stroke-width="3" style="transition: fill .4s, stroke .4s" />
-            <text :x="s.x" :y="s.y + 6" text-anchor="middle" font-size="16" font-weight="700" fill="#0E2A1C">{{ i + 1 }}</text>
-          </g>
-          <g ref="mover" :style="{ opacity: ready ? 1 : 0 }"><circle r="11" fill="#0E2A1C" /><circle r="4.500" fill="#C6F04A" /></g>
-        </svg>
+      <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div>
+          <p class="mb-6 inline-flex items-center gap-2 rounded-full bg-[#DCE5DA] px-4 py-2 text-xs font-semibold" data-reveal><span class="h-1.5 w-1.5 rounded-full bg-forest" /> The journey</p>
+          <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">From the farm</span></span><span class="line-mask"><span class="line-inner italic text-leaf">to final market.</span></span></h2>
+        </div>
+        <div class="flex gap-2">
+          <button class="jn-btn" aria-label="Previous stage" @click="go(sel - 1)">←</button>
+          <button class="jn-btn" aria-label="Next stage" @click="go(sel + 1)">→</button>
+        </div>
       </div>
 
-      <ol class="mt-10 grid gap-4 md:grid-cols-4">
-        <li v-for="(s, i) in steps" :key="s.n" class="rounded-3xl border p-6 transition-all duration-500" :class="activeIdx >= i ? 'border-forest bg-forest text-cream' : 'border-forest/15 bg-cream text-ink'" @mouseenter="hint = i">
-          <span class="display text-4xl" :class="activeIdx >= i ? 'text-lime' : 'text-forest/30'">{{ s.n }}</span>
-          <h3 class="display mt-3 text-xl">{{ s.t }}</h3>
-          <p class="mt-2 text-sm" :class="activeIdx >= i ? 'text-cream/70' : 'text-ink/60'">{{ s.d }}</p>
+      <!-- stepper -->
+      <ol class="relative mt-14 grid grid-cols-4 gap-2" role="tablist" aria-label="Journey stages">
+        <span class="absolute left-[12.5%] right-[12.5%] top-[1.65rem] h-[3px] rounded-full bg-forest/10" aria-hidden="true" />
+        <span class="absolute left-[12.5%] top-[1.65rem] h-[3px] rounded-full bg-leaf transition-[width] duration-700 ease-out" :style="{ width: (sel / (steps.length - 1)) * 75 + '%' }" aria-hidden="true" />
+        <li v-for="(s, i) in steps" :key="s.n" class="relative flex flex-col items-center text-center">
+          <button role="tab" :aria-selected="sel === i" :aria-label="'Stage ' + s.n + ': ' + s.t" class="relative z-10 grid h-14 w-14 cursor-pointer place-items-center rounded-full border-[3px] text-sm font-bold transition-all duration-500 hover:scale-110" :class="i <= sel ? 'border-forest bg-lime text-forest' : 'border-forest/20 bg-white text-forest/50'" :style="sel === i ? 'box-shadow:0 0 0 8px rgba(198,240,74,.35)' : ''" @click="go(i)">{{ s.n }}</button>
+          <span class="mt-3 hidden max-w-[10rem] text-sm font-semibold transition-colors md:block" :class="sel === i ? 'text-forest' : 'text-forest/45'">{{ s.t }}</span>
         </li>
       </ol>
+
+      <!-- stage panel -->
+      <div class="mt-10 grid overflow-hidden rounded-[2rem] bg-forest text-cream shadow-2xl lg:grid-cols-2" role="tabpanel" aria-live="polite">
+        <div class="relative min-h-[16rem] sm:min-h-[22rem]" :class="stages[sel].contain ? 'bg-white' : 'bg-leaf'">
+          <img v-for="(st, i) in stages" :key="st.img" :src="asset(st.img)" :alt="st.alt" loading="lazy" class="jn-img absolute inset-0 h-full w-full" :class="[i === sel ? 'is-on' : '', st.contain ? 'object-contain p-8' : 'object-cover']" />
+          <span class="eyebrow absolute left-5 top-5 rounded-full bg-forest/85 px-3 py-1.5 text-lime backdrop-blur">Stage {{ steps[sel].n }} / 0{{ steps.length }}</span>
+        </div>
+        <div class="flex flex-col justify-center p-8 md:p-12">
+          <span class="display text-7xl text-lime/90">{{ steps[sel].n }}</span>
+          <h3 :key="sel" class="display jn-text mt-3 text-3xl md:text-4xl">{{ steps[sel].t }}</h3>
+          <p :key="'p' + sel" class="jn-text mt-4 max-w-md text-cream/75">{{ steps[sel].d }}</p>
+          <div class="mt-8 flex items-center gap-3">
+            <button v-if="sel < steps.length - 1" class="btn btn-lime" @click="go(sel + 1)">Next stage <span aria-hidden="true">→</span></button>
+            <button v-else class="btn btn-lime" @click="open({ type: 'quote' })">Request a quote <span aria-hidden="true">→</span></button>
+            <button v-if="sel > 0" class="btn btn-ghost" @click="go(0)">Start over</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 <script setup lang="ts">
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { steps } from '~/data'
-const d = 'M 30 175 C 170 20, 300 20, 365 105 S 560 215, 645 125 S 850 25, 970 80'
-const root = ref<HTMLElement>(); const track = ref<SVGPathElement>(); const line = ref<SVGPathElement>(); const mover = ref<SVGGElement>()
-const pts = ref<{ x: number; y: number; t: number }[]>(steps.map((_, i) => ({ x: -50, y: -50, t: i / (steps.length - 1) })))
-const progress = ref(0); const ready = ref(false); const hint = ref(0)
-const activeIdx = computed(() => pts.value.reduce((n, s, i) => (progress.value >= s.t - 0.02 ? i : n), -1))
-let st: ScrollTrigger | undefined
-onMounted(() => {
-  const path = track.value!; const len = path.getTotalLength()
-  pts.value = pts.value.map((s) => { const p = path.getPointAtLength(len * s.t); return { ...s, x: p.x, y: p.y } })
-  const set = (p: number) => { progress.value = p; line.value!.style.strokeDashoffset = String(len * (1 - p)); const q = path.getPointAtLength(len * p); mover.value!.setAttribute('transform', `translate(${q.x} ${q.y})`) }
-  line.value!.style.strokeDasharray = String(len)
-  ready.value = true
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return set(1)
-  set(0)
-  gsap.registerPlugin(ScrollTrigger)
-  st = ScrollTrigger.create({ trigger: root.value!, start: 'top 65%', end: 'bottom 75%', scrub: 0.5, onUpdate: (self) => set(self.progress) })
-})
-onBeforeUnmount(() => st?.kill())
+const asset = useAsset(); const { open } = useModal()
+const stages = [
+  { img: 'img/beans-bunch.jpg', alt: 'Freshly harvested haricot verts' },
+  { img: 'img/beans-tray.jpg', alt: 'Graded fine green beans in a tray' },
+  { img: 'img/about/packhouse.jpg', alt: 'The Premier Veg pack-house team' },
+  { img: 'img/packages/cxf001-carton.png', alt: 'Export carton, 12 × 250 g', contain: true }
+]
+const sel = ref(0)
+const go = (i: number) => { sel.value = (i + steps.length) % steps.length }
 </script>
+<style>
+.jn-btn { display: grid; height: 3rem; width: 3rem; cursor: pointer; place-items: center; border-radius: 9999px; border: 1px solid rgba(14,42,28,.25); transition: background .2s, color .2s, transform .2s; }
+.jn-btn:hover { background: #0E2A1C; color: #C6F04A; transform: scale(1.08); }
+.jn-img { opacity: 0; transform: scale(1.06); transition: opacity .6s, transform 1s cubic-bezier(.2,.8,.2,1); }
+.jn-img.is-on { opacity: 1; transform: scale(1); }
+.jn-text { animation: jnin .55s cubic-bezier(.2,.9,.2,1); }
+@keyframes jnin { from { opacity: 0; transform: translateY(14px); } }
+@media (prefers-reduced-motion: reduce) { .jn-img, .jn-text { transition: none; animation: none; } }
+</style>

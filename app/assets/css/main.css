@@ -31,7 +31,7 @@ body { @apply bg-cream text-ink font-sans antialiased; overflow-x: hidden; }
 .card-lift { transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s; }
 .card-lift:hover { transform: translateY(-8px) rotate(-.6deg); box-shadow: 0 30px 60px -25px rgba(14,42,28,.45); }
 
-.reveal { opacity: 0; transform: translateY(40px); }
+.reveal { opacity: 1; transform: none; }
 .no-js .reveal, .reduce .reveal { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {

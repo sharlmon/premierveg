@@ -6,7 +6,7 @@
         <div class="lg:col-span-3">
           <p class="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs font-semibold" data-reveal><span class="h-1.5 w-1.5 rounded-full bg-forest" /> About us</p>
         </div>
-        <p ref="para" class="display text-[clamp(1.7rem,3.3vw,3rem)] !leading-[1.12] tracking-tight lg:col-span-9" :aria-label="text">
+        <p class="display text-[clamp(1.7rem,3.3vw,3rem)] !leading-[1.12] tracking-tight lg:col-span-9" :aria-label="text">
           <span v-for="(w, i) in words" :key="i" class="word inline-block" aria-hidden="true">{{ w }}&nbsp;</span>
         </p>
       </div>
@@ -56,8 +56,6 @@
   </section>
 </template>
 <script setup lang="ts">
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gallery } from '~/data'
 const asset = useAsset(); const { open } = useModal()
 const text = 'We connect Kenyan growers with international markets, with the highest standards of freshness, quality and consistency.'
@@ -68,10 +66,4 @@ const features = [
   { t: 'Full traceability', d: 'The pack-house is designed to preserve freshness, reduce handling damage and ensure full traceability from farm to final market.' }
 ]
 const openIdx = ref(0)
-const para = ref<HTMLElement>()
-onMounted(() => {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !para.value) return
-  gsap.registerPlugin(ScrollTrigger)
-  gsap.fromTo(para.value.querySelectorAll('.word'), { opacity: 0.15 }, { opacity: 1, stagger: 0.1, ease: 'none', scrollTrigger: { trigger: para.value, start: 'top 82%', end: 'bottom 50%', scrub: true } })
-})
 </script>

@@ -32,8 +32,7 @@ onMounted(() => {
   const half = (el: HTMLElement) => el.scrollWidth / 2
   pos[0] = -half(tracks[0])
   tick = (_t, dt) => {
-    const v = Math.abs((window as any).__lenis?.velocity || 0)
-    const boost = 1 + Math.min(v * 0.45, 7)
+    const boost = 1
     const step = paused.value ? 0 : (dt / 1000) * 60 * boost
     tracks.forEach((el, i) => {
       if (!el) return
