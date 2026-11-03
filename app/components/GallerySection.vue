@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#DCE5DA] py-24 md:py-32">
+  <section ref="root" class="bg-[#DCE5DA] py-24 md:py-32">
     <div class="mx-auto max-w-7xl px-5 md:px-10">
       <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
@@ -37,6 +37,9 @@
 import { gallery } from '~/data'
 const asset = useAsset(); const { open } = useModal()
 const act = ref(0)
+const root = ref<HTMLElement>()
+const { arm } = useAutoplay(root, () => { act.value = (act.value + 1) % gallery.length }, 4500)
+watch(act, arm)
 // mouse: hover already activated the panel, so a click opens it. touch/keyboard-less taps: first tap activates, second opens.
 const pick = (e: MouseEvent, i: number) => { if (act.value === i || (e as PointerEvent).pointerType === 'mouse') open({ type: 'lightbox', index: i, items: gallery }); else act.value = i }
 </script>

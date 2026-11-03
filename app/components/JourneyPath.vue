@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white py-24 md:py-32">
+  <section ref="root" class="bg-white py-24 md:py-32">
     <div class="mx-auto max-w-7xl px-5 md:px-10">
       <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
@@ -52,6 +52,9 @@ const stages = [
   { img: 'img/packages/cxf001-carton.png', alt: 'Export carton, 12 × 250 g', contain: true }
 ]
 const sel = ref(0)
+const root = ref<HTMLElement>()
+const { arm } = useAutoplay(root, () => go(sel.value + 1), 5500)
+watch(sel, arm)
 const go = (i: number) => { sel.value = (i + steps.length) % steps.length }
 </script>
 <style>
