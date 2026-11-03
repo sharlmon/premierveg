@@ -3,7 +3,7 @@
     <!-- one pod: brand + menu together -->
     <div class="pointer-events-auto relative mx-auto flex h-14 w-full items-center gap-1 px-7 text-cream lg:w-fit lg:gap-2 lg:px-9">
       <span class="pod-shadow" aria-hidden="true"><span class="pod-bg"><span class="pod-seam" /></span></span>
-      <NuxtLink to="/" class="flex shrink-0 items-center gap-3 rounded-full py-0.5 pl-0.5 pr-3 transition hover:bg-white/5" aria-label="Premier Veg home">
+      <NuxtLink to="/" class="flex shrink-0 items-center gap-3 rounded-full py-0.5 pl-0.5 pr-3 transition hover:bg-white/5 max-lg:mx-auto" aria-label="Premier Veg home">
         <img :src="asset('img/logo.jpg')" alt="" width="40" height="40" class="h-10 w-10 rounded-full ring-2 ring-white/70" />
         <span class="display text-lg leading-none">Premier Veg</span>
       </NuxtLink>
@@ -22,7 +22,7 @@
 
       <button class="btn btn-lime ml-1 hidden !px-5 !py-2.5 text-[13px] lg:inline-flex" @click="quote">Get a quote</button>
 
-      <div class="relative ml-auto lg:hidden">
+      <div class="relative lg:hidden max-lg:absolute max-lg:right-7 max-lg:top-1.5">
         <button ref="btn" class="group grid h-11 w-11 cursor-pointer place-items-center rounded-full bg-white/10 text-cream ring-1 ring-white/10 transition hover:bg-leaf" :aria-expanded="open" aria-controls="quick-menu" aria-label="Menu" @click="open = !open">
           <svg v-if="!open" class="h-5 w-5 transition-transform duration-300 group-hover:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="4" y="13.500" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="13.500" width="6.500" height="6.500" rx="1.500"/></svg>
           <svg v-else class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>

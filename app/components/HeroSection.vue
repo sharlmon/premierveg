@@ -3,7 +3,7 @@
     <div class="relative isolate h-[calc(100svh-1.25rem)] min-h-[40rem] overflow-hidden rounded-[1.75rem] bg-forest text-cream sm:h-[calc(100svh-1.5rem)] sm:rounded-[2.25rem]">
       <!-- photo -->
       <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-        <img v-for="(sl, i) in slides" :key="sl.src" :src="asset(sl.src)" :srcset="sl.small ? asset(sl.small) + ' 900w, ' + asset(sl.src) + ' 2000w' : undefined" sizes="100vw" :alt="''" class="hero-bg hero-slide absolute inset-0 h-full w-full object-cover" :class="[sl.pos, i === cur ? 'is-on' : '']" :fetchpriority="i === 0 ? 'high' : 'low'" />
+        <img v-for="(sl, i) in shownSlides" :key="sl.src" :src="asset(sl.src)" :srcset="sl.small ? asset(sl.small) + ' 900w, ' + asset(sl.src) + ' 2000w' : undefined" sizes="100vw" :alt="''" class="hero-bg hero-slide absolute inset-0 h-full w-full object-cover" :class="[sl.pos, i === cur ? 'is-on' : '']" :fetchpriority="i === 0 ? 'high' : 'low'" />
         <div class="absolute inset-0 bg-gradient-to-br from-forest/30 via-transparent to-forest/20" />
         <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-forest/45" />
         <div class="absolute inset-0 bg-gradient-to-l from-forest/80 via-forest/30 to-transparent" />
@@ -53,6 +53,10 @@ const slides = [
   { src: 'img/beans-bunch.webp', pos: 'object-[50%_55%]' }
 ]
 const cur = ref(0)
+// only the first photo is downloaded up front; the others join once the page has loaded and settled, so they never delay the first view
+const rest = ref(false)
+const shownSlides = computed(() => (rest.value ? slides : slides.slice(0, 1)))
+onMounted(() => { const go = () => setTimeout(() => (rest.value = true), 2500); document.readyState === 'complete' ? go() : window.addEventListener('load', go, { once: true }) })
 // start downloading the first hero photo as early as possible (same srcset the <img> uses, so it is not fetched twice)
 useHead({ link: [{ rel: 'preload', as: 'image', href: asset(slides[0].src), imagesrcset: asset(slides[0].small!) + ' 900w, ' + asset(slides[0].src) + ' 2000w', imagesizes: '100vw', fetchpriority: 'high' }] })
 let timer: ReturnType<typeof setInterval> | undefined

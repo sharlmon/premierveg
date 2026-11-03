@@ -17,7 +17,8 @@ export default defineNuxtPlugin(() => {
       const u = urls.shift(); if (!u) return
       const img = new Image(); img.decoding = 'async'; img.onload = img.onerror = () => idle(next); img.src = base + u
     }
-    next(); next() // two at a time
+    next() // one at a time, so it never competes with what the visitor is doing
   }
-  if (document.readyState === 'complete') idle(run); else window.addEventListener('load', () => idle(run), { once: true })
+  const later = () => setTimeout(() => idle(run), 6000) // let the page itself finish first
+  if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true })
 })
