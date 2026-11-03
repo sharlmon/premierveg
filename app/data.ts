@@ -23,7 +23,7 @@ export const packages: Pack[] = [
   { id: 'CHV001', code: 'CHV001', name: 'Haricot verts carton', note: 'This carton is meant to contain haricot verts.', kind: 'Carton', img: 'img/packages/chv001.webp', product: 'Haricot Verts' },
   { id: 'CXF001-T', code: 'CXF001', name: 'Extra fine beans', note: 'Top cover for extra fine beans.', kind: 'Top cover', img: 'img/packages/cxf001-top.webp', product: 'Haricot Verts' },
   { id: 'CXF001-C', code: 'CXF001', name: 'Extra fine beans', note: 'This holds 12 × 250 g extra fine beans.', kind: 'Carton', img: 'img/packages/cxf001-carton.webp', product: 'Haricot Verts' },
-  { id: 'CMT001-T', code: 'CMT001', name: 'Mangetouts', note: 'Top cover for mangetouts.', kind: 'Top cover', img: 'img/packages/cmt001-top.webp', product: 'Mangetouts' },
+  { id: 'CMT001-T', code: 'CMT001', name: 'Mangetouts', note: 'Top cover for mangetouts.', kind: 'Top cover', img: 'img/packages/cmt001-top.webp', photo: 'img/packages/cmt001-top-photo.webp', product: 'Mangetouts' },
   { id: 'CMT001-C', code: 'CMT001', name: 'Mangetouts', note: 'This holds 12 × 250 g mangetouts.', kind: 'Carton', img: 'img/packages/cmt001-carton.webp', photo: 'img/packages/cmt001-photo.webp', product: 'Mangetouts' },
   { id: 'PBC001', code: 'PBC001', name: 'Baby corn', note: 'Punnet of baby corn.', kind: 'Punnet', img: 'img/packages/pbc001.webp' },
   { id: 'PXF001', code: 'PXF001', name: 'Fine beans TT', note: 'Punnet of fine beans TT.', kind: 'Punnet', img: 'img/packages/pxf001.webp', product: 'Haricot Verts' },
