@@ -17,8 +17,7 @@
       <div class="mt-12 grid items-stretch gap-8 lg:grid-cols-12 lg:gap-12">
         <!-- stage -->
         <div class="order-1 lg:order-2 lg:col-span-7">
-          <div v-tilt="5" class="tilt relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-leaf shadow-2xl sm:aspect-[5/4]" @click="open({ type: 'product', item: cur.product })">
-            <span class="glare" />
+          <div class="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-leaf shadow-2xl sm:aspect-[5/4]" @click="open({ type: 'product', item: cur.product })">
             <img v-for="(p, i) in panels" :key="p.code" :src="asset(p.img)" :alt="p.alt" class="stage-img absolute inset-0 h-full w-full object-cover" :class="i === idx ? 'is-on' : ''" :loading="i === 0 ? 'eager' : 'lazy'" />
             <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent" />
             <span class="eyebrow absolute left-5 top-5 rounded-full bg-forest/80 px-3 py-1.5 text-lime backdrop-blur">{{ cur.product.cat }} · {{ cur.code }}</span>

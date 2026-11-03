@@ -10,7 +10,6 @@
       </div>
 
       <!-- interactive hexagons -->
-      <div class="hero-fade absolute left-[3%] top-1/2 hidden w-[min(33rem,46vw)] -translate-y-[42%] md:block"><HexCluster /></div>
 
       <!-- headline (top right) -->
       <div class="absolute inset-x-5 top-28 md:inset-x-auto md:right-10 md:top-32 md:max-w-[min(46rem,56%)] md:text-right lg:top-36">

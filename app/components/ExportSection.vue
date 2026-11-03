@@ -4,7 +4,7 @@
       <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
           <p class="eyebrow mb-6 text-leaf" data-reveal>Packed for export</p>
-          <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Packed, palletised</span></span><span class="line-mask"><span class="line-inner italic text-leaf">and ready to fly.</span></span></h2>
+          <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Packed, palletised and</span></span><span class="line-mask"><span class="line-inner">ready to <em class="text-leaf">fly.</em></span></span></h2>
         </div>
         <p class="max-w-sm text-ink/70" data-reveal>Every order is graded, packed in branded cartons and built into secured pallets before it leaves our export office.</p>
       </div>

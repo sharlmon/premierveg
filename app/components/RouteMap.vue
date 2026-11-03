@@ -3,7 +3,7 @@
     <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-10 lg:grid-cols-12">
       <div class="lg:col-span-5">
         <p class="eyebrow mb-6 text-leaf" data-reveal>From Nairobi to your market</p>
-        <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Harvest, delivered</span></span><span class="line-mask"><span class="line-inner italic text-leaf">to your door.</span></span></h2>
+        <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Nairobi to Paris,</span></span><span class="line-mask"><span class="line-inner italic text-leaf">Amsterdam and Zurich.</span></span></h2>
         <p class="mt-6 max-w-md text-ink/70" data-reveal>Based in Nairobi, with operations in Italy, we supply buyers in France, the Netherlands and Switzerland. Pick a market to see the route.</p>
 
         <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Choose a market" data-reveal>
