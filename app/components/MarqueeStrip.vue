@@ -33,7 +33,7 @@ onMounted(() => {
   pos[0] = -half(tracks[0])
   tick = (_t, dt) => {
     const boost = 1
-    const step = paused.value ? 0 : (dt / 1000) * 60 * boost
+    const step = paused.value || document.documentElement.classList.contains('a11y-still') ? 0 : (dt / 1000) * 60 * boost
     tracks.forEach((el, i) => {
       if (!el) return
       const h = half(el); pos[i] += dirs[i] * step

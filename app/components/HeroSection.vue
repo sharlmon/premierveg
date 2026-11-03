@@ -53,7 +53,7 @@ const slides = [
 ]
 const cur = ref(0)
 let timer: ReturnType<typeof setInterval> | undefined
-const start = () => { stop(); if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; timer = setInterval(() => (cur.value = (cur.value + 1) % slides.length), 7000) }
+const start = () => { stop(); if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; timer = setInterval(() => { if (!document.documentElement.classList.contains('a11y-still')) cur.value = (cur.value + 1) % slides.length }, 7000) }
 const stop = () => timer && clearInterval(timer)
 const show = (i: number) => { cur.value = i; start() }
 onMounted(start)

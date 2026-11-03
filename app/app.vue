@@ -9,6 +9,7 @@
     <PromoToast />
     <WhatsAppButton />
     <QuotePill />
+    <AccessibilityMenu />
   </div>
 </template>
 <script setup lang="ts">

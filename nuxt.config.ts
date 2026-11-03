@@ -31,5 +31,5 @@ export default defineNuxtConfig({
       ]
     }
   },
-  fonts: { families: [{ name: 'Fraunces', provider: 'google' }, { name: 'Inter Tight', provider: 'google' }] }
+  fonts: { families: [{ name: 'Fraunces', provider: 'google' }, { name: 'Inter Tight', provider: 'google' }, { name: 'Atkinson Hyperlegible', provider: 'google' }] }
 })
