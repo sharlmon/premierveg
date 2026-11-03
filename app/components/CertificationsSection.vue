@@ -9,7 +9,8 @@
       </div>
       <ul class="grid gap-5 sm:grid-cols-2 lg:col-span-7" data-stagger>
         <li v-for="c in certifications" :key="c.name" class="reveal rounded-3xl border border-forest/15 bg-cream p-7">
-          <span class="inline-block rounded-md border-2 border-forest px-3 py-1.5 font-mono text-sm font-bold tracking-wider text-forest" aria-hidden="true">{{ c.name === 'SMETA' ? 'SMETA' : 'G.A.P.' }}</span>
+          <img v-if="c.name !== 'SMETA'" :src="asset('img/globalgap.svg')" alt="GLOBALG.A.P. logo" width="72" height="62" class="h-16 w-auto" loading="lazy" />
+          <span v-else class="inline-block rounded-md border-2 border-forest px-3 py-1.5 font-mono text-sm font-bold tracking-wider text-forest" aria-hidden="true">SMETA</span>
           <h3 class="display mt-6 text-3xl">{{ c.name }}</h3>
           <p class="eyebrow mt-1 text-leaf">{{ c.what }}</p>
           <p class="mt-4 text-sm text-ink/70">{{ c.d }}</p>
@@ -20,4 +21,5 @@
 </template>
 <script setup lang="ts">
 import { certifications, markets } from '~/data'
+const asset = useAsset()
 </script>
