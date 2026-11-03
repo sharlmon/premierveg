@@ -66,7 +66,9 @@ const arc = (to: number[]) => { // quadratic bezier control point, bowed to the 
 const bez = (p0: number[], c: number[], p1: number[], t: number) => { const u = 1 - t; return [u * u * p0[0] + 2 * u * t * c[0] + t * t * p1[0], u * u * p0[1] + 2 * u * t * c[1] + t * t * p1[1]] }
 const maxD = Math.max(...map.dots.map((d) => Math.hypot(d[0] - hub[0], d[1] - hub[1])))
 
+let PLANE: Path2D
 const draw = (time: number) => {
+  PLANE ||= new Path2D('M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z')
   const cv = canvas.value!, ctx = cv.getContext('2d')!
   const k = cv.width / map.w, t = time / 1000
   ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.scale(k, k)
@@ -104,8 +106,11 @@ const draw = (time: number) => {
       const n = d === focus ? 3 : 1
       for (let j = 0; j < n; j++) {
         const u = ((t * (0.16 + w * 0.14) + j / n + dests.indexOf(d) * 0.17) % 1), [px, py] = bez(hub, c, to, u)
-        ctx.fillStyle = '#C6F04A'; ctx.strokeStyle = '#0E2A1C'; ctx.lineWidth = 1.5
-        ctx.beginPath(); ctx.arc(px, py, 4.5 + w * 2.5, 0, 6.2832); ctx.fill(); ctx.stroke()
+        const u2 = Math.min(1, u + 0.01), [qx, qy] = bez(hub, c, to, u2), ang = Math.atan2(qy - py, qx - px) + Math.PI / 2 // plane glyph points up
+        const sc = (1.15 + w * 0.4) * (map.w / 700)
+        ctx.save(); ctx.translate(px, py); ctx.rotate(ang); ctx.scale(sc, sc); ctx.translate(-12, -12)
+        ctx.fillStyle = '#C6F04A'; ctx.strokeStyle = '#0E2A1C'; ctx.lineWidth = 1.6; ctx.lineJoin = 'round'
+        ctx.stroke(PLANE); ctx.fill(PLANE); ctx.restore()
       }
     }
   }
