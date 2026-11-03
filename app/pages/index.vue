@@ -6,10 +6,10 @@
     <ShowcaseSection />
     <RouteMap />
     <CertificationsSection />
-    <CategoriesStrip />
-    <GallerySection />
-    <ExportSection />
-    <CtaBand />
+    <LazyCategoriesStrip hydrate-on-visible />
+    <LazyGallerySection hydrate-on-visible />
+    <LazyExportSection hydrate-on-visible />
+    <LazyCtaBand hydrate-on-visible />
   </div>
 </template>
 <script setup lang="ts">

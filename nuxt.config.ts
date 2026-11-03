@@ -15,6 +15,10 @@ export default defineNuxtConfig({
     }
   },
   nitro: { preset: 'github_pages', prerender: { routes: ['/', '/about', '/products', '/packages', '/team', '/contact', '/sitemap.xml', '/robots.txt'], crawlLinks: true } },
+  hooks: {
+    // don't quietly download lazy chunks (e.g. the 380 KB PDF library) in the background; fetch them only when used
+    'build:manifest': (manifest) => { for (const k in manifest) { manifest[k].prefetch = false } }
+  },
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
