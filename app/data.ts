@@ -84,3 +84,11 @@ export const gallery = [
   { src: 'img/sugar-closeup.webp', alt: 'Close-up of sugar snap peas', cap: 'Sugar snaps up close', tag: 'Sugar snaps' },
   { src: 'img/field-team.webp', alt: 'Four Premier Veg team members in white lab coats standing in a field', cap: 'Out in the field with our team', tag: 'In the field' }
 ]
+
+export const exportShots = [
+  { src: 'img/export-haricot-pallet.webp', alt: 'A pallet of Premier Veg haricots verts cartons stacked at the export office', cap: 'Haricots verts, palletised at the export office', tag: 'Ready to ship', w: 1200, h: 1536 },
+  { src: 'img/export-mangetout-pallet.webp', alt: 'A pallet of Premier Veg mangetout cartons in the cold-chain hall', cap: 'Mangetout cartons, built and ready for the flight', tag: 'Mangetouts', w: 1200, h: 1472 },
+  { src: 'img/export-mangetout-carton.webp', alt: 'An open carton of mangetouts packed in retail bags', cap: 'Inside a mangetout carton: sorted, bagged and graded', tag: 'Inside the carton', w: 897, h: 1440 },
+  { src: 'img/export-pallet-strapped.webp', alt: 'A strapped, corner-protected pallet of haricots verts cartons', cap: 'Strapped and corner-protected for the journey', tag: 'Secured', w: 1200, h: 1375 },
+  { src: 'img/export-haricot-warehouse.webp', alt: 'A full pallet of haricots verts cartons in the warehouse', cap: 'A full pallet of 12 × 250 g haricots verts cartons', tag: 'Warehouse', w: 1200, h: 1488 }
+]

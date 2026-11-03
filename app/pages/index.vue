@@ -8,6 +8,7 @@
     <CertificationsSection />
     <CategoriesStrip />
     <GallerySection />
+    <ExportSection />
     <CtaBand />
   </div>
 </template>
