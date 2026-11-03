@@ -50,10 +50,7 @@ const asset = useAsset(); const { open } = useModal()
 const slides = [
   { src: 'img/hero-workers.webp', small: 'img/hero-workers-900.webp', pos: 'object-[50%_70%]' },
   { src: 'img/hero-workers-2.webp', pos: 'object-[50%_60%]' },
-  { src: 'img/export-haricot-pallet.webp', pos: 'object-[50%_45%]' },
-  { src: 'img/field-team.webp', pos: 'object-[50%_25%]' },
-  { src: 'img/beans-bunch.webp', pos: 'object-[50%_55%]' },
-  { src: 'img/sugar-closeup.webp', pos: 'object-[50%_50%]' }
+  { src: 'img/beans-bunch.webp', pos: 'object-[50%_55%]' }
 ]
 const cur = ref(0)
 // start downloading the first hero photo as early as possible (same srcset the <img> uses, so it is not fetched twice)
