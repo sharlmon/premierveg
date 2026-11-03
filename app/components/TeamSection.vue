@@ -9,8 +9,8 @@
           <p class="max-w-sm text-ink/70 lg:col-span-4 lg:justify-self-end" data-reveal>A team with a strong commitment to exceptional customer service, so every client is professionally supported and well served.</p>
         </div>
         <dl class="mt-14 grid grid-cols-3 gap-4 border-t border-forest/20 pt-8 md:max-w-2xl" data-stagger>
-          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><span data-count="6">6</span></dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Team members</dt></div>
-          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><span data-count="17">17</span><span class="text-leaf">+</span></dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Years of produce experience (our director)</dt></div>
+          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><CountUp :to="6" /></dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Team members</dt></div>
+          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><CountUp :to="17" /><span class="text-leaf">+</span></dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Years of produce experience (our director)</dt></div>
           <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl">2</dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Countries: Kenya &amp; Italy</dt></div>
         </dl>
       </div>

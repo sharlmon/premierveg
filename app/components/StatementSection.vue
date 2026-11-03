@@ -6,11 +6,11 @@
         <!-- stats -->
         <dl class="grid grid-cols-2 gap-6 lg:col-span-3 lg:grid-cols-1 lg:gap-10" data-stagger>
           <div class="reveal border-t border-forest/20 pt-5">
-            <dd class="display text-5xl text-forest md:text-6xl">2022</dd>
+            <dd class="display text-5xl text-forest md:text-6xl"><CountUp :to="2022" :from="2000" /></dd>
             <dt class="mt-2 text-sm text-ink/70">Established in Nairobi, with operations also in Italy</dt>
           </div>
           <div class="reveal border-t border-forest/20 pt-5">
-            <dd class="display text-5xl text-forest md:text-6xl"><span data-count="10">10</span><span class="text-leaf">+</span></dd>
+            <dd class="display text-5xl text-forest md:text-6xl"><CountUp :to="10" /><span class="text-leaf">+</span></dd>
             <dt class="mt-2 text-sm text-ink/70">Product lines of vegetables, fruits and herbs</dt>
           </div>
         </dl>

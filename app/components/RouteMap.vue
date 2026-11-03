@@ -12,7 +12,7 @@
 
         <div class="mt-8 rounded-3xl bg-forest p-6 text-cream" aria-live="polite" data-reveal>
           <p class="eyebrow text-lime">Nairobi → {{ active }}</p>
-          <p class="display mt-2 text-4xl"><span>{{ km.toLocaleString('en') }}</span> <span class="text-xl text-cream/70">km</span></p>
+          <p class="display mt-2 text-4xl"><CountUp :to="km" group /> <span class="text-xl text-cream/70">km</span></p>
           <p class="mt-2 text-sm text-cream/70">{{ country[active] }}, one of our core markets. Straight-line distance from our Nairobi base.</p>
         </div>
         <p class="mt-4 text-xs text-ink/70">Hover the map, tap a destination, or move your cursor to light up the dots.</p>

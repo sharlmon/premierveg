@@ -27,8 +27,8 @@
 
       <!-- bottom-left stats -->
       <dl class="hero-fade absolute bottom-5 left-5 hidden gap-6 sm:flex rounded-2xl bg-forest/55 px-5 py-4 backdrop-blur-md md:bottom-8 md:left-8">
-        <div><dt class="eyebrow text-cream/70">Since</dt><dd class="display text-2xl">2022</dd></div>
-        <div><dt class="eyebrow text-cream/70">Products</dt><dd class="display text-2xl">10+</dd></div>
+        <div><dt class="eyebrow text-cream/70">Since</dt><dd class="display text-2xl"><CountUp :to="2022" :from="2000" /></dd></div>
+        <div><dt class="eyebrow text-cream/70">Products</dt><dd class="display text-2xl"><CountUp :to="10" />+</dd></div>
         <div class="hidden sm:block"><dt class="eyebrow text-cream/70">Supply</dt><dd class="display text-2xl">Year-round</dd></div>
       </dl>
 
