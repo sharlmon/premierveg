@@ -38,7 +38,7 @@
       </div>
 
       <!-- bottom-right notched tab -->
-      <NuxtLink to="/products" class="hero-fade tab-cta group absolute bottom-0 right-0 flex items-center gap-3 bg-forest py-4 pl-12 pr-6 text-sm font-semibold text-cream transition-colors hover:bg-leaf" data-cursor="Explore">
+      <NuxtLink to="/products" class="hero-fade tab-cta group absolute bottom-0 right-0 flex items-center gap-3 bg-forest py-4 pl-12 pr-6 text-sm font-semibold text-cream transition-colors hover:bg-leaf">
         <svg class="h-4 w-4 text-lime transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 19 12 5l8 14H4z" transform="rotate(90 12 12)"/></svg>
         Explore our products
       </NuxtLink>

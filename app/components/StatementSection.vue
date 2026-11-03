@@ -17,7 +17,7 @@
 
         <!-- photo -->
         <figure class="relative lg:col-span-4">
-          <div class="aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-forest" data-clip data-cursor="Zoom" @click="open({ type: 'lightbox', index: 0, items: gallery })">
+          <div class="aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-forest" data-clip @click="open({ type: 'lightbox', index: 0, items: gallery })">
             <img :src="asset('img/about/packhouse.jpg')" alt="The Premier Veg pack-house team at work" loading="lazy" class="h-full w-full cursor-zoom-in object-cover" />
           </div>
           <figcaption class="absolute bottom-4 left-4 rounded-full bg-forest/85 px-4 py-2 text-xs font-semibold text-cream backdrop-blur">The pack-house · Nairobi</figcaption>

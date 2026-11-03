@@ -5,7 +5,6 @@
     <main id="main" tabindex="-1" class="outline-none"><NuxtPage :transition="transition" /></main>
     <SiteFooter />
     <ModalHost />
-    <CursorFollower />
     <PromoToast />
     <WhatsAppButton />
     <QuotePill />

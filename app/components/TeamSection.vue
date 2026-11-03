@@ -21,7 +21,7 @@
       <div class="mx-auto grid max-w-7xl gap-12 px-5 md:px-10 lg:grid-cols-12">
         <ul class="lg:col-span-7" role="list" data-stagger>
           <li v-for="(m, i) in team" :key="m.name" class="reveal border-t border-forest/15 last:border-b">
-            <button class="row group relative flex w-full cursor-pointer items-center gap-4 py-5 text-left md:gap-6 md:py-7" :aria-label="'Read about ' + m.name" data-cursor="Read bio" @mouseenter="sel = i" @focus="sel = i" @click="open({ type: 'team', item: m })">
+            <button class="row group relative flex w-full cursor-pointer items-center gap-4 py-5 text-left md:gap-6 md:py-7" :aria-label="'Read about ' + m.name" @mouseenter="sel = i" @focus="sel = i" @click="open({ type: 'team', item: m })">
               <span class="font-mono text-xs text-forest/70">0{{ i + 1 }}</span>
               <span class="avatar h-14 w-14 shrink-0 overflow-hidden rounded-full lg:hidden" :class="['bg-forest', 'bg-leaf', 'bg-tomato'][i % 3]">
                 <img v-if="m.photo" :src="asset(m.photo)" :alt="''" loading="lazy" class="h-full w-full object-cover object-top" />
@@ -69,7 +69,7 @@
         </div>
         <ul class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
           <li v-for="m in team" :key="m.email" class="reveal">
-            <button v-spot class="spot group flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl border border-white/15 bg-white/5 p-5 text-left transition hover:border-lime/60" :aria-label="'Copy email for ' + m.name" data-cursor="Copy" @click="copy(m.email)">
+            <button v-spot class="spot group flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl border border-white/15 bg-white/5 p-5 text-left transition hover:border-lime/60" :aria-label="'Copy email for ' + m.name" @click="copy(m.email)">
               <span class="min-w-0"><span class="eyebrow block text-cream/70">{{ m.role }}</span><span class="display mt-1 block text-xl">{{ m.name }}</span><span class="mt-1 block truncate text-sm text-lime">{{ m.email }}</span><span v-if="m.phone" class="block text-xs text-cream/70">{{ m.phone }}</span></span>
               <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold transition group-hover:bg-lime group-hover:text-forest">{{ copied === m.email ? '✓' : '⧉' }}</span>
             </button>

@@ -18,7 +18,7 @@
     <h2 class="sr-only">Product list</h2>
     <ul ref="list" class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
       <li v-for="p in products" :key="p.code" class="reveal" :class="match(p) ? '' : 'hidden'">
-        <button v-tilt="8" class="tilt group relative flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-white text-left shadow-[0_18px_40px_-22px_rgba(14,42,28,.45)] ring-1 ring-forest/10" :aria-label="'View ' + p.name" data-cursor="View" @click="open({ type: 'product', item: p })">
+        <button v-tilt="8" class="tilt group relative flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-white text-left shadow-[0_18px_40px_-22px_rgba(14,42,28,.45)] ring-1 ring-forest/10" :aria-label="'View ' + p.name" @click="open({ type: 'product', item: p })">
           <span class="glare" />
           <div class="relative grid aspect-[4/3] place-items-center bg-white p-6">
             <span class="eyebrow absolute left-4 top-4 rounded-full px-3 py-1.5" :style="{ background: p.color, color: ink(p.color) }">{{ p.cat }}</span>
