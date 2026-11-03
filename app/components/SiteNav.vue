@@ -1,8 +1,8 @@
 <template>
   <header class="pointer-events-none fixed inset-x-0 top-3 z-[65] px-3 md:top-5 md:px-6">
     <!-- one pod: brand + menu together -->
-    <div class="pod pointer-events-auto relative mx-auto flex w-full items-center gap-1 rounded-full p-1.5 pr-1.5 text-cream lg:w-fit lg:gap-2 lg:pr-2">
-      <span class="pod-seam" aria-hidden="true" />
+    <div class="pointer-events-auto relative mx-auto flex h-14 w-full items-center gap-1 px-7 text-cream lg:w-fit lg:gap-2 lg:px-9">
+      <span class="pod-shadow" aria-hidden="true"><span class="pod-bg"><span class="pod-seam" /></span></span>
       <NuxtLink to="/" class="flex shrink-0 items-center gap-3 rounded-full py-0.5 pl-0.5 pr-3 transition hover:bg-white/5" aria-label="Premier Veg home">
         <img :src="asset('img/logo.jpg')" alt="" width="40" height="40" class="h-10 w-10 rounded-full ring-2 ring-white/70" />
         <span class="display text-lg leading-none">Premier Veg</span>
@@ -57,8 +57,9 @@ onBeforeUnmount(() => { document.removeEventListener('pointerdown', outside); wi
 </script>
 <style>
 /* sugar-snap pod: a rounded green capsule with a pale seam along the top, and a pea for the page you are on */
-.pod { background: linear-gradient(180deg, rgba(22, 66, 43, .92), rgba(14, 42, 28, .92)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 14px 30px -12px rgba(0,0,0,.45), inset 0 0 0 1px rgba(198,240,74,.18); }
-.pod-seam { position: absolute; left: 22px; right: 22px; top: 3px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, transparent, rgba(198,240,74,.55) 18%, rgba(198,240,74,.55) 82%, transparent); pointer-events: none; }
+.pod-shadow { position: absolute; inset: 0; z-index: -1; pointer-events: none; filter: drop-shadow(0 12px 14px rgba(0,0,0,.35)); }
+.pod-bg { position: absolute; inset: 0; background: linear-gradient(180deg, #1D5A3A, #0E2A1C 70%); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); clip-path: polygon(0.0px 28.0px, 3.7px 23.5px, 7.3px 19.4px, 11.0px 15.8px, 14.7px 12.4px, 18.3px 9.5px, 22.0px 7.0px, 25.7px 4.9px, 29.3px 3.1px, 33.0px 1.8px, 36.7px 0.8px, 40.3px 0.2px, 44.0px 0.0px, calc(100% - 44.0px) 0.0px, calc(100% - 40.3px) 0.2px, calc(100% - 36.7px) 0.8px, calc(100% - 33.0px) 1.8px, calc(100% - 29.3px) 3.1px, calc(100% - 25.7px) 4.9px, calc(100% - 22.0px) 7.0px, calc(100% - 18.3px) 9.5px, calc(100% - 14.7px) 12.4px, calc(100% - 11.0px) 15.8px, calc(100% - 7.3px) 19.4px, calc(100% - 3.7px) 23.5px, calc(100% - 0.0px) 28.0px, calc(100% - 0.0px) 28.0px, calc(100% - 3.7px) 32.5px, calc(100% - 7.3px) 36.6px, calc(100% - 11.0px) 40.2px, calc(100% - 14.7px) 43.6px, calc(100% - 18.3px) 46.5px, calc(100% - 22.0px) 49.0px, calc(100% - 25.7px) 51.1px, calc(100% - 29.3px) 52.9px, calc(100% - 33.0px) 54.2px, calc(100% - 36.7px) 55.2px, calc(100% - 40.3px) 55.8px, calc(100% - 44.0px) 56.0px, 44.0px 56.0px, 40.3px 55.8px, 36.7px 55.2px, 33.0px 54.2px, 29.3px 52.9px, 25.7px 51.1px, 22.0px 49.0px, 18.3px 46.5px, 14.7px 43.6px, 11.0px 40.2px, 7.3px 36.6px, 3.7px 32.5px, 0.0px 28.0px); }
+.pod-seam { position: absolute; left: 44px; right: 44px; top: 5px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, transparent, rgba(198,240,74,.6) 15%, rgba(198,240,74,.6) 85%, transparent); }
 .pea { width: 8px; height: 8px; border-radius: 9999px; background: radial-gradient(circle at 32% 30%, #E6FF9A, #8CC63F 60%, #4E9A2F); transform: scale(0); width: 0; margin-right: -8px; transition: transform .35s cubic-bezier(.3,1.5,.5,1), width .3s, margin .3s; box-shadow: 0 0 0 1px rgba(14,42,28,.4); }
 .pea-link.is-on { color: #C6F04A; background: rgba(255,255,255,.08); }
 .pea-link.is-on .pea { transform: scale(1); width: 8px; margin-right: 0; }
