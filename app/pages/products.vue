@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="bg-white"><ProductsSection lead /></div>
+    <ExportSection />
     <CtaBand />
   </div>
 </template>
