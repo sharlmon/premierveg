@@ -2,6 +2,7 @@ import { packages, type Product } from '~/data'
 
 export type SpecRow = { label: string; value: string; known: boolean }
 
+// Rows without confirmed data are omitted (rather than shown as "On request") until the client supplies it.
 export const productSpecRows = (p: Product): SpecRow[] => {
   const pk = p.pack.map((id) => packages.find((x) => x.id === id)).filter(Boolean) as typeof packages
   const label = (x: (typeof packages)[number]) => (x.kind === 'Top cover' ? x.name + ' (top cover)' : x.name.toLowerCase().includes(x.kind.toLowerCase()) ? x.name : x.name + ' ' + x.kind.toLowerCase())
@@ -15,7 +16,7 @@ export const productSpecRows = (p: Product): SpecRow[] => {
     { label: 'Packaging', value: names.length ? names.join(', ') : on, known: !!names.length },
     { label: 'Pack sizes', value: p.specs?.sizes || on, known: !!p.specs?.sizes },
     { label: 'Shelf life', value: p.specs?.shelfLife || on, known: !!p.specs?.shelfLife }
-  ]
+  ].filter((r) => r.known)
 }
 
 const toDataUrl = async (url: string, maxW = 700) => {
@@ -61,7 +62,7 @@ export const downloadSpecSheet = async (p: Product, asset: (s: string) => string
     const lines = doc.splitTextToSize(r.value, W - 2 * M - 52); doc.text(lines, M + 48, y); y += 10 + (lines.length - 1) * 4.5
   })
   doc.setFont('helvetica', 'italic'); doc.setFontSize(9); doc.setTextColor(120, 130, 124)
-  doc.text('Items marked "On request" are confirmed per order. Please ask for current availability, sizes and pricing.', M, y + 6)
+  doc.text('Please ask for current availability, pack sizes and pricing.', M, y + 6)
   // footer
   doc.setFillColor(198, 240, 74); doc.rect(0, 262, W, 35, 'F')
   doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(14, 42, 28); doc.text('Request a quote', M, 273)
