@@ -42,6 +42,7 @@
         </figure>
       </div>
     </section>
+    <CertificationsSection />
     <JourneyPath />
     <GallerySection />
     <CtaBand />

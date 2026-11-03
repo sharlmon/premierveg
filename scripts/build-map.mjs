@@ -28,7 +28,9 @@ const cities = {
   Amsterdam: { xy: at(52.37, 4.9), lat: 52.37, lon: 4.9 },
   London: { xy: at(51.5, -0.12), lat: 51.5, lon: -0.12 },
   Athens: { xy: at(37.98, 23.73), lat: 37.98, lon: 23.73 },
-  Madrid: { xy: at(40.4, -3.7), lat: 40.4, lon: -3.7 }
+  Madrid: { xy: at(40.4, -3.7), lat: 40.4, lon: -3.7 },
+  Paris: { xy: at(48.86, 2.35), lat: 48.86, lon: 2.35 },
+  Zurich: { xy: at(47.38, 8.54), lat: 47.38, lon: 8.54 }
 }
 writeFileSync('app/assets/map-dots.json', JSON.stringify({ w: W, h: H, step, dots, cities }))
 console.log('dots', dots.length, 'size', W, H, 'Nairobi', cities.Nairobi.xy, 'Rome', cities.Rome.xy)

@@ -4,16 +4,16 @@
       <div class="lg:col-span-5">
         <p class="eyebrow mb-6 text-leaf" data-reveal>From Nairobi to your market</p>
         <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Harvest, delivered</span></span><span class="line-mask"><span class="line-inner italic text-leaf">to your door.</span></span></h2>
-        <p class="mt-6 max-w-md text-ink/70" data-reveal>Based in Nairobi, with operations in Italy, we connect Kenyan growers with international markets. Pick a destination to see the route.</p>
+        <p class="mt-6 max-w-md text-ink/70" data-reveal>Based in Nairobi, with operations in Italy, we supply buyers in France, the Netherlands and Switzerland. Pick a market to see the route.</p>
 
-        <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Choose a destination" data-reveal>
+        <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Choose a market" data-reveal>
           <button v-for="d in dests" :key="d" class="cursor-pointer rounded-full border px-4 py-3 text-sm font-semibold transition" :class="active === d ? 'border-forest bg-forest text-cream' : 'border-forest/25 hover:border-forest'" :aria-pressed="active === d" @click="select(d)" @mouseenter="hoverDest = d" @mouseleave="hoverDest = ''">{{ d }}</button>
         </div>
 
         <div class="mt-8 rounded-3xl bg-forest p-6 text-cream" aria-live="polite" data-reveal>
           <p class="eyebrow text-lime">Nairobi → {{ active }}</p>
           <p class="display mt-2 text-4xl"><span>{{ km.toLocaleString('en') }}</span> <span class="text-xl text-cream/70">km</span></p>
-          <p class="mt-2 text-sm text-cream/70">{{ active === 'Rome' ? 'Premier Veg operations in Italy.' : 'European market.' }} Straight-line distance from our Nairobi base.</p>
+          <p class="mt-2 text-sm text-cream/70">{{ country[active] }}, one of our core markets. Straight-line distance from our Nairobi base.</p>
         </div>
         <p class="mt-4 text-xs text-ink/70">Hover the map, tap a destination, or move your cursor to light up the dots.</p>
       </div>
@@ -38,8 +38,9 @@
 import gsap from 'gsap'
 import map from '~/assets/map-dots.json'
 
-const dests = ['Rome', 'Amsterdam', 'London', 'Madrid', 'Athens']
-const active = ref('Rome'); const hoverDest = ref('')
+const dests = ['Paris', 'Amsterdam', 'Zurich']
+const country: Record<string, string> = { Paris: 'France', Amsterdam: 'Netherlands', Zurich: 'Switzerland' }
+const active = ref('Paris'); const hoverDest = ref('')
 const root = ref<HTMLElement>(); const wrap = ref<HTMLElement>(); const canvas = ref<HTMLCanvasElement>()
 const C = map.cities as Record<string, { xy: number[]; lat: number; lon: number }>
 const all = ['Nairobi', ...dests].map((n) => ({ name: n, px: (C[n].xy[0] / map.w) * 100, py: (C[n].xy[1] / map.h) * 100 }))

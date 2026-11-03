@@ -22,7 +22,7 @@ useHead({ script: [{ type: 'application/ld+json', innerHTML: JSON.stringify({
   '@context': 'https://schema.org', '@type': 'Organization', name: 'Premier Veg Mondo Fresh', alternateName: 'Premier Veg', url: siteUrl + '/', logo: siteUrl + '/img/logo.jpg', image: siteUrl + '/og.jpg',
   description: 'Exporter of fresh fruits, vegetables and herbs from Kenya.', foundingDate: '2022', email: 'info@premierveg.com', telephone: '+393512151931',
   address: { '@type': 'PostalAddress', streetAddress: 'P. O. Box 3468-00200, Kileleshwa Birchwoods', addressLocality: 'Nairobi', addressCountry: 'KE' },
-  areaServed: ['Europe', 'Worldwide']
+  areaServed: ['France', 'Netherlands', 'Switzerland']
 }) }] })
 onMounted(async () => {
   load(); watch(items, save, { deep: true })

@@ -1,7 +1,8 @@
 // Content taken from premierveg.com (copy lightly cleaned for typos only).
-// Product.specs (shelfLife / season / sizes) are intentionally empty: fill them in once the client supplies real data.
+// Product.specs (shelfLife / sizes) are still empty: fill them in once the client supplies real data. Supply is year-round for all products (confirmed by the client), so there is no seasonality calendar.
+// Markets (confirmed): France, Netherlands, Switzerland. Certifications (confirmed): GlobalG.A.P. and SMETA.
 // Anything left empty shows as "On request" in the product popup and the PDF spec sheet.
-export type Product = { code: string; name: string; cat: 'Vegetables' | 'Fruits' | 'Herbs'; blurb: string; color: string; img: string; pack: string[]; specs?: { shelfLife?: string; season?: string; sizes?: string } }
+export type Product = { code: string; name: string; cat: 'Vegetables' | 'Fruits' | 'Herbs'; blurb: string; color: string; img: string; pack: string[]; specs?: { shelfLife?: string; sizes?: string } }
 export type Pack = { id: string; code: string; name: string; note: string; kind: 'Carton' | 'Top cover' | 'Punnet'; img: string; product?: string }
 export type Member = { name: string; role: string; email: string; phone: string; quote?: string; photo?: string; bio: string[] }
 
@@ -53,6 +54,12 @@ export const team: Member[] = [
     bio: ['Fidelis is our Accountant. Her role is managing financial records, tracking transactions, and supporting budgeting and reporting, helping to maintain financial stability and transparency within our organization.'] },
   { name: 'Susan Ayoo', role: 'Quality Assurance', email: 'qualityassurance@premierveg.com', phone: '+254 707 498 237',
     bio: ['Susan Ayoo is our Quality Assurance Officer.'] }
+]
+
+export const markets = ['France', 'Netherlands', 'Switzerland']
+export const certifications = [
+  { name: 'GlobalG.A.P.', what: 'Good agricultural practice', d: 'Independent certification of safe, sustainable farming practices, from the farm through to harvest.' },
+  { name: 'SMETA', what: 'Ethical trade audit', d: 'Sedex Members Ethical Trade Audit: responsible labour standards, health and safety, environment and business ethics.' }
 ]
 
 export const steps = [

@@ -14,7 +14,6 @@ export const productSpecRows = (p: Product): SpecRow[] => {
     { label: 'Supply', value: 'Year-round', known: true },
     { label: 'Packaging', value: names.length ? names.join(', ') : on, known: !!names.length },
     { label: 'Pack sizes', value: p.specs?.sizes || on, known: !!p.specs?.sizes },
-    { label: 'Season', value: p.specs?.season || on, known: !!p.specs?.season },
     { label: 'Shelf life', value: p.specs?.shelfLife || on, known: !!p.specs?.shelfLife }
   ]
 }
