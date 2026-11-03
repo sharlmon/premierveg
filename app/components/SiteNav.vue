@@ -22,7 +22,7 @@
 
       <button class="btn btn-lime ml-1 hidden !px-5 !py-2.5 text-[13px] lg:inline-flex" @click="quote">Get a quote</button>
 
-      <div class="relative ml-auto lg:ml-0">
+      <div class="relative ml-auto lg:hidden">
         <button ref="btn" class="group grid h-11 w-11 cursor-pointer place-items-center rounded-full bg-white/10 text-cream ring-1 ring-white/10 transition hover:bg-leaf" :aria-expanded="open" aria-controls="quick-menu" aria-label="Menu" @click="open = !open">
           <svg v-if="!open" class="h-5 w-5 transition-transform duration-300 group-hover:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="4" y="13.500" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="13.500" width="6.500" height="6.500" rx="1.500"/></svg>
           <svg v-else class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>

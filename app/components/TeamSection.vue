@@ -1,17 +1,18 @@
 <template>
   <div>
     <!-- header -->
-    <section class="bg-[#DCE5DA] pb-16 pt-36 md:pb-24 md:pt-44">
-      <div class="mx-auto max-w-7xl px-5 md:px-10">
+    <section class="team-hero relative overflow-hidden bg-[#DCE5DA] pb-16 pt-36 md:pb-24 md:pt-44">
+      <img :src="asset('img/field-team.webp')" alt="" width="1200" height="1600" fetchpriority="low" decoding="async" class="team-hero-img pointer-events-none absolute inset-y-0 right-0 h-full w-full object-cover opacity-25 lg:w-[52%] lg:opacity-100" />
+      <div class="relative mx-auto max-w-7xl px-5 md:px-10">
         <p class="mb-8 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs font-semibold" data-reveal><span class="h-1.5 w-1.5 rounded-full bg-forest" /> Team at Premier Veg</p>
         <div class="grid items-end gap-10 lg:grid-cols-12">
           <component :is="lead ? 'h1' : 'h2'" class="display text-4xl md:text-6xl lg:col-span-8 lg:text-7xl" data-lines><span class="line-mask"><span class="line-inner">The people behind</span></span><span class="line-mask"><span class="line-inner italic text-leaf">your produce.</span></span></component>
-          <p class="max-w-sm text-ink/70 lg:col-span-4 lg:justify-self-end" data-reveal>A team with a strong commitment to exceptional customer service, so every client is professionally supported and well served.</p>
+          <p class="max-w-md text-ink/70 lg:col-span-12 lg:-mt-3" data-reveal>A team with a strong commitment to exceptional customer service, so every client is professionally supported and well served.</p>
         </div>
         <dl class="mt-14 grid grid-cols-3 gap-4 border-t border-forest/20 pt-8 md:max-w-2xl" data-stagger>
           <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><CountUp :to="6" /></dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Team members</dt></div>
           <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><CountUp :to="17" /><span class="text-leaf">+</span></dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Years of produce experience (our director)</dt></div>
-          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl">2</dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Countries: Kenya &amp; Italy</dt></div>
+          <div class="reveal"><dd class="display text-4xl text-forest md:text-5xl"><CountUp :to="2" /></dd><dt class="mt-1 text-xs text-ink/70 md:text-sm">Countries: Kenya &amp; Italy</dt></div>
         </dl>
       </div>
     </section>
@@ -89,6 +90,8 @@ const copied = ref(''); let t: ReturnType<typeof setTimeout>
 const copy = async (v: string) => { try { await navigator.clipboard.writeText(v) } catch { window.location.href = 'mailto:' + v } copied.value = v; clearTimeout(t); t = setTimeout(() => (copied.value = ''), 1800) }
 </script>
 <style>
+.team-hero-img { object-position: 50% 22%; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 38%); mask-image: linear-gradient(90deg, transparent 0%, #000 38%); }
+@media (max-width: 1023px) { .team-hero-img { -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent); mask-image: linear-gradient(180deg, #000 30%, transparent); } }
 .pv { opacity: 0; transform: scale(1.06); transition: opacity .6s ease, transform 1.1s cubic-bezier(.2,.8,.2,1); }
 .pv.is-on { opacity: 1; transform: scale(1); }
 @media (prefers-reduced-motion: reduce) { .pv { transition: none; } }
