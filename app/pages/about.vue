@@ -14,6 +14,17 @@
       </div>
     </section>
     <section class="pb-28 md:pb-36">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-10 lg:grid-cols-12">
+        <button class="group order-2 block w-full max-w-md cursor-zoom-in overflow-hidden rounded-[2rem] bg-forest lg:order-1 lg:col-span-5" aria-label="View the field team photo larger" @click="open({ type: 'lightbox', index: gallery.length - 1, items: gallery })"><img :src="asset('img/field-team.webp')" alt="Four Premier Veg team members in white lab coats standing in a field" width="1000" height="1333" loading="lazy" decoding="async" class="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-105" /></button>
+        <div class="order-1 lg:order-2 lg:col-span-7 lg:pl-8">
+          <p class="eyebrow mb-6 text-leaf" data-reveal>In the field</p>
+          <h2 class="display text-3xl md:text-5xl" data-lines><span class="line-mask"><span class="line-inner">Quality starts</span></span><span class="line-mask"><span class="line-inner italic text-leaf">on the farm.</span></span></h2>
+          <p class="mt-6 max-w-lg text-lg text-ink/75" data-reveal>Our team works hand in hand with partner farms, supporting compliance and agronomy so that produce meets quality, safety and regulatory standards long before it reaches the pack-house.</p>
+          <NuxtLink to="/team" class="btn btn-dark mt-8" data-magnetic>Meet the team <span aria-hidden="true">→</span></NuxtLink>
+        </div>
+      </div>
+    </section>
+    <section class="pb-28 md:pb-36">
       <div class="mx-auto max-w-7xl px-5 md:px-10">
         <p class="eyebrow mb-6 text-leaf" data-reveal>Packhouse</p>
         <div class="grid gap-10 lg:grid-cols-12">
