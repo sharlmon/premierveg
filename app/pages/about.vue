@@ -34,7 +34,7 @@
       <div class="mx-auto max-w-7xl px-5 md:px-10">
         <p class="eyebrow mb-6 text-leaf" data-reveal>What our clients say</p>
         <figure class="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-forest text-cream md:grid-cols-5" data-reveal>
-          <img :src="asset('img/about/chef-karmani.jpg')" alt="Chef Karmani" loading="lazy" class="h-full max-h-96 w-full object-cover md:col-span-2" />
+          <img :src="asset('img/about/chef-karmani.jpg')" alt="Chef Karmani" loading="lazy" decoding="async" class="h-full max-h-96 w-full object-cover md:col-span-2" />
           <div class="p-8 md:col-span-3 md:p-12">
             <blockquote class="display text-2xl md:text-4xl">“I trust ingredients from Premier Veg in my dishes.”</blockquote>
             <figcaption class="eyebrow mt-5 text-lime">Chef Karmani</figcaption>

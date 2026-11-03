@@ -22,7 +22,7 @@ export const products: Product[] = [
 export const packages: Pack[] = [
   { id: 'CHV001', code: 'CHV001', name: 'Haricot verts carton', note: 'This carton is meant to contain haricot verts.', kind: 'Carton', img: 'img/packages/chv001.webp', product: 'Haricot Verts' },
   { id: 'CXF001-T', code: 'CXF001', name: 'Extra fine beans', note: 'Top cover for extra fine beans.', kind: 'Top cover', img: 'img/packages/cxf001-top.webp', product: 'Haricot Verts' },
-  { id: 'CXF001-C', code: 'CXF001', name: 'Extra fine beans', note: 'This holds 12 × 250 g extra fine beans.', kind: 'Carton', img: 'img/packages/cxf001-carton.png', product: 'Haricot Verts' },
+  { id: 'CXF001-C', code: 'CXF001', name: 'Extra fine beans', note: 'This holds 12 × 250 g extra fine beans.', kind: 'Carton', img: 'img/packages/cxf001-carton.webp', product: 'Haricot Verts' },
   { id: 'CMT001-T', code: 'CMT001', name: 'Mangetouts', note: 'Top cover for mangetouts.', kind: 'Top cover', img: 'img/packages/cmt001-top.webp', product: 'Mangetouts' },
   { id: 'CMT001-C', code: 'CMT001', name: 'Mangetouts', note: 'This holds 12 × 250 g mangetouts.', kind: 'Carton', img: 'img/packages/cmt001-carton.webp', product: 'Mangetouts' },
   { id: 'PBC001', code: 'PBC001', name: 'Baby corn', note: 'Punnet of baby corn.', kind: 'Punnet', img: 'img/packages/pbc001.webp' },
@@ -80,6 +80,6 @@ export const gallery = [
   { src: 'img/hero-workers.webp', alt: 'Premier Veg team sorting haricot verts', cap: 'Our team sorting and packing haricot verts', tag: 'Our team' },
   { src: 'img/beans-bunch.webp', alt: 'Freshly harvested haricot verts', cap: 'Haricot verts, freshly harvested', tag: 'Haricot verts' },
   { src: 'img/snow-peas.webp', alt: 'Tray of snow peas', cap: 'Mangetouts, packed in retail trays', tag: 'Mangetouts' },
-  { src: 'img/packages/cxf001-carton.png', alt: 'Extra fine beans carton, 12 × 250 g', cap: 'Extra fine beans carton, 12 × 250 g', tag: 'Packaging', contain: true },
+  { src: 'img/packages/cxf001-carton.webp', alt: 'Extra fine beans carton, 12 × 250 g', cap: 'Extra fine beans carton, 12 × 250 g', tag: 'Packaging', contain: true },
   { src: 'img/sugar-closeup.webp', alt: 'Close-up of sugar snap peas', cap: 'Sugar snaps up close', tag: 'Sugar snaps' }
 ]

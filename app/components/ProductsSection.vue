@@ -23,7 +23,7 @@
           <div class="relative grid aspect-[4/3] place-items-center bg-white p-6">
             <span class="eyebrow absolute left-4 top-4 rounded-full px-3 py-1.5" :style="{ background: p.color, color: ink(p.color) }">{{ p.cat }}</span>
             <span class="absolute right-4 top-4 font-mono text-xs text-forest/70">{{ p.code }}</span>
-            <img :src="asset(p.img)" :alt="p.name" loading="lazy" class="depth max-h-40 w-full object-contain" />
+            <img :src="asset(p.img)" :alt="p.name" loading="lazy" decoding="async" class="depth max-h-40 w-full object-contain" />
           </div>
           <div class="flex items-center justify-between gap-3 px-6 py-5 transition-[padding] duration-300 group-hover:py-6" :style="{ background: p.color, color: ink(p.color) }"><h3 class="display text-3xl">{{ p.name }}</h3><span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/25 transition group-hover:bg-white group-hover:text-forest" aria-hidden="true">+</span></div>
         </button>

@@ -25,7 +25,7 @@
       <!-- stage panel -->
       <div class="mt-10 grid overflow-hidden rounded-[2rem] bg-forest text-cream shadow-2xl lg:grid-cols-2" role="tabpanel" aria-live="polite">
         <div class="relative min-h-[16rem] sm:min-h-[22rem]" :class="stages[sel].contain ? 'bg-white' : 'bg-leaf'">
-          <img v-for="(st, i) in stages" :key="st.img" :src="asset(st.img)" :alt="st.alt" loading="lazy" class="jn-img absolute inset-0 h-full w-full" :class="[i === sel ? 'is-on' : '', st.contain ? 'object-contain p-8' : 'object-cover']" />
+          <img v-for="(st, i) in stages" :key="st.img" :src="asset(st.img)" :alt="st.alt" loading="lazy" decoding="async" class="jn-img absolute inset-0 h-full w-full" :class="[i === sel ? 'is-on' : '', st.contain ? 'object-contain p-8' : 'object-cover']" />
           <span class="eyebrow absolute left-5 top-5 rounded-full bg-forest/85 px-3 py-1.5 text-lime backdrop-blur">Stage {{ steps[sel].n }} / 0{{ steps.length }}</span>
         </div>
         <div class="flex flex-col justify-center p-8 md:p-12">
@@ -49,7 +49,7 @@ const stages = [
   { img: 'img/beans-bunch.webp', alt: 'Freshly harvested haricot verts' },
   { img: 'img/beans-tray.webp', alt: 'Graded fine green beans in a tray' },
   { img: 'img/about/packhouse.jpg', alt: 'The Premier Veg pack-house team' },
-  { img: 'img/packages/cxf001-carton.png', alt: 'Export carton, 12 × 250 g', contain: true }
+  { img: 'img/packages/cxf001-carton.webp', alt: 'Export carton, 12 × 250 g', contain: true }
 ]
 const sel = ref(0)
 const root = ref<HTMLElement>()

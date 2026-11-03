@@ -28,7 +28,7 @@
 <script setup lang="ts">
 const asset = useAsset()
 const cartons = [
-  { name: 'Extra fine beans', code: 'CXF001', lid: 'img/packages/cxf001-top.webp', tray: 'img/packages/cxf001-carton.png', note: 'Holds 12 × 250 g extra fine beans.' },
+  { name: 'Extra fine beans', code: 'CXF001', lid: 'img/packages/cxf001-top.webp', tray: 'img/packages/cxf001-carton.webp', note: 'Holds 12 × 250 g extra fine beans.' },
   { name: 'Mangetouts', code: 'CMT001', lid: 'img/packages/cmt001-top.webp', tray: 'img/packages/cmt001-carton.webp', note: 'Holds 12 × 250 g mangetouts.' }
 ]
 const sel = ref(0); const v = ref(0)

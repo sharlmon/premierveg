@@ -52,6 +52,8 @@ const slides = [
   { src: 'img/hero-workers-2.webp', pos: 'object-[50%_60%]' }
 ]
 const cur = ref(0)
+// start downloading the first hero photo as early as possible (same srcset the <img> uses, so it is not fetched twice)
+useHead({ link: [{ rel: 'preload', as: 'image', href: asset(slides[0].src), imagesrcset: asset(slides[0].small!) + ' 900w, ' + asset(slides[0].src) + ' 2000w', imagesizes: '100vw', fetchpriority: 'high' }] })
 let timer: ReturnType<typeof setInterval> | undefined
 const start = () => { stop(); if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; timer = setInterval(() => { if (!document.documentElement.classList.contains('a11y-still')) cur.value = (cur.value + 1) % slides.length }, 7000) }
 const stop = () => timer && clearInterval(timer)

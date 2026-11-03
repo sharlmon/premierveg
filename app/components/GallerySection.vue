@@ -16,7 +16,7 @@
       <ul class="mt-12 flex h-[38rem] flex-col gap-2.5 md:h-[34rem] md:flex-row md:gap-3" role="list">
         <li v-for="(g, i) in gallery" :key="g.src" class="gl-panel relative min-h-0 min-w-0 overflow-hidden rounded-[1.5rem]" :class="act === i ? 'is-act' : ''">
           <button class="absolute inset-0 block h-full w-full cursor-pointer text-left" :class="g.contain ? 'bg-white' : 'bg-forest'" :aria-label="g.cap + '. Open larger'" :aria-current="act === i" @pointerenter="($event as PointerEvent).pointerType === 'mouse' && (act = i)" @focus="($event.target as HTMLElement).matches(':focus-visible') && (act = i)" @click="pick($event, i)">
-            <img :src="asset(g.src)" :alt="g.alt" loading="lazy" class="gl-img absolute inset-0 h-full w-full" :class="g.contain ? 'object-contain p-6' : 'object-cover'" />
+            <img :src="asset(g.src)" :alt="g.alt" loading="lazy" decoding="async" class="gl-img absolute inset-0 h-full w-full" :class="g.contain ? 'object-contain p-6' : 'object-cover'" />
             <span class="absolute inset-0 bg-gradient-to-t from-forest/85 via-forest/10 to-transparent transition-opacity duration-500" :class="act === i ? 'opacity-100' : 'opacity-50'" />
             <!-- collapsed label -->
             <span class="gl-vert eyebrow absolute left-1/2 top-5 hidden -translate-x-1/2 whitespace-nowrap text-cream md:block" :class="act === i ? 'opacity-0' : 'opacity-90'">0{{ i + 1 }} · {{ g.tag }}</span>

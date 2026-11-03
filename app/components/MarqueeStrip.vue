@@ -4,13 +4,13 @@
       <!-- back ribbon -->
       <div class="absolute inset-x-[-6%] top-1/2 -translate-y-1/2 rotate-[1.7deg] overflow-hidden bg-lime py-4 text-forest shadow-xl md:py-5">
         <div :ref="(el) => (tracks[0] = el as HTMLElement)" class="flex w-max will-change-transform">
-          <template v-for="n in 2" :key="n"><button v-for="p in items" :key="p.code + n" class="rib" :aria-hidden="n === 2" :tabindex="n === 2 ? -1 : 0" @click="open({ type: 'product', item: p })"><span class="rib-dot" :style="{ background: '#fff', boxShadow: 'inset 0 0 0 3px ' + p.color }"><img :src="asset(p.img)" alt="" loading="lazy" class="h-full w-full object-contain" /></span><span>{{ p.name }}</span><i class="rib-sep" aria-hidden="true">✺</i></button></template>
+          <template v-for="n in 2" :key="n"><button v-for="p in items" :key="p.code + n" class="rib" :aria-hidden="n === 2" :tabindex="n === 2 ? -1 : 0" @click="open({ type: 'product', item: p })"><span class="rib-dot" :style="{ background: '#fff', boxShadow: 'inset 0 0 0 3px ' + p.color }"><img :src="asset(p.img)" alt="" loading="lazy" decoding="async" class="h-full w-full object-contain" /></span><span>{{ p.name }}</span><i class="rib-sep" aria-hidden="true">✺</i></button></template>
         </div>
       </div>
       <!-- front ribbon -->
       <div class="absolute inset-x-[-6%] top-1/2 -translate-y-1/2 -rotate-[1.7deg] overflow-hidden border-y-2 border-lime bg-forest py-4 text-cream shadow-2xl md:py-5">
         <div :ref="(el) => (tracks[1] = el as HTMLElement)" class="flex w-max will-change-transform">
-          <template v-for="n in 2" :key="n"><button v-for="p in front" :key="p.code + n" class="rib" :aria-hidden="n === 2" :tabindex="n === 2 ? -1 : 0" @click="open({ type: 'product', item: p })"><span class="rib-dot" :style="{ background: '#fff', boxShadow: 'inset 0 0 0 3px ' + p.color }"><img :src="asset(p.img)" alt="" loading="lazy" class="h-full w-full object-contain" /></span><span>{{ p.name }}</span><i class="rib-sep text-lime" aria-hidden="true">✦</i></button></template>
+          <template v-for="n in 2" :key="n"><button v-for="p in front" :key="p.code + n" class="rib" :aria-hidden="n === 2" :tabindex="n === 2 ? -1 : 0" @click="open({ type: 'product', item: p })"><span class="rib-dot" :style="{ background: '#fff', boxShadow: 'inset 0 0 0 3px ' + p.color }"><img :src="asset(p.img)" alt="" loading="lazy" decoding="async" class="h-full w-full object-contain" /></span><span>{{ p.name }}</span><i class="rib-sep text-lime" aria-hidden="true">✦</i></button></template>
         </div>
       </div>
     </div>

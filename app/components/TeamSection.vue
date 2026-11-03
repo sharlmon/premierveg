@@ -24,7 +24,7 @@
             <button class="row group relative flex w-full cursor-pointer items-center gap-4 py-5 text-left md:gap-6 md:py-7" :aria-label="'Read about ' + m.name" @mouseenter="sel = i" @focus="sel = i" @click="open({ type: 'team', item: m })">
               <span class="font-mono text-xs text-forest/70">0{{ i + 1 }}</span>
               <span class="avatar h-14 w-14 shrink-0 overflow-hidden rounded-full lg:hidden" :class="['bg-forest', 'bg-leaf', 'bg-tomato'][i % 3]">
-                <img v-if="m.photo" :src="asset(m.photo)" :alt="''" loading="lazy" class="h-full w-full object-cover object-top" />
+                <img v-if="m.photo" :src="asset(m.photo)" :alt="''" loading="lazy" decoding="async" class="h-full w-full object-cover object-top" />
                 <span v-else class="display grid h-full w-full place-items-center text-xl text-cream">{{ initials(m.name) }}</span>
               </span>
               <span class="min-w-0 flex-1">
@@ -41,7 +41,7 @@
           <div class="sticky top-28">
             <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-forest shadow-2xl">
               <div v-for="(m, i) in team" :key="m.name" class="pv absolute inset-0" :class="sel === i ? 'is-on' : ''" :style="!m.photo ? { background: ['#0E2A1C', '#1F5B3A', '#FF5A36'][i % 3] } : {}">
-                <img v-if="m.photo" :src="asset(m.photo)" :alt="m.name" class="h-full w-full object-cover object-top" loading="lazy" />
+                <img v-if="m.photo" :src="asset(m.photo)" :alt="m.name" class="h-full w-full object-cover object-top" loading="lazy" decoding="async" />
                 <span v-else class="display grid h-full w-full place-items-center text-[9rem] text-cream/90">{{ initials(m.name) }}</span>
               </div>
               <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest via-forest/20 to-transparent" />

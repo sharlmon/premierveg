@@ -4,7 +4,7 @@
       <!-- floating product tiles -->
       <div class="pointer-events-none absolute inset-0 hidden md:block" aria-hidden="true">
         <div v-for="(t, i) in tiles" :key="t.img" :ref="(el) => (els[i] = el as HTMLElement)" class="absolute grid place-items-center rounded-3xl bg-white p-3 shadow-2xl" :style="{ left: t.x, top: t.y, width: t.w + 'rem', height: t.w + 'rem', transform: `rotate(${t.r}deg)` }">
-          <img :src="asset(t.img)" alt="" loading="lazy" class="h-full w-full object-contain" />
+          <img :src="asset(t.img)" alt="" loading="lazy" decoding="async" class="h-full w-full object-contain" />
         </div>
       </div>
       <div class="relative mx-auto max-w-3xl text-center">
