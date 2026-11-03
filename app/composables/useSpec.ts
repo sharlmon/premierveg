@@ -68,6 +68,6 @@ export const downloadSpecSheet = async (p: Product, asset: (s: string) => string
   doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(14, 42, 28); doc.text('Request a quote', M, 273)
   doc.setFont('helvetica', 'normal'); doc.setFontSize(10)
   doc.text('info@premierveg.com  ·  +39 351 215 1931', M, 280)
-  doc.text('P. O. Box 3468-00200, Kileleshwa Birchwoods, Nairobi, Kenya', M, 286)
+  doc.text('Trystar Go Down, Airport North Road, P. O. Box 3468-00200, Nairobi, Kenya', M, 286)
   doc.save(`Premier-Veg-${p.name.replace(/\s+/g, '-')}-spec-sheet.pdf`)
 }

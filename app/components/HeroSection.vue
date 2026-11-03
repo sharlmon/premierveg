@@ -48,7 +48,6 @@
 const asset = useAsset(); const { open } = useModal()
 const slides = [
   { src: 'img/hero-workers.webp', small: 'img/hero-workers-900.webp', pos: 'object-[50%_70%]' },
-  { src: 'img/hero-workers-2.webp', pos: 'object-[50%_60%]' },
   { src: 'img/beans-bunch.webp', pos: 'object-[50%_55%]' }
 ]
 const cur = ref(0)

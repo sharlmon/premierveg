@@ -19,7 +19,7 @@
             <p><a href="mailto:info@premierveg.com" class="tap hover:text-lime">info@premierveg.com</a></p>
             <p class="mt-2"><a href="tel:+393512151931" class="tap hover:text-lime">+39 351 215 1931</a></p>
             <p class="mt-2"><a :href="wa('Hello Premier Veg, I would like to enquire about your fresh produce.')" target="_blank" rel="noopener" class="hover:text-lime">WhatsApp ↗</a></p>
-            <p class="mt-4 leading-relaxed text-cream/70">Premier Veg Mondo Fresh<br />P. O. Box 3468-00200, Kileleshwa Birchwoods<br />Nairobi, Kenya</p>
+            <p class="mt-4 leading-relaxed text-cream/70">Premier Veg Mondo Fresh<br />Trystar Go Down, Airport North Road<br />P. O. Box 3468-00200, Nairobi, Kenya</p>
           </div>
         </div>
 
