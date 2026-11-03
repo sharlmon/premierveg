@@ -3,7 +3,7 @@
     <div class="relative isolate h-[calc(100svh-1.25rem)] min-h-[40rem] overflow-hidden rounded-[1.75rem] bg-forest text-cream sm:h-[calc(100svh-1.5rem)] sm:rounded-[2.25rem]">
       <!-- photo -->
       <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-        <img v-for="(sl, i) in slides" :key="sl.src" :src="asset(sl.src)" :srcset="sl.small ? asset(sl.small) + ' 900w, ' + asset(sl.src) + ' 2000w' : undefined" sizes="100vw" :alt="''" class="hero-bg hero-slide absolute inset-0 h-full w-full object-cover" :class="[sl.pos, i === cur ? 'is-on' : '']" :fetchpriority="i === 0 ? 'high' : 'auto'" />
+        <img v-for="(sl, i) in slides" :key="sl.src" :src="asset(sl.src)" :srcset="sl.small ? asset(sl.small) + ' 900w, ' + asset(sl.src) + ' 2000w' : undefined" sizes="100vw" :alt="''" class="hero-bg hero-slide absolute inset-0 h-full w-full object-cover" :class="[sl.pos, i === cur ? 'is-on' : '']" :fetchpriority="i === 0 ? 'high' : 'low'" />
         <div class="absolute inset-0 bg-gradient-to-br from-forest/30 via-transparent to-forest/20" />
         <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-forest/45" />
         <div class="absolute inset-0 bg-gradient-to-l from-forest/80 via-forest/30 to-transparent" />
@@ -49,7 +49,11 @@
 const asset = useAsset(); const { open } = useModal()
 const slides = [
   { src: 'img/hero-workers.webp', small: 'img/hero-workers-900.webp', pos: 'object-[50%_70%]' },
-  { src: 'img/hero-workers-2.webp', pos: 'object-[50%_60%]' }
+  { src: 'img/hero-workers-2.webp', pos: 'object-[50%_60%]' },
+  { src: 'img/export-haricot-pallet.webp', pos: 'object-[50%_45%]' },
+  { src: 'img/field-team.webp', pos: 'object-[50%_25%]' },
+  { src: 'img/beans-bunch.webp', pos: 'object-[50%_55%]' },
+  { src: 'img/sugar-closeup.webp', pos: 'object-[50%_50%]' }
 ]
 const cur = ref(0)
 // start downloading the first hero photo as early as possible (same srcset the <img> uses, so it is not fetched twice)
