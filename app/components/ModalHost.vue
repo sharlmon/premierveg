@@ -42,7 +42,7 @@
 
           <!-- PACKAGE -->
           <div v-else-if="state.type === 'package'" class="grid sm:grid-cols-2">
-            <div class="grid min-h-[16rem] place-items-center bg-white p-6 sm:min-h-[26rem]"><img :src="asset(state.item.img)" :alt="state.item.name + ' packaging'" class="max-h-72 w-full object-contain" /></div>
+            <div class="grid min-h-[16rem] place-items-center bg-white p-6 sm:min-h-[26rem]"><img :src="asset(state.item.photo || state.item.img)" :alt="state.item.name + ' packaging'" class="max-h-72 w-full object-contain" /></div>
             <div class="flex flex-col p-7 sm:p-9">
               <p class="eyebrow text-leaf">{{ state.item.kind }} · {{ state.item.code }}</p>
               <h3 class="display mt-3 text-3xl md:text-4xl">{{ state.item.name }}</h3>

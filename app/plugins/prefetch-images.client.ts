@@ -9,7 +9,7 @@ export default defineNuxtPlugin(() => {
   const urls = [...new Set([
     ...products.map((p) => p.img), ...gallery.map((g) => g.src), ...categories.flatMap((c) => c.imgs),
     'img/beans-bunch.webp', 'img/beans-tray.webp', 'img/snow-peas.webp', 'img/sugar-closeup.webp', 'img/sugar-snaps.webp', 'img/about/packhouse.jpg',
-    ...packages.map((p) => p.img), ...team.map((m) => m.photo).filter(Boolean) as string[], 'img/about/chef-karmani.jpg'
+    ...packages.flatMap((p) => [p.img, p.photo].filter(Boolean) as string[]), ...team.map((m) => m.photo).filter(Boolean) as string[], 'img/about/chef-karmani.jpg'
   ])].filter((u) => !/hero-workers/.test(u))
   const idle = (fn: () => void) => ('requestIdleCallback' in window ? (window as any).requestIdleCallback(fn, { timeout: 2000 }) : setTimeout(fn, 300))
   const run = () => {
