@@ -28,8 +28,11 @@
             <span v-else class="flex flex-wrap gap-1.5"><span v-for="n in f.sel" :key="n" class="chip">{{ n }}<span class="chip-x" role="button" :aria-label="'Remove ' + n" @click.stop="toggle(n)">✕</span></span></span>
             <svg class="pick-caret" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 5 5 5-5" /></svg>
           </button>
-          <Transition name="pickp">
-            <div v-if="pickOpen" class="pick-panel" role="listbox" aria-multiselectable="true" aria-labelledby="pi-label" @keydown.esc="pickOpen = false">
+          <Teleport to="body" :disabled="!sheet">
+          <div v-if="pickOpen && sheet" class="pick-backdrop" aria-hidden="true" @click="pickOpen = false" />
+          <Transition :name="sheet ? 'picks' : 'pickp'">
+            <div v-if="pickOpen" ref="panel" class="pick-panel" :class="{ 'is-sheet': sheet }" role="listbox" aria-multiselectable="true" aria-labelledby="pi-label" @keydown.esc="pickOpen = false">
+              <div v-if="sheet" class="pick-grab" aria-hidden="true" /><p v-if="sheet" class="px-3 pb-1 pt-1 text-sm font-semibold">Products of interest</p>
               <template v-for="g in groups" :key="g.cat">
                 <p class="pick-cat">{{ g.cat }}</p>
                 <button v-for="n in g.names" :key="n" type="button" role="option" :aria-selected="f.sel.includes(n)" class="pick-opt" :class="{ on: f.sel.includes(n) }" @click="toggle(n)">
@@ -39,6 +42,7 @@
               <div class="pick-foot"><button type="button" class="text-xs font-semibold text-ink/60 underline-offset-4 hover:underline" @click="f.sel = []">Clear</button><button type="button" class="pick-done" @click="pickOpen = false">Done{{ f.sel.length ? ' (' + f.sel.length + ')' : '' }}</button></div>
             </div>
           </Transition>
+          </Teleport>
         </div>
         <label class="block text-sm font-semibold sm:col-span-2">Message <span v-if="items.length" class="font-normal text-ink/70">(optional)</span><textarea v-model="f.msg" rows="3" :required="!items.length" class="field" placeholder="Quantities, destination, timing…" /></label>
         <!-- honeypot: hidden from people, bots fill it in -->
@@ -77,11 +81,15 @@ watch(enquiry, (v) => { if (v) f.sel = [v] }, { immediate: true })
 watch(() => props.product, (v) => { if (v) f.sel = [v] })
 // themed multi-select for the products of interest
 const groups = (['Vegetables', 'Fruits', 'Herbs'] as const).map((cat) => ({ cat, names: products.filter((p) => p.cat === cat).map((p) => p.name) }))
-const pickOpen = ref(false); const pick = ref<HTMLElement>()
+const pickOpen = ref(false); const pick = ref<HTMLElement>(); const panel = ref<HTMLElement>()
+// on phones the list opens as a bottom sheet so it is never cut off by the screen edge
+const sheet = ref(false)
 const toggle = (n: string) => { f.sel = f.sel.includes(n) ? f.sel.filter((x) => x !== n) : [...f.sel, n] }
-const outside = (e: PointerEvent) => { if (pickOpen.value && pick.value && !pick.value.contains(e.target as Node)) pickOpen.value = false }
-onMounted(() => document.addEventListener('pointerdown', outside))
-onBeforeUnmount(() => document.removeEventListener('pointerdown', outside))
+const outside = (e: PointerEvent) => { const t = e.target as Node; if (pickOpen.value && !sheet.value && pick.value && !pick.value.contains(t) && !panel.value?.contains(t)) pickOpen.value = false }
+const mq = typeof window !== 'undefined' ? window.matchMedia('(max-width: 639px)') : null
+const syncSheet = () => { sheet.value = !!mq?.matches }
+onMounted(() => { syncSheet(); mq?.addEventListener('change', syncSheet); document.addEventListener('pointerdown', outside) })
+onBeforeUnmount(() => { document.removeEventListener('pointerdown', outside); mq?.removeEventListener('change', syncSheet) })
 const hint = ref('')
 const via = ref<'mail' | 'wa'>('mail'); const waUrl = ref('')
 const sent = ref(false); const sending = ref(false); const error = ref(''); const done = ref<HTMLElement>()
@@ -169,4 +177,15 @@ const burst = () => {
 .pick-done { border-radius: 9999px; background: #C6F04A; color: #0E2A1C; padding: .45rem 1.1rem; font-size: .8rem; font-weight: 700; cursor: pointer; }
 .pickp-enter-active { transition: opacity .18s, transform .22s cubic-bezier(.2,.9,.2,1); } .pickp-leave-active { transition: opacity .12s; }
 .pickp-enter-from { opacity: 0; transform: translateY(-6px) scale(.98); } .pickp-leave-to { opacity: 0; }
+
+.pick-backdrop { position: fixed; inset: 0; z-index: 199; background: rgba(5,18,11,.55); }
+.pick-panel.is-sheet { position: fixed; left: 0; right: 0; top: auto; bottom: 0; z-index: 200; max-height: 74svh; border-radius: 1.6rem 1.6rem 0 0; padding: .4rem .75rem calc(.5rem + env(safe-area-inset-bottom)); border-bottom: 0; overscroll-behavior: contain; }
+.pick-panel.is-sheet .pick-opt { padding: .85rem .8rem; font-size: 1rem; }
+.pick-panel.is-sheet .pick-box { width: 1.4rem; height: 1.4rem; }
+.pick-panel.is-sheet .pick-foot { bottom: -.1rem; padding-bottom: .4rem; }
+.pick-panel.is-sheet .pick-done { padding: .7rem 1.6rem; font-size: .95rem; }
+.pick-grab { width: 2.6rem; height: .3rem; margin: .2rem auto .6rem; border-radius: 9999px; background: rgba(245,241,230,.3); }
+.picks-enter-active { transition: transform .3s cubic-bezier(.2,.9,.2,1); } .picks-leave-active { transition: transform .2s ease-in; }
+.picks-enter-from, .picks-leave-to { transform: translateY(100%); }
+.chip-x { width: 1.35rem; height: 1.35rem; }
 </style>
