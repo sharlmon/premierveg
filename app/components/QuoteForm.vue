@@ -21,9 +21,25 @@
         <label class="block text-sm font-semibold">Name<input v-model="f.name" required autocomplete="name" class="field" /></label>
         <label class="block text-sm font-semibold">Company<input v-model="f.company" autocomplete="organization" class="field" /></label>
         <label class="block text-sm font-semibold sm:col-span-2">Email<input v-model="f.email" type="email" required autocomplete="email" class="field" /></label>
-        <label v-if="!items.length" class="block text-sm font-semibold sm:col-span-2">Product of interest
-          <select v-model="f.product" class="field"><option value="">Select…</option><option v-for="p in products" :key="p.code">{{ p.name }}</option></select>
-        </label>
+        <div v-if="!items.length" ref="pick" class="relative sm:col-span-2">
+          <span id="pi-label" class="block text-sm font-semibold">Products of interest <span class="font-normal text-ink/60">(choose one or more)</span></span>
+          <button type="button" class="field pick-btn" :class="{ 'is-open': pickOpen }" aria-haspopup="listbox" :aria-expanded="pickOpen" aria-labelledby="pi-label" @click="pickOpen = !pickOpen" @keydown.esc="pickOpen = false">
+            <span v-if="!f.sel.length" class="text-ink/45">Select products…</span>
+            <span v-else class="flex flex-wrap gap-1.5"><span v-for="n in f.sel" :key="n" class="chip">{{ n }}<span class="chip-x" role="button" :aria-label="'Remove ' + n" @click.stop="toggle(n)">✕</span></span></span>
+            <svg class="pick-caret" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 5 5 5-5" /></svg>
+          </button>
+          <Transition name="pickp">
+            <div v-if="pickOpen" class="pick-panel" role="listbox" aria-multiselectable="true" aria-labelledby="pi-label" @keydown.esc="pickOpen = false">
+              <template v-for="g in groups" :key="g.cat">
+                <p class="pick-cat">{{ g.cat }}</p>
+                <button v-for="n in g.names" :key="n" type="button" role="option" :aria-selected="f.sel.includes(n)" class="pick-opt" :class="{ on: f.sel.includes(n) }" @click="toggle(n)">
+                  <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.500 3.200 3L13 4.500" /></svg></span>{{ n }}
+                </button>
+              </template>
+              <div class="pick-foot"><button type="button" class="text-xs font-semibold text-ink/60 underline-offset-4 hover:underline" @click="f.sel = []">Clear</button><button type="button" class="pick-done" @click="pickOpen = false">Done{{ f.sel.length ? ' (' + f.sel.length + ')' : '' }}</button></div>
+            </div>
+          </Transition>
+        </div>
         <label class="block text-sm font-semibold sm:col-span-2">Message <span v-if="items.length" class="font-normal text-ink/70">(optional)</span><textarea v-model="f.msg" rows="3" :required="!items.length" class="field" placeholder="Quantities, destination, timing…" /></label>
         <!-- honeypot: hidden from people, bots fill it in -->
         <input v-model="f.botcheck" type="checkbox" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
@@ -55,10 +71,17 @@ import { products } from '~/data'
 const props = defineProps<{ product?: string; heading?: string }>()
 const { formKey, email, wa } = useSite()
 const { items, remove, clear } = useQuote()
-const f = reactive({ name: '', company: '', email: '', product: props.product || '', msg: '', botcheck: false })
+const f = reactive({ name: '', company: '', email: '', sel: (props.product ? [props.product] : []) as string[], msg: '', botcheck: false })
 const enquiry = useState<string>('enquiry', () => '')
-watch(enquiry, (v) => { if (v) f.product = v }, { immediate: true })
-watch(() => props.product, (v) => { if (v) f.product = v })
+watch(enquiry, (v) => { if (v) f.sel = [v] }, { immediate: true })
+watch(() => props.product, (v) => { if (v) f.sel = [v] })
+// themed multi-select for the products of interest
+const groups = (['Vegetables', 'Fruits', 'Herbs'] as const).map((cat) => ({ cat, names: products.filter((p) => p.cat === cat).map((p) => p.name) }))
+const pickOpen = ref(false); const pick = ref<HTMLElement>()
+const toggle = (n: string) => { f.sel = f.sel.includes(n) ? f.sel.filter((x) => x !== n) : [...f.sel, n] }
+const outside = (e: PointerEvent) => { if (pickOpen.value && pick.value && !pick.value.contains(e.target as Node)) pickOpen.value = false }
+onMounted(() => document.addEventListener('pointerdown', outside))
+onBeforeUnmount(() => document.removeEventListener('pointerdown', outside))
 const hint = ref('')
 const via = ref<'mail' | 'wa'>('mail'); const waUrl = ref('')
 const sent = ref(false); const sending = ref(false); const error = ref(''); const done = ref<HTMLElement>()
@@ -66,11 +89,11 @@ const sent = ref(false); const sending = ref(false); const error = ref(''); cons
 const compose = () => {
   const lines = [`Name: ${f.name}`, `Company: ${f.company || '-'}`, `Email: ${f.email}`]
   if (items.value.length) lines.push('', 'Quote list:', ...items.value.map((i, n) => `${n + 1}. ${i.name} (${i.kind}${i.code ? ', ' + i.code : ''}) — quantity: ${i.qty || 'to be discussed'}`))
-  else if (f.product) lines.push(`Product: ${f.product}`)
+  else if (f.sel.length) lines.push(`Products: ${f.sel.join(', ')}`)
   if (f.msg) lines.push('', f.msg)
   return lines.join('\n')
 }
-const subject = () => 'Quote request — ' + (items.value.length ? items.value.map((i) => i.name).slice(0, 3).join(', ') + (items.value.length > 3 ? ` +${items.value.length - 3}` : '') : f.product || 'General')
+const subject = () => 'Quote request — ' + (items.value.length ? items.value.map((i) => i.name).slice(0, 3).join(', ') + (items.value.length > 3 ? ` +${items.value.length - 3}` : '') : (f.sel.length ? f.sel.slice(0, 3).join(', ') + (f.sel.length > 3 ? ` +${f.sel.length - 3}` : '') : 'General'))
 const mailto = computed(() => `mailto:${email}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(compose())}`)
 
 const composeWa = () => {
@@ -78,7 +101,7 @@ const composeWa = () => {
   if (f.company) lines.push(`Company: ${f.company}`)
   if (f.email) lines.push(`Email: ${f.email}`)
   if (items.value.length) lines.push('', 'Quote list:', ...items.value.map((i, n) => `${n + 1}. ${i.name} (${i.kind}${i.code ? ', ' + i.code : ''}), quantity: ${i.qty || 'to be discussed'}`))
-  else if (f.product) lines.push(`Product: ${f.product}`)
+  else if (f.sel.length) lines.push(`Products: ${f.sel.join(', ')}`)
   if (f.msg) lines.push('', f.msg)
   return lines.join('\n')
 }
@@ -86,7 +109,7 @@ const composeWa = () => {
 const sendWa = () => {
   error.value = ''; hint.value = ''
   if (!f.name.trim()) { hint.value = 'Please add your name first.'; return }
-  if (!items.value.length && !f.msg.trim() && !f.product) { hint.value = 'Please tell us what you need: pick a product or write a short message.'; return }
+  if (!items.value.length && !f.msg.trim() && !f.sel.length) { hint.value = 'Please tell us what you need: pick at least one product or write a short message.'; return }
   waUrl.value = wa(composeWa()); via.value = 'wa'
   window.open(waUrl.value, '_blank', 'noopener')
   finish()
@@ -125,4 +148,25 @@ const burst = () => {
 </script>
 <style>
 .field { margin-top: .4rem; width: 100%; border-radius: .75rem; border: 1px solid rgba(14,42,28,.2); background: #fff; padding: .75rem 1rem; font-weight: 400; }
+
+.pick-btn { position: relative; display: flex; align-items: center; min-height: 3.1rem; padding-right: 2.5rem; text-align: left; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
+.pick-btn:hover { border-color: rgba(31,91,58,.55); }
+.pick-btn.is-open, .pick-btn:focus-visible { border-color: #1F5B3A; box-shadow: 0 0 0 3px rgba(198,240,74,.5); outline: none; }
+.pick-caret { position: absolute; right: 1rem; top: 50%; margin-top: -8px; color: #1F5B3A; transition: transform .25s; }
+.pick-btn.is-open .pick-caret { transform: rotate(180deg); }
+.chip { display: inline-flex; align-items: center; gap: .4rem; border-radius: 9999px; background: #0E2A1C; color: #F5F1E6; padding: .2rem .35rem .2rem .7rem; font-size: .8rem; font-weight: 600; }
+.chip-x { display: grid; place-items: center; width: 1.1rem; height: 1.1rem; border-radius: 9999px; background: rgba(255,255,255,.18); font-size: .55rem; transition: background .2s; }
+.chip-x:hover { background: #C6F04A; color: #0E2A1C; }
+.pick-panel { position: absolute; left: 0; right: 0; top: calc(100% + .4rem); z-index: 30; max-height: 19rem; overflow-y: auto; border-radius: 1.1rem; background: #0E2A1C; color: #F5F1E6; padding: .5rem; box-shadow: 0 24px 50px -12px rgba(14,42,28,.55); border: 1px solid rgba(255,255,255,.1); }
+.pick-cat { padding: .6rem .8rem .25rem; font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #C6F04A; }
+.pick-opt { display: flex; width: 100%; align-items: center; gap: .7rem; border-radius: .7rem; padding: .6rem .8rem; text-align: left; font-size: .92rem; cursor: pointer; transition: background .15s; }
+.pick-opt:hover, .pick-opt:focus-visible { background: rgba(255,255,255,.09); outline: none; }
+.pick-opt.on { background: rgba(198,240,74,.12); }
+.pick-box { display: grid; place-items: center; width: 1.25rem; height: 1.25rem; flex: none; border-radius: .35rem; border: 1.5px solid rgba(245,241,230,.4); color: transparent; transition: all .15s; }
+.pick-opt.on .pick-box { background: #C6F04A; border-color: #C6F04A; color: #0E2A1C; }
+.pick-foot { position: sticky; bottom: -.5rem; display: flex; align-items: center; justify-content: space-between; margin-top: .4rem; padding: .6rem .6rem .1rem; background: linear-gradient(0deg, #0E2A1C 70%, transparent); }
+.pick-foot .text-ink\/60 { color: rgba(245,241,230,.7); }
+.pick-done { border-radius: 9999px; background: #C6F04A; color: #0E2A1C; padding: .45rem 1.1rem; font-size: .8rem; font-weight: 700; cursor: pointer; }
+.pickp-enter-active { transition: opacity .18s, transform .22s cubic-bezier(.2,.9,.2,1); } .pickp-leave-active { transition: opacity .12s; }
+.pickp-enter-from { opacity: 0; transform: translateY(-6px) scale(.98); } .pickp-leave-to { opacity: 0; }
 </style>
