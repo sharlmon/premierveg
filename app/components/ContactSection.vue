@@ -15,6 +15,18 @@
           <div><dt class="eyebrow text-cream/70">WhatsApp</dt><dd class="display text-xl"><a :href="wa('Hello Premier Veg, I would like to enquire about your fresh produce.')" target="_blank" rel="noopener" class="tap hover:text-lime">Chat with us ↗</a></dd></div>
           <div><dt class="eyebrow text-cream/70">Location</dt><dd class="text-cream/85">Premier Veg Mondo Fresh<br />Trystar Go Down, Airport North Road<br />P. O. Box 3468-00200, Nairobi, Kenya</dd></div>
         </dl>
+        <div class="mt-10 flex max-w-md items-center gap-4 rounded-3xl bg-white/10 p-4 ring-1 ring-white/15 backdrop-blur" data-reveal>
+          <img :src="asset('img/team/brenda.jpg')" alt="" width="72" height="72" loading="lazy" class="h-[4.5rem] w-[4.5rem] shrink-0 rounded-2xl object-cover object-top" />
+          <div class="min-w-0">
+            <p class="eyebrow text-lime">Talk to the director</p>
+            <p class="display text-xl leading-tight">Brenda Ogollah</p>
+            <p class="text-sm text-cream/70">Owner &amp; Director</p>
+            <div class="mt-2.5 flex flex-wrap gap-2">
+              <NuxtLink to="/card/brenda" class="rounded-full bg-lime px-4 py-2 text-xs font-bold text-forest transition hover:brightness-95">View contact card</NuxtLink>
+              <a :href="asset('card/brenda/Brenda-Ogollah.vcf')" download class="rounded-full border border-white/30 px-4 py-2 text-xs font-semibold transition hover:bg-white/10">Save contact</a>
+            </div>
+          </div>
+        </div>
         <div class="mt-10 max-w-sm" data-reveal><LiveClocks /></div>
       </div>
       <div class="rounded-[2rem] bg-cream p-8 text-ink md:p-10 lg:col-span-6" data-reveal><QuoteForm heading="h2" /></div>
