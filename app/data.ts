@@ -45,15 +45,17 @@ export const team: Member[] = [
     bio: ['Andrea Ogada serves as the Administrator at Premier Veg Mondo, supporting the day-to-day operations and ensuring smooth internal and external communication.',
       'She plays a key role in coordinating administrative processes, documentation, and client support, helping to maintain efficiency and organization across the company’s operations.',
       'Andrea is committed to supporting the company’s growth by ensuring strong administrative systems, professional client interactions, and reliable operational support that contributes to Premier Veg’s overall success.'] },
-  { name: 'Dominic Mwanya', role: 'Quality Control, Compliance & Agronomy', email: 'dominic.mwanya@premierveg.com', phone: '+254 725 666 205', quote: 'Traceability, food safety, and ethical compliance',
+  { name: 'Dominic Mwanya', role: 'Production & Packhouse Manager', email: 'dominic.mwanya@premierveg.com', phone: '+254 725 666 205', quote: 'Traceability, food safety, and ethical compliance',
     bio: ['Dominic Mwanya is an experienced Agronomist and Compliance Auditor, providing professional compliance and agronomy support to Premier Veg and its partner farms.',
-      'Dominic works in the quality control section, together with the QC team.'] },
+      'As the Production and Packhouse Manager, Dominic works together with the QC team. He is also part of our compliance personnel.'] },
   { name: 'Allan Omondi', role: 'Operations Personnel', email: 'allan@premierveg.com', phone: '+254 721 730 756', photo: 'img/team/allan.jpg', quote: 'Compliance with industry regulation',
     bio: ['Allan Omondi serves as Operations Personnel at Premier Veg Mondo Ltd, where he is responsible for ensuring that all fresh produce meets the required quality, safety, and regulatory standards for both local and international markets.',
       'In his role, Allan oversees product inspection and coordinates the collection and submission of fresh produce samples for laboratory testing to ensure compliance with industry regulations and export requirements. He works closely with relevant regulatory bodies and testing facilities to verify that all products meet the necessary food safety and phytosanitary standards before shipment.',
       'Through his commitment to quality control and regulatory compliance, Allan helps ensure that Premier Veg Mondo Ltd consistently delivers safe, high-quality fresh produce that meets the expectations of global markets.'] },
-  { name: 'Fidelis Nduta', role: 'Accountant', email: 'finance@premierveg.com', phone: '+254 740 717 714',
-    bio: ['Fidelis is our Accountant. Her role is managing financial records, tracking transactions, and supporting budgeting and reporting, helping to maintain financial stability and transparency within our organization.'] }
+  { name: 'Fidelis Nduta', role: 'Accountant', email: 'finance@premierveg.com', phone: '+254 740 717 714', photo: 'img/team/fidelis.jpg', quote: 'Accurate, timely and transparent finances',
+    bio: ['Fidelis Nduta is the Accountant at Premier Veg, a CPA (K) qualified accounting professional with extensive experience across all areas of company finance.',
+      'She manages financial records and transactions, payroll and statutory returns, bank reconciliations, accounts payable and receivable, and prepares the monthly and quarterly management reports, budgets and cash flow for management meetings.',
+      'Experienced in working with internal and external auditors, and compliant with IFRS and taxation requirements, Fidelis helps keep Premier Veg’s finances accurate, timely and transparent.'] }
 ]
 
 export const markets = ['France', 'Netherlands', 'Switzerland']
