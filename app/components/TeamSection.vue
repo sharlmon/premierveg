@@ -15,7 +15,7 @@
           </div>
         </div>
         <dl class="mt-14 grid grid-cols-3 gap-4 border-t border-white/25 pt-8 md:max-w-2xl" data-stagger>
-          <div class="reveal"><dd class="display text-4xl text-cream md:text-5xl"><CountUp :to="6" /></dd><dt class="mt-1 text-xs text-cream/80 md:text-sm">Team members</dt></div>
+          <div class="reveal"><dd class="display text-4xl text-cream md:text-5xl"><CountUp :to="5" /></dd><dt class="mt-1 text-xs text-cream/80 md:text-sm">Team members</dt></div>
           <div class="reveal"><dd class="display text-4xl text-cream md:text-5xl"><CountUp :to="17" /><span class="text-lime">+</span></dd><dt class="mt-1 text-xs text-cream/80 md:text-sm">Years of produce experience (our director)</dt></div>
           <div class="reveal"><dd class="display text-4xl text-cream md:text-5xl"><CountUp :to="2" /></dd><dt class="mt-1 text-xs text-cream/80 md:text-sm">Countries: Kenya &amp; Italy</dt></div>
         </dl>
