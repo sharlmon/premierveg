@@ -45,7 +45,7 @@ export const team: Member[] = [
     bio: ['Andrea Ogada serves as the Administrator at Premier Veg Mondo, supporting the day-to-day operations and ensuring smooth internal and external communication.',
       'She plays a key role in coordinating administrative processes, documentation, and client support, helping to maintain efficiency and organization across the company’s operations.',
       'Andrea is committed to supporting the company’s growth by ensuring strong administrative systems, professional client interactions, and reliable operational support that contributes to Premier Veg’s overall success.'] },
-  { name: 'Dominic Mwanya', role: 'Production & Packhouse Manager', email: 'dominic.mwanya@premierveg.com', phone: '+254 725 666 205', quote: 'Traceability, food safety, and ethical compliance',
+  { name: 'Dominic Mwanya', role: 'Production & Packhouse Manager', email: 'dominic.mwanya@premierveg.com', phone: '+254 725 666 205', photo: 'img/team/dominic.jpg', quote: 'Traceability, food safety, and ethical compliance',
     bio: ['Dominic Mwanya is an experienced Agronomist and Compliance Auditor, providing professional compliance and agronomy support to Premier Veg and its partner farms.',
       'As the Production and Packhouse Manager, Dominic works together with the QC team. He is also part of our compliance personnel.'] },
   { name: 'Allan Omondi', role: 'Operations Personnel', email: 'allan@premierveg.com', phone: '+254 721 730 756', photo: 'img/team/allan.jpg', quote: 'Compliance with industry regulation',
