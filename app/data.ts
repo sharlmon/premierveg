@@ -4,7 +4,7 @@
 // Anything left empty shows as "On request" in the product popup and the PDF spec sheet.
 export type Product = { code: string; name: string; cat: 'Vegetables' | 'Fruits' | 'Herbs'; blurb: string; color: string; img: string; pack: string[]; specs?: { shelfLife?: string; sizes?: string } }
 export type Pack = { id: string; code: string; name: string; note: string; kind: 'Carton' | 'Top cover' | 'Punnet'; img: string; photo?: string; product?: string }
-export type Member = { name: string; role: string; email: string; phone: string; quote?: string; photo?: string; bio: string[] }
+export type Member = { name: string; role: string; email: string; phone: string; quote?: string; photo?: string; card?: string; bio: string[] }
 
 export const products: Product[] = [
   { code: 'PVHV100', name: 'Haricot Verts', cat: 'Vegetables', blurb: 'Also known as French beans, they are planted from seedling and give tender produce and a dependable supply.', color: '#1F5B3A', img: 'img/products/haricot-verts.webp', pack: ['CHV001', 'PXF001'] },
@@ -36,7 +36,7 @@ export const packages: Pack[] = [
 ]
 
 export const team: Member[] = [
-  { name: 'Brenda Ogollah', role: 'Owner & Director', email: 'brenda@premierveg.com', phone: '+39 351 215 1931', photo: 'img/team/brenda.jpg', quote: 'Expert in global fresh produce markets',
+  { name: 'Brenda Ogollah', role: 'Owner & Director', email: 'brenda@premierveg.com', phone: '+39 351 215 1931', photo: 'img/team/brenda.jpg', card: '/card/brenda', quote: 'Expert in global fresh produce markets',
     bio: ['Brenda Ogollah is the Owner and Director of Premier Veg, bringing over 17 years of extensive experience in the fresh produce industry across both Kenya and the Netherlands.',
       'She has worked with leading international companies, including Green Food Benelux Group and Fruit Advisor Group, where she served as an Account Manager in the Netherlands. Through these roles, she gained in-depth expertise in global fresh produce markets, quality standards, and international client management.',
       'Brenda is currently actively engaged with well-established companies in Kenya, with a key focus on promoting and supporting fast-growing Kenyan exporters of fresh fruits and vegetables. Her passion lies in connecting Kenyan producers to international markets while ensuring reliability, quality, and long-term partnerships.',

@@ -53,6 +53,7 @@
                 <div class="mt-5 flex flex-wrap gap-2">
                   <button class="btn btn-lime !px-5 !py-3.5 text-xs" @click="open({ type: 'team', item: cur })">Read bio →</button>
                   <button class="btn btn-ghost !px-5 !py-3.5 text-xs" @click="copy(cur.email)">{{ copied === cur.email ? 'Copied ✓' : 'Copy email' }}</button>
+                  <NuxtLink v-if="cur.card" :to="cur.card" class="btn btn-ghost !px-5 !py-3.5 text-xs">Digital card →</NuxtLink>
                 </div>
               </div>
             </div>

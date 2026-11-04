@@ -1,14 +1,16 @@
 <template>
   <div>
     <a href="#main" class="sr-only z-[100] rounded-full bg-lime px-5 py-3 text-sm font-bold text-forest focus:not-sr-only focus:fixed focus:left-4 focus:top-24">Skip to main content</a>
-    <SiteNav />
+    <SiteNav v-if="!bare" />
     <main id="main" tabindex="-1" class="outline-none"><NuxtPage :transition="transition" /></main>
-    <SiteFooter />
+    <SiteFooter v-if="!bare" />
     <ModalHost />
-    <PromoToast />
-    <WhatsAppButton />
-    <QuotePill />
-    <AccessibilityMenu />
+    <template v-if="!bare">
+      <PromoToast />
+      <WhatsAppButton />
+      <QuotePill />
+      <AccessibilityMenu />
+    </template>
   </div>
 </template>
 <script setup lang="ts">
@@ -16,6 +18,8 @@ const transition = {
   name: 'page', mode: 'out-in' as const,
   onAfterLeave() { window.scrollTo(0, 0) }
 }
+const route = useRoute()
+const bare = computed(() => !!route.meta.bare) // digital business cards: no site menu, footer or floating widgets
 const { items, load, save } = useQuote()
 const { siteUrl } = useSite()
 useHead({ script: [{ type: 'application/ld+json', innerHTML: JSON.stringify({
