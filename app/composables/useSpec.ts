@@ -38,7 +38,7 @@ export const downloadSpecSheet = async (p: Product, asset: (s: string) => string
   // header band
   doc.setFillColor(14, 42, 28); doc.rect(0, 0, W, 38, 'F')
   try { const l = await toDataUrl(asset('img/logo.jpg'), 300); doc.addImage(l.data, 'JPEG', M, 7, 24, 24) } catch {}
-  doc.setTextColor(245, 241, 230); doc.setFont('helvetica', 'bold'); doc.setFontSize(17); doc.text('Premier Veg Mondo Fresh', M + 30, 18)
+  doc.setTextColor(245, 241, 230); doc.setFont('helvetica', 'bold'); doc.setFontSize(17); doc.text('Premier Veg Mondo Limited', M + 30, 18)
   doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(198, 240, 74); doc.text('PRODUCT SPECIFICATION SHEET', M + 30, 25)
   // title
   doc.setTextColor(14, 42, 28); doc.setFont('helvetica', 'bold'); doc.setFontSize(28); doc.text(p.name, M, 62)

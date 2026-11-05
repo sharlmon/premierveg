@@ -5,7 +5,7 @@
       <div class="relative mx-auto max-w-7xl px-6 pt-12 md:px-10 md:pt-14">
         <div class="grid gap-9 lg:grid-cols-12 lg:gap-12">
           <div class="lg:col-span-5">
-            <div class="flex items-center gap-3"><img :src="asset('img/logo.jpg')" alt="" class="h-12 w-12 rounded-full ring-2 ring-white/70" /><span class="display text-xl sm:text-2xl">Premier Veg Mondo Fresh</span></div>
+            <div class="flex items-center gap-3"><img :src="asset('img/logo.jpg')" alt="" class="h-12 w-12 rounded-full ring-2 ring-white/70" /><span class="display text-xl sm:text-2xl">Premier Veg Mondo Limited</span></div>
             <p class="mt-5 max-w-sm text-cream/70">Trusted exporter of fresh fruits, vegetables and herbs. Whatever we grow, you receive it fresh.</p>
             <div class="mt-6 flex flex-wrap gap-3">
               <button class="btn btn-lime" data-magnetic @click="open({ type: 'quote' })">Request a quote <span aria-hidden="true">→</span></button>
@@ -19,7 +19,7 @@
             <p><a href="mailto:info@premierveg.com" class="tap hover:text-lime">info@premierveg.com</a></p>
             <p class="mt-2"><a href="tel:+393512151931" class="tap hover:text-lime">+39 351 215 1931</a></p>
             <p class="mt-2"><a :href="wa('Hello Premier Veg, I would like to enquire about your fresh produce.')" target="_blank" rel="noopener" class="tap hover:text-lime">WhatsApp ↗</a></p>
-            <p class="mt-5 leading-relaxed text-cream/70">Premier Veg Mondo Fresh<br />Trystar Go Down, Airport North Road<br />P. O. Box 3468-00200, Nairobi, Kenya</p>
+            <p class="mt-5 leading-relaxed text-cream/70">Premier Veg Mondo Limited<br />Trystar Go Down, Airport North Road<br />P. O. Box 3468-00200, Nairobi, Kenya</p>
           </div>
         </div>
 
@@ -27,7 +27,7 @@
       </div>
       <div class="relative border-t border-white/10">
         <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-5 text-xs text-cream/70 sm:flex-row md:px-10">
-          <p>© {{ new Date().getFullYear() }} Premier Veg Mondo Fresh. Nairobi, Kenya · Italy.</p>
+          <p>© {{ new Date().getFullYear() }} Premier Veg Mondo Limited. Nairobi, Kenya · Italy.</p>
           <button class="flex cursor-pointer items-center gap-2 font-semibold text-lime transition hover:gap-3" @click="top">Back to top <span class="grid h-8 w-8 place-items-center rounded-full bg-lime text-forest" aria-hidden="true">↑</span></button>
         </div>
       </div>

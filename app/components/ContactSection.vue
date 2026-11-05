@@ -13,7 +13,7 @@
           <div><dt class="eyebrow text-cream/70">E-mail</dt><dd class="display text-xl"><a href="mailto:info@premierveg.com" class="tap hover:text-lime">info@premierveg.com</a></dd></div>
           <div><dt class="eyebrow text-cream/70">Phone</dt><dd class="display text-xl"><a href="tel:+393512151931" class="tap hover:text-lime">+39 351 215 1931</a></dd></div>
           <div><dt class="eyebrow text-cream/70">WhatsApp</dt><dd class="display text-xl"><a :href="wa('Hello Premier Veg, I would like to enquire about your fresh produce.')" target="_blank" rel="noopener" class="tap hover:text-lime">Chat with us ↗</a></dd></div>
-          <div><dt class="eyebrow text-cream/70">Location</dt><dd class="text-cream/85">Premier Veg Mondo Fresh<br />Trystar Go Down, Airport North Road<br />P. O. Box 3468-00200, Nairobi, Kenya</dd></div>
+          <div><dt class="eyebrow text-cream/70">Location</dt><dd class="text-cream/85">Premier Veg Mondo Limited<br />Trystar Go Down, Airport North Road<br />P. O. Box 3468-00200, Nairobi, Kenya</dd></div>
         </dl>
         <div class="mt-10 flex max-w-md items-center gap-4 rounded-3xl bg-white/10 p-4 ring-1 ring-white/15 backdrop-blur" data-reveal>
           <img :src="asset('img/team/brenda.jpg')" alt="" width="72" height="72" loading="lazy" class="h-[4.5rem] w-[4.5rem] shrink-0 rounded-2xl object-cover object-top" />

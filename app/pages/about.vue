@@ -3,9 +3,9 @@
     <section class="mx-auto max-w-7xl px-5 pb-28 pt-40 md:px-10 md:pb-36 md:pt-48">
       <div class="grid items-center gap-14 lg:grid-cols-12">
         <div class="lg:col-span-7">
-          <p class="eyebrow mb-6 text-leaf" data-reveal>About us · Premier Veg Mondo</p>
+          <p class="eyebrow mb-6 text-leaf" data-reveal>About us · Premier Veg Mondo Limited</p>
           <h1 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Connecting Kenyan</span></span><span class="line-mask"><span class="line-inner">growers with</span></span><span class="line-mask"><span class="line-inner italic text-leaf">international markets.</span></span></h1>
-          <p class="mt-8 max-w-xl text-lg text-ink/75" data-reveal>Established in 2022, Premier Veg Mondo Fresh is based in Nairobi, Kenya, with operations also in Italy. We work closely with farms located in tropical climatic regions, which provide ideal growing conditions throughout the year. This enables us to offer our clients a reliable, year-round supply of fresh, high-quality produce.</p>
+          <p class="mt-8 max-w-xl text-lg text-ink/75" data-reveal>Established in 2022, Premier Veg Mondo Limited is based in Nairobi, Kenya, with operations also in Italy. We work closely with farms located in tropical climatic regions, which provide ideal growing conditions throughout the year. This enables us to offer our clients a reliable, year-round supply of fresh, high-quality produce.</p>
           <p class="mt-5 max-w-xl text-ink/70" data-reveal>At Premier Veg, we are committed to connecting Kenyan growers with international markets while maintaining the highest standards of freshness, quality, and consistency.</p>
         </div>
         <div class="lg:col-span-5">
@@ -63,7 +63,7 @@
 <script setup lang="ts">
 import { gallery } from '~/data'
 const asset = useAsset(); const { open } = useModal()
-usePageSeo({ title: 'About — Premier Veg Mondo Fresh', description: 'Established in 2022 in Nairobi with operations in Italy, Premier Veg Mondo Fresh connects Kenyan growers with international markets. Category 1 grading and full traceability.', path: '/about/' })
+usePageSeo({ title: 'About — Premier Veg Mondo Limited', description: 'Established in 2022 in Nairobi with operations in Italy, Premier Veg Mondo Limited connects Kenyan growers with international markets. Category 1 grading and full traceability.', path: '/about/' })
 const facts = ['Careful sorting and grading to meet Category 1 export standards;', 'Quality checks to ensure freshness, size uniformity, and appearance;', 'Hygienic handling by trained staff following food safety protocols.']
 onMounted(async () => { await nextTick(); usePageMotion() })
 </script>

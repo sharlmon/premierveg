@@ -23,7 +23,7 @@ const bare = computed(() => !!route.meta.bare) // digital business cards: no sit
 const { items, load, save } = useQuote()
 const { siteUrl } = useSite()
 useHead({ script: [{ type: 'application/ld+json', innerHTML: JSON.stringify({
-  '@context': 'https://schema.org', '@type': 'Organization', name: 'Premier Veg Mondo Fresh', alternateName: 'Premier Veg', url: siteUrl + '/', logo: siteUrl + '/img/logo.jpg', image: siteUrl + '/og.jpg',
+  '@context': 'https://schema.org', '@type': 'Organization', name: 'Premier Veg Mondo Limited', alternateName: 'Premier Veg', url: siteUrl + '/', logo: siteUrl + '/img/logo.jpg', image: siteUrl + '/og.jpg',
   description: 'Exporter of fresh fruits, vegetables and herbs from Kenya.', foundingDate: '2022', email: 'info@premierveg.com', telephone: '+393512151931',
   address: { '@type': 'PostalAddress', streetAddress: 'Trystar Go Down, Airport North Road', postOfficeBoxNumber: '3468-00200', addressLocality: 'Nairobi', postalCode: '00200', addressCountry: 'KE' },
   areaServed: ['France', 'Netherlands', 'Switzerland']

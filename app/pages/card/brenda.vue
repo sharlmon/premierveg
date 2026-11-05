@@ -8,12 +8,12 @@
           <span class="face front">
             <span class="fl">
               <img :src="asset('img/field-team.webp')" alt="" class="fl-bg" width="400" height="500" />
-              <img :src="asset('img/logo.jpg')" alt="Premier Veg Mondo Fresh" class="fl-logo" width="96" height="96" />
+              <img :src="asset('img/logo.jpg')" alt="Premier Veg Mondo Limited" class="fl-logo" width="96" height="96" />
             </span>
             <span class="fr">
               <span class="display block text-[1.45rem] font-semibold leading-tight text-forest">{{ p.name }}</span>
               <span class="mt-1 block text-[13px] font-semibold text-leaf">{{ p.role }}</span>
-              <span class="block text-[12px] text-ink/60">Premier Veg Mondo Fresh</span>
+              <span class="block text-[12px] text-ink/60">Premier Veg Mondo Limited</span>
               <span class="bar" />
               <span class="block text-[11.5px] font-semibold leading-relaxed text-ink">{{ p.phone }}<br />{{ p.email }}</span>
             </span>
@@ -89,7 +89,7 @@ definePageMeta({ bare: true })
 const asset = useAsset(); const { siteUrl, wa } = useSite()
 const p = { name: 'Brenda Ogollah', role: 'Owner & Director', phone: '+39 351 215 1931', tel: '+393512151931', email: 'brenda@premierveg.com' }
 const cardUrl = siteUrl + '/card/brenda/'
-const vcard = ['BEGIN:VCARD', 'VERSION:3.0', 'N:Ogollah;Brenda;;;', 'FN:Brenda Ogollah', 'ORG:Premier Veg Mondo Fresh', 'TITLE:Owner & Director', 'TEL;TYPE=CELL:+393512151931', 'EMAIL:brenda@premierveg.com', 'URL:' + siteUrl + '/', 'END:VCARD'].join('\n')
+const vcard = ['BEGIN:VCARD', 'VERSION:3.0', 'N:Ogollah;Brenda;;;', 'FN:Brenda Ogollah', 'ORG:Premier Veg Mondo Limited', 'TITLE:Owner & Director', 'TEL;TYPE=CELL:+393512151931', 'EMAIL:brenda@premierveg.com', 'URL:' + siteUrl + '/', 'END:VCARD'].join('\n')
 const qrOpts = { ecc: 'M' as const, border: 1, blackColor: '#0E2A1C', whiteColor: '#FFFFFF' }
 const qrSave = renderSVG(vcard, qrOpts), qrShare = renderSVG(cardUrl, qrOpts)
 const flipped = ref(false), flipTab = ref<'save' | 'share'>('save'), saved = ref(false), shared = ref('')
@@ -110,7 +110,7 @@ const share = async () => {
   try { if (navigator.share) { await navigator.share({ title: 'Brenda Ogollah · Premier Veg', url: cardUrl }); return } } catch { return }
   try { await navigator.clipboard.writeText(cardUrl); shared.value = 'Link copied ✓'; setTimeout(() => (shared.value = ''), 2000) } catch { shared.value = cardUrl }
 }
-usePageSeo({ title: 'Brenda Ogollah · Premier Veg Mondo Fresh', description: 'Digital business card for Brenda Ogollah, Owner & Director of Premier Veg Mondo Fresh. Save the contact, call, WhatsApp or email.', path: '/card/brenda/' })
+usePageSeo({ title: 'Brenda Ogollah · Premier Veg Mondo Limited', description: 'Digital business card for Brenda Ogollah, Owner & Director of Premier Veg Mondo Limited. Save the contact, call, WhatsApp or email.', path: '/card/brenda/' })
 useHead({ meta: [{ name: 'robots', content: 'noindex' }] })
 </script>
 <style>
