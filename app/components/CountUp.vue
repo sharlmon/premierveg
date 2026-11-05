@@ -14,7 +14,7 @@ const run = () => {
   if (still() || document.hidden) { cur.value = props.to; timer = setTimeout(run, 3000); return }
   const t0 = performance.now(), dur = 1500
   const tick = (t: number) => {
-    const k = Math.min(1, (t - t0) / dur)
+    const k = Math.min(1, Math.max(0, (t - t0) / dur)) // rAF timestamps can precede t0
     cur.value = props.from + (props.to - props.from) * (1 - Math.pow(1 - k, 3))
     if (k < 1) raf = requestAnimationFrame(tick); else cur.value = props.to
   }

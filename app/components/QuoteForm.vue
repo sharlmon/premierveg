@@ -44,7 +44,7 @@
           </Transition>
           </Teleport>
         </div>
-        <label class="block text-sm font-semibold sm:col-span-2">Message <span v-if="items.length" class="font-normal text-ink/70">(optional)</span><textarea v-model="f.msg" rows="3" :required="!items.length" class="field" placeholder="Quantities, destination, timing…" /></label>
+        <label class="block text-sm font-semibold sm:col-span-2">Message <span v-if="items.length || f.sel.length" class="font-normal text-ink/70">(optional)</span><textarea v-model="f.msg" rows="3" :required="!items.length && !f.sel.length" class="field" placeholder="Quantities, destination, timing…" /></label>
         <!-- honeypot: hidden from people, bots fill it in -->
         <input v-model="f.botcheck" type="checkbox" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
       </div>

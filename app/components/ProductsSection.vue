@@ -16,16 +16,16 @@
     <p class="mt-4 text-sm text-ink/70" aria-live="polite">{{ count }} {{ count === 1 ? 'product' : 'products' }}</p>
 
     <h2 class="sr-only">Product list</h2>
-    <ul ref="list" class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
+    <ul ref="list" class="mt-6 grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-3" data-stagger>
       <li v-for="p in products" :key="p.code" class="reveal" :class="match(p) ? '' : 'hidden'">
         <button v-tilt="8" class="tilt group relative flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-white text-left shadow-[0_18px_40px_-22px_rgba(14,42,28,.45)] ring-1 ring-forest/10" :aria-label="'View ' + p.name" @click="open({ type: 'product', item: p })">
           <span class="glare" />
-          <div class="relative grid aspect-[4/3] place-items-center bg-white p-6">
-            <span class="eyebrow absolute left-4 top-4 rounded-full px-3 py-1.5" :style="{ background: p.color, color: ink(p.color) }">{{ p.cat }}</span>
-            <span class="absolute right-4 top-4 font-mono text-xs text-forest/70">{{ p.code }}</span>
-            <img :src="asset(p.img)" :alt="p.name" loading="lazy" decoding="async" class="depth max-h-40 w-full object-contain" />
+          <div class="relative grid aspect-square place-items-center bg-white p-4 pt-10 sm:aspect-[4/3] sm:p-6">
+            <span class="eyebrow absolute left-2.5 top-2.5 rounded-full px-2.5 py-1 text-[10px] tracking-[.14em] sm:left-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-xs sm:tracking-[.22em]" :style="{ background: p.color, color: ink(p.color) }">{{ p.cat }}</span>
+            <span class="absolute right-4 top-4 hidden font-mono text-xs text-forest/70 sm:block">{{ p.code }}</span>
+            <img :src="asset(p.img)" :alt="p.name" loading="lazy" decoding="async" class="depth max-h-28 w-full sm:max-h-40 object-contain" />
           </div>
-          <div class="flex items-center justify-between gap-3 px-6 py-5 transition-[padding] duration-300 group-hover:py-6" :style="{ background: p.color, color: ink(p.color) }"><h3 class="display text-3xl">{{ p.name }}</h3><span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/25 transition group-hover:bg-white group-hover:text-forest" aria-hidden="true">+</span></div>
+          <div class="flex items-center justify-between gap-2 px-3.5 py-3 transition-[padding] duration-300 sm:gap-3 sm:px-6 sm:py-5 sm:group-hover:py-6" :style="{ background: p.color, color: ink(p.color) }"><h3 class="display text-lg leading-tight sm:text-3xl">{{ p.name }}</h3><span class="grid h-7 w-7 shrink-0 sm:h-10 sm:w-10 place-items-center rounded-full bg-white/25 transition group-hover:bg-white group-hover:text-forest" aria-hidden="true">+</span></div>
         </button>
       </li>
     </ul>

@@ -29,7 +29,7 @@
         </div>
         <div class="mt-10 max-w-sm" data-reveal><LiveClocks /></div>
       </div>
-      <div class="rounded-[2rem] bg-cream p-8 text-ink md:p-10 lg:col-span-6" data-reveal><QuoteForm heading="h2" /></div>
+      <div class="rounded-[2rem] bg-cream p-8 text-ink md:p-10 lg:col-span-6 lg:self-start" data-reveal><QuoteForm heading="h2" /></div>
     </div>
   </section>
 </template>

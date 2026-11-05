@@ -97,7 +97,7 @@ const veg = [
   { n: 'Haricot Verts', s: 'Extra fine & fine', img: 'img/beans-tray.webp' },
   { n: 'Mangetouts', s: 'Snow peas', img: 'img/snow-peas.webp' },
   { n: 'Sugar Snaps', s: 'Crisp & sweet', img: 'img/sugar-closeup.webp' },
-  { n: 'Baby Corn', s: 'Fresh punnets', img: 'img/products/baby-corn.webp' }
+  { n: 'Baby Corn', s: 'Fresh punnets', img: 'img/products/baby-corn.jpg' }
 ]
 const ic = (d: string) => `<svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`
 const why = [

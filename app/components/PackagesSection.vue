@@ -7,7 +7,7 @@
         <button v-for="k in kinds" :key="k" class="cursor-pointer rounded-full border px-5 py-2.5 text-sm font-semibold transition" :class="kind === k ? 'border-forest bg-forest text-lime' : 'border-forest/30 hover:border-forest'" :aria-pressed="kind === k" @click="setKind(k)">{{ k }} <span class="opacity-60">{{ k === 'All' ? packages.length : packages.filter((p) => p.kind === k).length }}</span></button>
       </div>
       <h2 class="sr-only">Package list</h2>
-      <ul ref="list" class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4" data-stagger>
+      <ul ref="list" class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5 lg:grid-cols-4" data-stagger>
         <li v-for="p in packages" :key="p.id" class="reveal" :class="kind === 'All' || p.kind === kind ? '' : 'hidden'">
           <button class="group relative flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-white text-left shadow-[0_18px_40px_-26px_rgba(14,42,28,.6)]" :aria-label="'View ' + p.name + ' ' + p.kind" @click="open({ type: 'package', item: p })">
             <div class="relative grid aspect-[4/3] place-items-center overflow-hidden bg-white"><img :src="asset(p.photo || p.img)" :alt="p.name + ' ' + p.kind.toLowerCase()" loading="lazy" decoding="async" class="depth h-full w-full object-contain" /><span class="eyebrow absolute left-3 top-3 rounded-full bg-forest px-2.5 py-1 text-xs text-lime">{{ p.kind }}</span></div>
