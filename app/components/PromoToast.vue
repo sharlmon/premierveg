@@ -6,13 +6,13 @@
         <button class="promo-chip grid h-12 w-12 cursor-grab place-items-center rounded-full bg-forest p-1.5 shadow-xl ring-2 ring-lime/70 touch-none active:cursor-grabbing" aria-label="Open quote offer (drag to move)" @pointerdown="down" @pointermove="move" @pointerup="up" @pointercancel="up">
           <img :src="asset('img/packages/pcm001.webp')" alt="" class="pointer-events-none h-full w-full rounded-full bg-white object-contain p-0.5" draggable="false" />
         </button>
-        <button class="absolute -right-1.5 -top-1.5 grid h-5 w-5 cursor-pointer place-items-center rounded-full bg-cream text-[10px] font-bold text-forest shadow" aria-label="Dismiss quote offer" @click="dismiss">✕</button>
+        <button class="absolute -right-1.5 -top-1.5 grid h-5 w-5 cursor-pointer place-items-center rounded-full bg-cream text-[.625rem] font-bold text-forest shadow" aria-label="Dismiss quote offer" @click="dismiss">✕</button>
       </div>
 
       <!-- expanded: a compact card -->
       <div v-else class="w-[min(15.5rem,calc(100vw-2rem))] overflow-hidden rounded-2xl bg-forest text-cream shadow-2xl ring-1 ring-white/10">
         <div class="flex cursor-grab items-center justify-between bg-white/5 py-1 pl-3 pr-1 touch-none active:cursor-grabbing" @pointerdown="down" @pointermove="move" @pointerup="up" @pointercancel="up">
-          <span class="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[.18em] text-cream/70" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="2" cy="2" r="1"/><circle cx="5" cy="2" r="1"/><circle cx="8" cy="2" r="1"/><circle cx="2" cy="5" r="1"/><circle cx="5" cy="5" r="1"/><circle cx="8" cy="5" r="1"/><circle cx="2" cy="8" r="1"/><circle cx="5" cy="8" r="1"/><circle cx="8" cy="8" r="1"/></svg>Drag</span>
+          <span class="flex items-center gap-1.5 text-[.625rem] font-semibold uppercase tracking-[.18em] text-cream/70" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="2" cy="2" r="1"/><circle cx="5" cy="2" r="1"/><circle cx="8" cy="2" r="1"/><circle cx="2" cy="5" r="1"/><circle cx="5" cy="5" r="1"/><circle cx="8" cy="5" r="1"/><circle cx="2" cy="8" r="1"/><circle cx="5" cy="8" r="1"/><circle cx="8" cy="8" r="1"/></svg>Drag</span>
           <span class="flex">
             <button class="grid h-8 w-8 cursor-pointer place-items-center rounded-full text-cream/80 transition hover:bg-white/15" aria-label="Minimise" @pointerdown.stop @click="min = true">
               <svg width="12" height="12" viewBox="0 0 12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 6h8"/></svg>

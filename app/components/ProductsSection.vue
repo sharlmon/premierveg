@@ -21,7 +21,7 @@
         <button v-tilt="8" class="tilt group relative flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl bg-white text-left shadow-[0_18px_40px_-22px_rgba(14,42,28,.45)] ring-1 ring-forest/10" :aria-label="'View ' + p.name" @click="open({ type: 'product', item: p })">
           <span class="glare" />
           <div class="relative grid aspect-square place-items-center bg-white p-4 pt-10 sm:aspect-[4/3] sm:p-6">
-            <span class="eyebrow absolute left-2.5 top-2.5 rounded-full px-2.5 py-1 text-[10px] tracking-[.14em] sm:left-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-xs sm:tracking-[.22em]" :style="{ background: p.color, color: ink(p.color) }">{{ p.cat }}</span>
+            <span class="eyebrow absolute left-2.5 top-2.5 rounded-full px-2.5 py-1 text-[.625rem] tracking-[.14em] sm:left-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-xs sm:tracking-[.22em]" :style="{ background: p.color, color: ink(p.color) }">{{ p.cat }}</span>
             <span class="absolute right-4 top-4 hidden font-mono text-xs text-forest/70 sm:block">{{ p.code }}</span>
             <img :src="asset(p.img)" :alt="p.name" loading="lazy" decoding="async" class="depth max-h-28 w-full sm:max-h-40 object-contain" />
           </div>

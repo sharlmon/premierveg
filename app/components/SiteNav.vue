@@ -11,7 +11,7 @@
       <span class="mx-1 hidden h-6 w-px bg-white/15 lg:block" aria-hidden="true" />
 
       <nav class="hidden lg:block" aria-label="Main">
-        <ul class="flex items-center gap-0.5 text-[13px] font-medium">
+        <ul class="flex items-center gap-0.5 text-[.8125rem] font-medium">
           <li v-for="l in links" :key="l.to">
             <NuxtLink :to="l.to" class="pea-link relative flex items-center gap-2 rounded-full px-4 py-2.5 transition" :class="isActive(l.to) ? 'is-on' : 'hover:text-lime'" :aria-current="isActive(l.to) ? 'page' : undefined">
               <span class="pea" aria-hidden="true" />{{ l.label }}
@@ -20,7 +20,7 @@
         </ul>
       </nav>
 
-      <button class="btn btn-lime ml-1 hidden !px-5 !py-2.5 text-[13px] lg:inline-flex" @click="quote">Get a quote</button>
+      <button class="btn btn-lime ml-1 hidden !px-5 !py-2.5 text-[.8125rem] lg:inline-flex" @click="quote">Get a quote</button>
 
       <div class="relative lg:hidden max-lg:absolute max-lg:right-7 max-lg:top-1.5">
         <button ref="btn" class="group grid h-11 w-11 cursor-pointer place-items-center rounded-full bg-white/10 text-cream ring-1 ring-white/10 transition hover:bg-leaf" :aria-expanded="open" aria-controls="quick-menu" aria-label="Menu" @click="open = !open">
