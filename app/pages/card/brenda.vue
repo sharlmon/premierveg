@@ -7,13 +7,14 @@
         <button class="flip" :class="{ 'is-flipped': flipped }" type="button" :aria-label="flipped ? 'Show the front of the card' : 'Flip the card to see the QR code'" @click="flipped = !flipped">
           <span class="face front">
             <span class="fl">
-              <img :src="asset('img/field-team.webp')" alt="" class="fl-bg" width="400" height="500" />
+              <img :src="asset('img/team/brenda.jpg')" :alt="p.name" class="fl-bg" width="400" height="500" />
               <img :src="asset('img/logo.jpg')" alt="Premier Veg Mondo Limited" class="fl-logo" width="96" height="96" />
             </span>
             <span class="fr">
               <span class="display block text-[1.45rem] font-semibold leading-tight text-forest">{{ p.name }}</span>
               <span class="mt-1 block text-[13px] font-semibold text-leaf">{{ p.role }}</span>
               <span class="block text-[12px] text-ink/60">Premier Veg Mondo Limited</span>
+              <span class="mt-1.5 block text-[11px] font-semibold uppercase tracking-[.14em] text-forest/70">17+ yrs · Kenya &amp; Netherlands</span>
               <span class="bar" />
               <span class="block text-[11.5px] font-semibold leading-relaxed text-ink">{{ p.phone }}<br />{{ p.email }}</span>
             </span>
@@ -43,6 +44,16 @@
             <p class="text-sm text-ink/60">{{ p.role }} · Premier Veg</p>
           </div>
         </div>
+
+        <blockquote class="quote mt-5">
+          <p class="display text-[1.05rem] leading-snug text-forest">“Connecting Kenyan growers to international markets, with reliability, quality and long-term partnerships.”</p>
+          <footer class="mt-2 text-xs font-semibold text-ink/55">Brenda Ogollah · {{ p.role }}</footer>
+        </blockquote>
+        <ul class="facts mt-3">
+          <li><b>17+</b><span>years in fresh produce</span></li>
+          <li><b>3</b><span>export markets: FR, NL, CH</span></li>
+          <li><b>24h</b><span>typical reply time</span></li>
+        </ul>
 
         <a :href="asset('card/brenda/Brenda-Ogollah.vcf')" download class="act-main mt-5" @click="saved = true"><svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>Save Contact</a>
         <NuxtLink to="/" class="act-alt mt-3"><svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" /></svg>Visit Our Website</NuxtLink>
@@ -78,7 +89,7 @@
           <div class="flex justify-between gap-4 py-3"><dt class="text-ink/50">Address</dt><dd class="text-right font-semibold text-ink">Trystar Go Down, Airport North Road<br />P.O. Box 3468-00200, Nairobi, Kenya</dd></div>
         </dl>
         <button class="mt-2 w-full cursor-pointer rounded-full border border-forest/20 py-3 text-sm font-semibold text-forest transition hover:bg-forest hover:text-cream" @click="share">{{ shared || 'Share this card' }}</button>
-        <p class="foot -mx-5 -mb-5 mt-6 rounded-b-[1.75rem] py-4 text-center text-[11px] font-semibold uppercase tracking-[.28em] text-cream/85">Fresh · Reliable · Premier</p>
+        <p class="foot -mx-5 -mb-5 mt-6 rounded-b-[1.75rem] py-4 text-center text-[11px] font-semibold uppercase tracking-[.28em] text-cream/85">Personally yours · Brenda Ogollah</p>
       </section>
     </div>
   </div>
@@ -124,9 +135,10 @@ useHead({ meta: [{ name: 'robots', content: 'noindex' }] })
 .card-page .face { position: absolute; inset: 0; display: flex; border-radius: 1.4rem; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; text-align: left; }
 .card-page .front { background: #fff; }
 .card-page .fl { position: relative; flex: 0 0 38%; display: grid; place-items: center; background: #1F5B3A; }
-.card-page .fl-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; mix-blend-mode: luminosity; }
-.card-page .fl::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(31,91,58,.75), rgba(14,42,28,.9)); }
-.card-page .fl-logo { position: relative; z-index: 1; width: 5.4rem; height: 5.4rem; border-radius: 9999px; object-fit: cover; background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,.85); }
+.card-page .fl-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.card-page .fl::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(14,42,28,.65)); }
+.card-page .fl { place-items: end start; }
+.card-page .fl-logo { position: relative; z-index: 1; margin: 0 0 .6rem .6rem; width: 2.5rem; height: 2.5rem; border-radius: 9999px; object-fit: cover; background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,.85); }
 .card-page .fr { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 1rem 1rem 1rem 1.1rem; min-width: 0; }
 .card-page .bar { display: block; width: 2.4rem; height: 3px; border-radius: 3px; background: #C6F04A; margin: .65rem 0; }
 .card-page .shine { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%); transform: translateX(-120%); animation: shine 4.5s 1.2s ease-in-out infinite; }
@@ -134,6 +146,11 @@ useHead({ meta: [{ name: 'robots', content: 'noindex' }] })
 .card-page .qrbox { display: block; padding: .5rem; border-radius: .9rem; background: #fff; }
 .card-page .qrimg { display: block; width: 6.6rem; height: 6.6rem; }
 .card-page .qrimg svg { width: 100%; height: 100%; display: block; }
+.card-page .quote { position: relative; padding: 1rem 1rem 1rem 1.25rem; border-radius: 1rem; background: #F5F1E6; border-left: 4px solid #C6F04A; }
+.card-page .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+.card-page .facts li { display: flex; flex-direction: column; align-items: center; text-align: center; padding: .7rem .35rem; border-radius: 1rem; background: #1F5B3A; color: #F5F1E6; }
+.card-page .facts b { font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; line-height: 1; color: #C6F04A; }
+.card-page .facts span { margin-top: .3rem; font-size: .66rem; line-height: 1.25; color: rgba(245,241,230,.85); }
 .card-page .seg { display: flex; width: fit-content; padding: .3rem; border-radius: 9999px; background: rgba(255,255,255,.8); box-shadow: 0 0 0 1px rgba(14,42,28,.06); }
 .card-page .seg button { cursor: pointer; border-radius: 9999px; padding: .65rem 1.3rem; font-size: .85rem; font-weight: 600; color: #0E2A1C; transition: background .25s, color .25s; }
 .card-page .seg button.on { background: #1F5B3A; color: #F5F1E6; }
