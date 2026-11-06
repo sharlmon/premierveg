@@ -96,3 +96,15 @@ export const exportShots = [
   { src: 'img/export-pallet-strapped.webp', alt: 'A strapped, corner-protected pallet of haricots verts cartons', cap: 'Strapped and corner-protected for the journey', tag: 'Secured', w: 1200, h: 1375 },
   { src: 'img/export-haricot-warehouse.webp', alt: 'A full pallet of haricots verts cartons in the warehouse', cap: 'A full pallet of 12 × 250 g haricots verts cartons', tag: 'Warehouse', w: 1200, h: 1488 }
 ]
+
+// Shown on the About page and sent to search engines as FAQ structured data. Only confirmed facts belong here.
+export const faqs: { q: string; a: string }[] = [
+  { q: 'What does Premier Veg Mondo Limited do?', a: 'We export fresh vegetables, fruit and herbs from Kenya, working closely with growers and packing in our own pack-house in Nairobi.' },
+  { q: 'Which countries do you export to?', a: 'We currently supply customers in France, the Netherlands and Switzerland.' },
+  { q: 'What products do you supply?', a: 'Vegetables: haricot verts, mangetouts, sugar snaps, baby corn and carrots. Fruits: avocados, mangoes and passion fruit. Herbs: chillies, rosemary and chives.' },
+  { q: 'Is supply available all year?', a: 'Yes. All of our products are supplied year-round.' },
+  { q: 'Which certifications do you hold?', a: 'Our farms and operations work to GlobalG.A.P. and SMETA standards, with Category 1 grading and full traceability from farm to market.' },
+  { q: 'How is the produce packed?', a: 'In branded export cartons and retail punnets, built into secured pallets before leaving our Nairobi export office.' },
+  { q: 'How do I request a quote or place an order?', a: 'Use the quote form on our contact page, email info@premierveg.com or message us on WhatsApp. We respond within 24 hours.' },
+  { q: 'Where are you based?', a: 'Trystar Go Down, Airport North Road, P.O. Box 3468-00200, Nairobi, Kenya, with operations also in Italy.' }
+]

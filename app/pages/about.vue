@@ -57,13 +57,14 @@
     <CertificationsSection />
     <JourneyPath />
     <GallerySection />
+    <FaqSection />
     <CtaBand />
   </div>
 </template>
 <script setup lang="ts">
-import { gallery } from '~/data'
+import { gallery, faqs } from '~/data'
 const asset = useAsset(); const { open } = useModal()
-usePageSeo({ title: 'About — Premier Veg Mondo Limited', description: 'Established in 2022 in Nairobi with operations in Italy, Premier Veg Mondo Limited connects Kenyan growers with international markets. Category 1 grading and full traceability.', path: '/about/' })
+usePageSeo({ title: 'About — Premier Veg Mondo Limited', description: 'Established in 2022 in Nairobi with operations in Italy, Premier Veg Mondo Limited connects Kenyan growers with international markets. Category 1 grading and full traceability.', name: 'About', faq: faqs, path: '/about/' })
 const facts = ['Careful sorting and grading to meet Category 1 export standards;', 'Quality checks to ensure freshness, size uniformity, and appearance;', 'Hygienic handling by trained staff following food safety protocols.']
 onMounted(async () => { await nextTick(); usePageMotion() })
 </script>

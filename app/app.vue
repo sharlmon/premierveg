@@ -22,12 +22,17 @@ const route = useRoute()
 const bare = computed(() => !!route.meta.bare) // digital business cards: no site menu, footer or floating widgets
 const { items, load, save } = useQuote()
 const { siteUrl } = useSite()
-useHead({ script: [{ type: 'application/ld+json', innerHTML: JSON.stringify({
-  '@context': 'https://schema.org', '@type': 'Organization', name: 'Premier Veg Mondo Limited', alternateName: 'Premier Veg', url: siteUrl + '/', logo: siteUrl + '/img/logo.jpg', image: siteUrl + '/og.jpg',
-  description: 'Exporter of fresh fruits, vegetables and herbs from Kenya.', foundingDate: '2022', email: 'info@premierveg.com', telephone: '+393512151931',
-  address: { '@type': 'PostalAddress', streetAddress: 'Trystar Go Down, Airport North Road', postOfficeBoxNumber: '3468-00200', addressLocality: 'Nairobi', postalCode: '00200', addressCountry: 'KE' },
-  areaServed: ['France', 'Netherlands', 'Switzerland']
-}) }] })
+useHead({ script: [
+  { key: 'ld-org', type: 'application/ld+json', innerHTML: JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'Organization', '@id': siteUrl + '/#org', name: 'Premier Veg Mondo Limited', alternateName: 'Premier Veg', url: siteUrl + '/', logo: siteUrl + '/img/logo.jpg', image: siteUrl + '/og.jpg',
+    description: 'Exporter of fresh fruits, vegetables and herbs from Kenya to France, the Netherlands and Switzerland.', slogan: 'Whatever we grow, you receive it fresh.', foundingDate: '2022', email: 'info@premierveg.com', telephone: '+393512151931',
+    address: { '@type': 'PostalAddress', streetAddress: 'Trystar Go Down, Airport North Road', postOfficeBoxNumber: '3468-00200', addressLocality: 'Nairobi', postalCode: '00200', addressCountry: 'KE' },
+    contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'info@premierveg.com', telephone: '+393512151931', availableLanguage: ['English'], areaServed: ['FR', 'NL', 'CH'] }],
+    areaServed: ['France', 'Netherlands', 'Switzerland'],
+    knowsAbout: ['Fresh produce export', 'Haricot verts', 'Mangetouts', 'Sugar snaps', 'Baby corn', 'Avocados', 'Mangoes', 'Passion fruit', 'Chillies', 'Fresh herbs', 'GlobalG.A.P.', 'SMETA']
+  }) },
+  { key: 'ld-site', type: 'application/ld+json', innerHTML: JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', '@id': siteUrl + '/#site', url: siteUrl + '/', name: 'Premier Veg', inLanguage: 'en', publisher: { '@id': siteUrl + '/#org' } }) }
+] })
 onMounted(async () => {
   load(); watch(items, save, { deep: true })
   await nextTick()

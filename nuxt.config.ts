@@ -14,7 +14,7 @@ export default defineNuxtConfig({
       whatsapp: process.env.NUXT_PUBLIC_WHATSAPP || '393512151931'
     }
   },
-  nitro: { preset: 'github_pages', prerender: { routes: ['/', '/about', '/products', '/packages', '/team', '/contact', '/card/brenda', '/sitemap.xml', '/robots.txt'], crawlLinks: true } },
+  nitro: { preset: 'github_pages', prerender: { routes: ['/', '/about', '/products', '/packages', '/team', '/contact', '/card/brenda', '/sitemap.xml', '/robots.txt', '/llms.txt'], crawlLinks: true } },
   hooks: {
     // don't quietly download lazy chunks (e.g. the 380 KB PDF library) in the background; fetch them only when used
     'build:manifest': (manifest) => { for (const k in manifest) { manifest[k].prefetch = false } }
