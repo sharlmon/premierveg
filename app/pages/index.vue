@@ -4,7 +4,7 @@
     <StatementSection />
     <MarqueeStrip />
     <ShowcaseSection />
-    <RouteMap />
+    <GlobeMap />
     <CertificationsSection />
     <LazyCategoriesStrip hydrate-on-visible />
     <LazyGallerySection hydrate-on-visible />
