@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // Absolute site URL (used for canonical links, sitemap, social images). Change when the custom domain goes live.
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://sharlmon.github.io/premierveg',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://premierveg.com',
       // Free key from web3forms.com tied to the client's inbox. Empty = form falls back to opening the visitor's email app.
       web3formsKey: process.env.NUXT_PUBLIC_WEB3FORMS_KEY || '',
       // WhatsApp number, digits only with country code. TODO: confirm with the client.
