@@ -1,17 +1,16 @@
 <template>
-  <section id="routes" ref="root" class="relative overflow-hidden bg-forest py-28 text-cream md:py-36">
-    <div class="pointer-events-none absolute -left-40 top-10 h-[30rem] w-[30rem] rounded-full bg-leaf/30 blur-3xl" aria-hidden="true" />
+  <section id="routes" ref="root" class="relative overflow-hidden bg-cream py-28 md:py-36">
     <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-5 md:px-10 lg:grid-cols-12 lg:gap-12">
       <div class="lg:col-span-5">
-        <p class="eyebrow mb-6 text-lime" data-reveal>From Nairobi to your market</p>
-        <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Nairobi to Paris,</span></span><span class="line-mask"><span class="line-inner italic text-lime">Amsterdam and Zurich.</span></span></h2>
-        <p class="mt-6 max-w-md text-cream/75" data-reveal>Based in Nairobi, with operations in Italy, we supply buyers in France, the Netherlands and Switzerland. Pick a market to follow the route, or drag the globe.</p>
+        <p class="eyebrow mb-6 text-leaf" data-reveal>From Nairobi to your market</p>
+        <h2 class="display text-4xl md:text-5xl lg:text-6xl" data-lines><span class="line-mask"><span class="line-inner">Nairobi to Paris,</span></span><span class="line-mask"><span class="line-inner italic text-leaf">Amsterdam and Zurich.</span></span></h2>
+        <p class="mt-6 max-w-md text-ink/70" data-reveal>Based in Nairobi, with operations in Italy, we supply buyers in France, the Netherlands and Switzerland. Pick a market to follow the route, or drag the globe.</p>
 
         <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Choose a market" data-reveal>
-          <button v-for="d in dests" :key="d" class="cursor-pointer rounded-full border px-4 py-3 text-sm font-semibold transition" :class="active === d ? 'border-lime bg-lime text-forest' : 'border-cream/30 hover:border-lime'" :aria-pressed="active === d" @click="select(d)">{{ d }}</button>
+          <button v-for="d in dests" :key="d" class="cursor-pointer rounded-full border px-4 py-3 text-sm font-semibold transition" :class="active === d ? 'border-forest bg-forest text-cream' : 'border-forest/25 hover:border-forest'" :aria-pressed="active === d" @click="select(d)">{{ d }}</button>
         </div>
 
-        <div class="mt-8 rounded-3xl bg-white/10 p-6 ring-1 ring-white/15 backdrop-blur" aria-live="polite" data-reveal>
+        <div class="mt-8 rounded-3xl bg-forest p-6 text-cream" aria-live="polite" data-reveal>
           <p class="eyebrow text-lime">Nairobi → {{ active }}</p>
           <p class="display mt-2 text-4xl"><CountUp :to="km" group /> <span class="text-xl text-cream/70">km</span></p>
           <p class="mt-2 text-sm text-cream/75">{{ country[active] }}, one of our core markets. Straight-line distance from our Nairobi base.</p>
@@ -76,7 +75,7 @@ const draw = (time: number) => {
   ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, S, S)
   const lon = view.lon + view.spin, lat = view.lat
   // atmosphere + body
-  const g = ctx.createRadialGradient(c, c, R * 0.92, c, c, R * 1.22); g.addColorStop(0, 'rgba(198,240,74,.22)'); g.addColorStop(1, 'rgba(198,240,74,0)')
+  const g = ctx.createRadialGradient(c, c, R * 0.92, c, c, R * 1.22); g.addColorStop(0, 'rgba(31,91,58,.22)'); g.addColorStop(1, 'rgba(31,91,58,0)')
   ctx.fillStyle = g; ctx.beginPath(); ctx.arc(c, c, R * 1.22, 0, 6.2832); ctx.fill()
   const b = ctx.createRadialGradient(c - R * 0.35, c - R * 0.4, R * 0.1, c, c, R); b.addColorStop(0, '#1d5236'); b.addColorStop(1, '#0a2216')
   ctx.fillStyle = b; ctx.beginPath(); ctx.arc(c, c, R, 0, 6.2832); ctx.fill()
