@@ -21,10 +21,6 @@
             <img v-for="(p, i) in panels" :key="p.code" :src="asset(p.img)" :alt="p.alt" class="stage-img absolute inset-0 h-full w-full object-cover" :class="i === idx ? 'is-on' : ''" :loading="i === 0 ? 'eager' : 'lazy'" />
             <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent" />
             <span class="eyebrow absolute left-5 top-5 rounded-full bg-forest/80 px-3 py-1.5 text-lime backdrop-blur">{{ cur.product.cat }} · {{ cur.code }}</span>
-            <!-- floating cut-out -->
-            <div class="depth pointer-events-none absolute bottom-4 right-4 w-[36%] rounded-2xl bg-white p-3 shadow-2xl sm:bottom-6 sm:right-6">
-              <div class="relative aspect-[4/3]"><img v-for="(p, i) in panels" :key="p.code + 'c'" :src="asset(p.product.img)" alt="" class="cut absolute inset-0 h-full w-full object-contain" :class="i === idx ? 'is-on' : ''" /></div>
-            </div>
           </div>
         </div>
 
@@ -69,8 +65,6 @@ onMounted(() => { if (window.matchMedia('(prefers-reduced-motion: reduce)').matc
 .sw-btn:hover { background: #C6F04A; color: #0E2A1C; transform: scale(1.08); }
 .stage-img { opacity: 0; transform: scale(1.1); transition: opacity .5s var(--ease), transform .9s var(--ease); }
 .stage-img.is-on { opacity: 1; transform: scale(1); }
-.cut { opacity: 0; transform: translateY(30px) scale(.9) rotate(4deg); transition: opacity .6s .15s, transform .9s .15s var(--ease); }
-.cut.is-on { opacity: 1; transform: none; }
 @keyframes bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@media (prefers-reduced-motion: reduce) { .stage-img, .cut { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .stage-img { transition: none; } }
 </style>
