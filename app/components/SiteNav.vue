@@ -64,7 +64,7 @@ onBeforeUnmount(() => { document.removeEventListener('pointerdown', outside); wi
 .pea-link.is-on { color: #C6F04A; background: rgba(255,255,255,.08); }
 .pea-link.is-on .pea { transform: scale(1); width: 8px; margin-right: 0; }
 .pea-link:not(.is-on):hover .pea { transform: scale(.75); width: 8px; margin-right: 0; opacity: .7; }
-.panel-enter-active { transition: opacity .25s, transform .35s cubic-bezier(.2,.9,.2,1); }
+.panel-enter-active { transition: opacity .25s, transform .35s var(--ease); }
 .panel-leave-active { transition: opacity .15s, transform .15s; }
 .panel-enter-from, .panel-leave-to { opacity: 0; transform: translateY(-8px) scale(.96); }
 </style>

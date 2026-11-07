@@ -48,7 +48,7 @@ const move = (e: PointerEvent) => { const r = root.value!.getBoundingClientRect(
 const leave = () => { mx = my = -999; cancelAnimationFrame(raf); raf = requestAnimationFrame(paint) }
 </script>
 <style>
-.hex-in { opacity: 0; transform: scale(.4); animation: hexin .7s cubic-bezier(.2,.9,.2,1) forwards; }
+.hex-in { opacity: 0; transform: scale(.4); animation: hexin .7s var(--ease) forwards; }
 @keyframes hexin { to { opacity: 1; transform: scale(1); } }
 .hex-btn:focus-visible { outline: 3px solid #FFB627; outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .hex-in { animation: none; opacity: 1; transform: none; } }

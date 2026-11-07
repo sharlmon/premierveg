@@ -17,8 +17,8 @@
         </div>
       </div>
 
-      <div class="lg:col-span-7">
-        <div ref="wrap" class="globe-wrap relative mx-auto aspect-square w-full max-w-[40rem] select-none">
+      <div class="order-first lg:order-none lg:col-span-7">
+        <div ref="wrap" class="globe-wrap relative mx-auto aspect-square w-full max-w-[min(40rem,86vw,62svh)] select-none">
           <canvas ref="canvas" class="absolute inset-0 h-full w-full" role="img" aria-label="Rotating globe showing air freight routes from Nairobi to Paris, Amsterdam and Zurich" />
         </div>
       </div>

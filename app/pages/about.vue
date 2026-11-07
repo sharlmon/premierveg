@@ -9,13 +9,13 @@
           <p class="mt-5 max-w-xl text-ink/70" data-reveal>At Premier Veg, we are committed to connecting Kenyan growers with international markets while maintaining the highest standards of freshness, quality, and consistency.</p>
         </div>
         <div class="lg:col-span-5">
-          <button class="group block w-full cursor-zoom-in overflow-hidden rounded-[2rem] bg-forest" data-clip aria-label="View the pack-house photo larger" @click="open({ type: 'lightbox', index: 0, items: gallery })"><img :src="asset('img/about/packhouse.jpg')" alt="The Premier Veg pack-house team at work" class="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" /></button>
+          <button class="group block w-full cursor-zoom-in overflow-hidden rounded-[2rem] bg-forest" data-clip aria-label="View the pack-house photo larger" @click="open({ type: 'lightbox', index: 0, items: gallery })"><img :src="asset('img/about/packhouse.jpg')" alt="The Premier Veg pack-house team at work" class="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-105" /></button>
         </div>
       </div>
     </section>
     <section class="pb-28 md:pb-36">
       <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-10 lg:grid-cols-12">
-        <button class="group order-2 block w-full max-w-md cursor-zoom-in overflow-hidden rounded-[2rem] bg-forest lg:order-1 lg:col-span-5" aria-label="View the field team photo larger" @click="open({ type: 'lightbox', index: gallery.length - 1, items: gallery })"><img :src="asset('img/field-team.webp')" alt="Four Premier Veg team members in white lab coats standing in a field" width="1000" height="1333" loading="lazy" decoding="async" class="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-105" /></button>
+        <button class="group order-2 block w-full max-w-md cursor-zoom-in overflow-hidden rounded-[2rem] bg-forest lg:order-1 lg:col-span-5" aria-label="View the field team photo larger" @click="open({ type: 'lightbox', index: gallery.length - 1, items: gallery })"><img :src="asset('img/field-team.webp')" alt="Four Premier Veg team members in white lab coats standing in a field" width="1000" height="1333" loading="lazy" decoding="async" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105" /></button>
         <div class="order-1 lg:order-2 lg:col-span-7 lg:pl-8">
           <p class="eyebrow mb-6 text-leaf" data-reveal>In the field</p>
           <h2 class="display text-3xl md:text-5xl" data-lines><span class="line-mask"><span class="line-inner">Quality starts</span></span><span class="line-mask"><span class="line-inner italic text-leaf">on the farm.</span></span></h2>

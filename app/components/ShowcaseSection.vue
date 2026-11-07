@@ -36,7 +36,7 @@
                 <span class="display text-2xl transition-colors" :class="i === idx ? 'text-lime' : 'text-cream/70'">0{{ i + 1 }}</span>
                 <span class="display text-3xl transition-all duration-300 md:text-4xl" :class="i === idx ? 'translate-x-1 text-cream' : 'text-cream/70 group-hover:text-cream/80'">{{ p.product.name }}</span>
               </span>
-              <span class="grid transition-[grid-template-rows] duration-500 ease-out" :class="i === idx ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'">
+              <span class="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.2,.8,.2,1)]" :class="i === idx ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'">
                 <span class="overflow-hidden">
                   <span class="mt-3 block max-w-md pl-12 text-sm text-cream/70">{{ p.product.blurb }}</span>
                   <span class="mt-5 block pl-12"><span class="btn btn-lime !py-2.5 text-xs" role="presentation" @click.stop="open({ type: 'product', item: p.product })">View details +</span></span>
@@ -67,9 +67,9 @@ onMounted(() => { if (window.matchMedia('(prefers-reduced-motion: reduce)').matc
 <style>
 .sw-btn { display: grid; height: 3rem; width: 3rem; cursor: pointer; place-items: center; border-radius: 9999px; border: 1px solid rgba(255,255,255,.25); transition: background .2s, color .2s, transform .2s; }
 .sw-btn:hover { background: #C6F04A; color: #0E2A1C; transform: scale(1.08); }
-.stage-img { opacity: 0; transform: scale(1.1); transition: opacity .8s ease, transform 1.4s cubic-bezier(.2,.8,.2,1); }
+.stage-img { opacity: 0; transform: scale(1.1); transition: opacity .5s var(--ease), transform .9s var(--ease); }
 .stage-img.is-on { opacity: 1; transform: scale(1); }
-.cut { opacity: 0; transform: translateY(30px) scale(.9) rotate(4deg); transition: opacity .6s .15s, transform .9s .15s cubic-bezier(.2,.9,.2,1); }
+.cut { opacity: 0; transform: translateY(30px) scale(.9) rotate(4deg); transition: opacity .6s .15s, transform .9s .15s var(--ease); }
 .cut.is-on { opacity: 1; transform: none; }
 @keyframes bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (prefers-reduced-motion: reduce) { .stage-img, .cut { transition: none; } }

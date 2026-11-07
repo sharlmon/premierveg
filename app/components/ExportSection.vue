@@ -11,7 +11,7 @@
       <ul class="mt-12 grid grid-cols-2 gap-3 md:grid-cols-6 md:gap-4" data-stagger>
         <li v-for="(s, i) in exportShots" :key="s.src" class="reveal" :class="i < 2 ? 'md:col-span-3' : i === 4 ? 'col-span-2 md:col-span-2' : 'md:col-span-2'">
           <button class="group relative block w-full cursor-zoom-in overflow-hidden rounded-3xl bg-forest" :class="i < 2 ? 'aspect-[4/5]' : i === 4 ? 'aspect-[16/10] md:aspect-[3/4]' : 'aspect-[3/4]'" :aria-label="s.cap + '. Open larger'" @click="open({ type: 'lightbox', index: i, items: exportShots })">
-            <img :src="asset(s.src)" :alt="s.alt" :width="s.w" :height="s.h" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img :src="asset(s.src)" :alt="s.alt" :width="s.w" :height="s.h" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <span class="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-transparent" />
             <span class="absolute inset-x-0 bottom-0 p-4 text-left text-cream md:p-5"><span class="eyebrow rounded-full bg-lime px-2.5 py-1 text-forest">{{ s.tag }}</span><span class="mt-2 block text-sm font-medium leading-snug md:text-base">{{ s.cap }}</span></span>
           </button>

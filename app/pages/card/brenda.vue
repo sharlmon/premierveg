@@ -130,7 +130,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex' }] })
 .card-page .orb-a { width: 18rem; height: 18rem; right: -6rem; top: -4rem; background: rgba(31,91,58,.18); }
 .card-page .orb-b { width: 16rem; height: 16rem; left: -6rem; bottom: 10rem; background: rgba(198,240,74,.22); }
 .card-page .stage { perspective: 1200px; position: relative; filter: drop-shadow(0 18px 26px rgba(14,42,28,.28)); }
-.card-page .flip { position: relative; display: block; width: 100%; aspect-ratio: 1.75 / 1; cursor: pointer; transform-style: preserve-3d; transition: transform .8s cubic-bezier(.2,.8,.2,1); border-radius: 1.4rem; animation: cardin .9s cubic-bezier(.2,.8,.2,1) backwards; }
+.card-page .flip { position: relative; display: block; width: 100%; aspect-ratio: 1.75 / 1; cursor: pointer; transform-style: preserve-3d; transition: transform .8s var(--ease); border-radius: 1.4rem; animation: cardin .9s var(--ease) backwards; }
 .card-page .flip.is-flipped { transform: rotateY(180deg); }
 .card-page .face { position: absolute; inset: 0; display: flex; border-radius: 1.4rem; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; text-align: left; }
 .card-page .front { background: #fff; }

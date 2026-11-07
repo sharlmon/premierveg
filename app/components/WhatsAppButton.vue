@@ -14,7 +14,7 @@ const shown = computed(() => route.path !== '/' || y.value > 600) // keep the ho
 onMounted(() => { const f = () => (y.value = window.scrollY); f(); window.addEventListener('scroll', f, { passive: true }) })
 </script>
 <style>
-.wa-label { max-width: 0; opacity: 0; transition: max-width .5s cubic-bezier(.2,.8,.2,1), opacity .3s; }
+.wa-label { max-width: 0; opacity: 0; transition: max-width .5s var(--ease), opacity .3s; }
 .wa:hover .wa-label, .wa:focus-visible .wa-label { max-width: 16rem; opacity: 1; }
 .wa-ring { box-shadow: 0 0 0 0 rgba(37,211,102,.7); animation: waping 2.4s cubic-bezier(.2,.6,.3,1) infinite; }
 .wa:hover .wa-ring { animation: none; }

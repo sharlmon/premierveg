@@ -31,6 +31,6 @@ const setKind = (k: string) => {
   if (!items.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { kind.value = k; return }
   gsap.registerPlugin(Flip); items.forEach((el) => ((el as HTMLElement).style.opacity = '1'))
   const state = Flip.getState(items); kind.value = k
-  nextTick(() => Flip.from(state, { duration: 0.7, ease: 'power3.inOut', stagger: 0.03, absolute: true, onEnter: (els) => gsap.fromTo(els, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5 }), onLeave: (els) => gsap.to(els, { opacity: 0, scale: 0.85, duration: 0.4 }) }))
+  nextTick(() => Flip.from(state, { duration: 0.5, ease: 'power3.out', stagger: 0.03, absolute: true, onEnter: (els) => gsap.fromTo(els, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.4 }), onLeave: (els) => gsap.to(els, { opacity: 0, scale: 0.85, duration: 0.3 }) }))
 }
 </script>

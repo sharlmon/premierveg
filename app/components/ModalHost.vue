@@ -23,13 +23,13 @@
                 <p class="eyebrow mb-3 text-ink/70">Packaging photos</p>
                 <ul class="flex flex-wrap gap-2"><li v-for="r in related" :key="r.id"><button class="flex cursor-pointer items-center gap-2 rounded-full border border-forest/20 bg-white py-1 pl-1 pr-4 text-xs font-semibold transition hover:border-forest" @click="open({ type: 'package', item: r })"><img :src="asset(r.img)" alt="" class="h-8 w-8 rounded-full bg-white object-contain" />{{ r.kind === 'Top cover' ? 'Top cover' : r.name }}</button></li></ul>
               </div>
-              <div class="mt-auto pt-7">
-                <div class="flex flex-wrap items-center gap-2.5">
+              <div class="contents">
+                <div class="act-bar mt-auto flex items-center gap-2.5 pt-7">
                   <button class="btn" :class="inList(state.item.code) ? 'btn-lime' : 'btn-dark'" :aria-pressed="inList(state.item.code)" @click="toggleProduct(state.item)">{{ inList(state.item.code) ? 'Added to quote ✓' : 'Add to quote +' }}</button>
                   <a class="btn btn-wa" :href="wa('Hello Premier Veg, I would like to enquire about ' + state.item.name + ' (' + state.item.code + ').')" target="_blank" rel="noopener">WhatsApp</a>
-                  <button class="btn btn-ghost !text-forest" :disabled="pdfBusy" @click="spec(state.item)">{{ pdfBusy ? 'Preparing…' : 'Spec sheet PDF ↓' }}</button>
                 </div>
-                <div class="mt-4 flex items-center gap-3">
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                  <button class="btn btn-ghost !text-forest" :disabled="pdfBusy" @click="spec(state.item)">{{ pdfBusy ? 'Preparing…' : 'Spec sheet PDF ↓' }}</button>
                   <button v-if="items.length" class="text-sm font-semibold underline underline-offset-4" @click="open({ type: 'quote' })">View quote list ({{ items.length }}) →</button>
                   <div class="ml-auto flex gap-2">
                     <button class="nav-btn" aria-label="Previous product" @click="step(-1)">←</button>
@@ -47,8 +47,8 @@
               <p class="eyebrow text-leaf">{{ state.item.kind }} · {{ state.item.code }}</p>
               <h3 class="display mt-3 text-3xl md:text-4xl">{{ state.item.name }}</h3>
               <p class="mt-4 text-ink/75">{{ state.item.note }}</p>
-              <div class="mt-auto pt-8">
-                <div class="flex flex-wrap items-center gap-2.5">
+              <div class="contents">
+                <div class="act-bar mt-auto flex items-center gap-2.5 pt-8">
                   <button class="btn" :class="inList(state.item.id) ? 'btn-lime' : 'btn-dark'" :aria-pressed="inList(state.item.id)" @click="togglePack(state.item)">{{ inList(state.item.id) ? 'Added to quote ✓' : 'Add to quote +' }}</button>
                   <a class="btn btn-wa" :href="wa('Hello Premier Veg, I would like to enquire about the ' + state.item.name + ' ' + state.item.kind.toLowerCase() + ' (' + state.item.code + ').')" target="_blank" rel="noopener">WhatsApp</a>
                 </div>
@@ -148,11 +148,12 @@ onMounted(() => window.addEventListener('keydown', onKey))
 onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
 </script>
 <style>
+@media (max-width: 639px) { .act-bar.act-bar { position: sticky; bottom: 0; z-index: 5; margin: 0 -1.75rem; padding: .75rem 1.75rem calc(.75rem + env(safe-area-inset-bottom)); background: #F5F1E6; border-top: 1px solid rgba(31,91,58,.15); } .act-bar.act-bar .btn { flex: 1; justify-content: center; padding-inline: 1rem; } }
 .btn-wa { background: #25D366; color: #06331a; }
 .btn-wa:hover { background: #1fb957; }
 .nav-btn { display: grid; height: 2.75rem; width: 2.75rem; cursor: pointer; place-items: center; border-radius: 9999px; background: #E8E3D3; color: #0E2A1C; transition: background .2s, transform .2s; }
 .nav-btn:hover { background: #C6F04A; transform: scale(1.06); }
-.modal-enter-active .modal-panel { transition: transform .5s cubic-bezier(.2,.9,.2,1), opacity .35s; }
+.modal-enter-active .modal-panel { transition: transform .5s var(--ease), opacity .35s; }
 .modal-leave-active .modal-panel { transition: transform .25s ease, opacity .2s; }
 .modal-enter-active .modal-backdrop, .modal-leave-active .modal-backdrop { transition: opacity .3s; }
 .modal-enter-from .modal-panel { opacity: 0; transform: translateY(40px) scale(.96); }

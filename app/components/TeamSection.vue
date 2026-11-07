@@ -104,7 +104,7 @@ const copy = async (v: string) => { try { await navigator.clipboard.writeText(v)
 </script>
 <style>
 .team-hero-img { object-position: 50% 62%; }
-.pv { opacity: 0; transform: scale(1.06); transition: opacity .6s ease, transform 1.1s cubic-bezier(.2,.8,.2,1); }
+.pv { opacity: 0; transform: scale(1.06); transition: opacity .5s var(--ease), transform .9s var(--ease); }
 .pv.is-on { opacity: 1; transform: scale(1); }
 @media (prefers-reduced-motion: reduce) { .pv { transition: none; } }
 </style>

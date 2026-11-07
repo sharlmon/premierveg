@@ -23,11 +23,12 @@
         <label class="block text-sm font-semibold sm:col-span-2">Email<input v-model="f.email" type="email" required autocomplete="email" class="field" /></label>
         <div v-if="!items.length" ref="pick" class="relative sm:col-span-2">
           <span id="pi-label" class="block text-sm font-semibold">Products of interest <span class="font-normal text-ink/60">(choose one or more)</span></span>
-          <button type="button" class="field pick-btn" :class="{ 'is-open': pickOpen }" aria-haspopup="listbox" :aria-expanded="pickOpen" aria-labelledby="pi-label" @click="pickOpen = !pickOpen" @keydown.esc="pickOpen = false">
-            <span v-if="!f.sel.length" class="text-ink/45">Select products…</span>
-            <span v-else class="flex flex-wrap gap-1.5"><span v-for="n in f.sel" :key="n" class="chip">{{ n }}<span class="chip-x" role="button" :aria-label="'Remove ' + n" @click.stop="toggle(n)">✕</span></span></span>
+          <div class="field pick-btn" :class="{ 'is-open': pickOpen }">
+            <button type="button" class="pick-trigger" aria-haspopup="listbox" :aria-expanded="pickOpen" aria-labelledby="pi-label" @click="pickOpen = !pickOpen" @keydown.esc="pickOpen = false"><span class="sr-only">{{ f.sel.length ? f.sel.length + ' selected' : 'Select products' }}</span></button>
+            <span v-if="!f.sel.length" class="pick-body text-ink/45">Select products…</span>
+            <span v-else class="pick-body flex flex-wrap gap-1.5"><span v-for="n in f.sel" :key="n" class="chip">{{ n }}<button type="button" class="chip-x" :aria-label="'Remove ' + n" @click="toggle(n)">✕</button></span></span>
             <svg class="pick-caret" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 5 5 5-5" /></svg>
-          </button>
+          </div>
           <Teleport to="body" :disabled="!sheet">
           <div v-if="pickOpen && sheet" class="pick-backdrop" aria-hidden="true" @click="pickOpen = false" />
           <Transition :name="sheet ? 'picks' : 'pickp'">
@@ -158,9 +159,14 @@ const burst = () => {
 .field { margin-top: .4rem; width: 100%; border-radius: .75rem; border: 1px solid rgba(14,42,28,.2); background: #fff; padding: .75rem 1rem; font-weight: 400; }
 
 .pick-btn { position: relative; display: flex; align-items: center; min-height: 3.1rem; padding-right: 2.5rem; text-align: left; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
+.pick-trigger { position: absolute; inset: 0; border-radius: inherit; cursor: pointer; }
+.pick-trigger:focus-visible { outline: 3px solid #FFB627; outline-offset: 3px; }
+.pick-body { position: relative; pointer-events: none; }
+.chip-x { pointer-events: auto; cursor: pointer; border: 0; color: inherit; }
+.chip-x:focus-visible { outline: 2px solid #FFB627; outline-offset: 2px; }
 .pick-btn:hover { border-color: rgba(31,91,58,.55); }
-.pick-btn.is-open, .pick-btn:focus-visible { border-color: #1F5B3A; box-shadow: 0 0 0 3px rgba(198,240,74,.5); outline: none; }
-.pick-caret { position: absolute; right: 1rem; top: 50%; margin-top: -8px; color: #1F5B3A; transition: transform .25s; }
+.pick-btn.is-open, .pick-btn:focus-within { border-color: #1F5B3A; box-shadow: 0 0 0 3px rgba(198,240,74,.5); outline: none; }
+.pick-caret { pointer-events: none; position: absolute; right: 1rem; top: 50%; margin-top: -8px; color: #1F5B3A; transition: transform .25s; }
 .pick-btn.is-open .pick-caret { transform: rotate(180deg); }
 .chip { display: inline-flex; align-items: center; gap: .4rem; border-radius: 9999px; background: #0E2A1C; color: #F5F1E6; padding: .2rem .35rem .2rem .7rem; font-size: .8rem; font-weight: 600; }
 .chip-x { display: grid; place-items: center; width: 1.1rem; height: 1.1rem; border-radius: 9999px; background: rgba(255,255,255,.18); font-size: .55rem; transition: background .2s; }
@@ -175,7 +181,7 @@ const burst = () => {
 .pick-foot { position: sticky; bottom: -.5rem; display: flex; align-items: center; justify-content: space-between; margin-top: .4rem; padding: .6rem .6rem .1rem; background: linear-gradient(0deg, #0E2A1C 70%, transparent); }
 .pick-foot .text-ink\/60 { color: rgba(245,241,230,.7); }
 .pick-done { border-radius: 9999px; background: #C6F04A; color: #0E2A1C; padding: .45rem 1.1rem; font-size: .8rem; font-weight: 700; cursor: pointer; }
-.pickp-enter-active { transition: opacity .18s, transform .22s cubic-bezier(.2,.9,.2,1); } .pickp-leave-active { transition: opacity .12s; }
+.pickp-enter-active { transition: opacity .18s, transform .22s var(--ease); } .pickp-leave-active { transition: opacity .12s; }
 .pickp-enter-from { opacity: 0; transform: translateY(-6px) scale(.98); } .pickp-leave-to { opacity: 0; }
 
 .pick-backdrop { position: fixed; inset: 0; z-index: 199; background: rgba(5,18,11,.55); }
@@ -185,7 +191,7 @@ const burst = () => {
 .pick-panel.is-sheet .pick-foot { bottom: -.1rem; padding-bottom: .4rem; }
 .pick-panel.is-sheet .pick-done { padding: .7rem 1.6rem; font-size: .95rem; }
 .pick-grab { width: 2.6rem; height: .3rem; margin: .2rem auto .6rem; border-radius: 9999px; background: rgba(245,241,230,.3); }
-.picks-enter-active { transition: transform .3s cubic-bezier(.2,.9,.2,1); } .picks-leave-active { transition: transform .2s ease-in; }
+.picks-enter-active { transition: transform .3s var(--ease); } .picks-leave-active { transition: transform .2s ease-in; }
 .picks-enter-from, .picks-leave-to { transform: translateY(100%); }
 .chip-x { width: 1.35rem; height: 1.35rem; }
 </style>

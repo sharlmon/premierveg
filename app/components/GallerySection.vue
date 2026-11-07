@@ -44,13 +44,13 @@ watch(act, arm)
 const pick = (e: MouseEvent, i: number) => { if (act.value === i || (e as PointerEvent).pointerType === 'mouse') open({ type: 'lightbox', index: i, items: gallery }); else act.value = i }
 </script>
 <style>
-.gl-panel { flex: 1 1 0%; transition: flex-grow .75s cubic-bezier(.2,.8,.2,1); }
+.gl-panel { flex: 1 1 0%; transition: flex-grow .5s var(--ease); }
 .gl-panel.is-act { flex-grow: 4.6; }
-.gl-img { transition: transform 1.2s cubic-bezier(.2,.8,.2,1), filter .6s; transform: scale(1.12); filter: saturate(.8); }
+.gl-img { transition: transform .9s var(--ease), filter .6s; transform: scale(1.12); filter: saturate(.8); }
 .is-act .gl-img { transform: scale(1); filter: none; }
 .gl-vert { transition: opacity .3s; }
 @media (min-width: 768px) { .gl-vert { writing-mode: vertical-rl; } }
-.gl-cap { opacity: 0; transform: translateY(18px); pointer-events: none; transition: opacity .45s, transform .6s cubic-bezier(.2,.9,.2,1); }
+.gl-cap { opacity: 0; transform: translateY(18px); pointer-events: none; transition: opacity .45s, transform .5s var(--ease); }
 .gl-cap.is-on { opacity: 1; transform: none; transition-delay: .2s; }
 .gl-btn { display: grid; height: 3rem; width: 3rem; cursor: pointer; place-items: center; border-radius: 9999px; border: 1px solid rgba(14,42,28,.25); transition: background .2s, color .2s, transform .2s; }
 .gl-btn:hover { background: #0E2A1C; color: #C6F04A; transform: scale(1.08); }

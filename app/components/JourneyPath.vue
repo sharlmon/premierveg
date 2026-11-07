@@ -15,7 +15,7 @@
       <!-- stepper -->
       <ol class="relative mt-14 grid grid-cols-4 gap-2" role="tablist" aria-label="Journey stages">
         <span class="absolute left-[12.5%] right-[12.5%] top-[1.65rem] h-[3px] rounded-full bg-forest/10" aria-hidden="true" />
-        <span class="absolute left-[12.5%] top-[1.65rem] h-[3px] rounded-full bg-leaf transition-[width] duration-700 ease-out" :style="{ width: (sel / (steps.length - 1)) * 75 + '%' }" aria-hidden="true" />
+        <span class="absolute left-[12.5%] top-[1.65rem] h-[3px] rounded-full bg-leaf transition-[width] duration-500 ease-[cubic-bezier(.2,.8,.2,1)]" :style="{ width: (sel / (steps.length - 1)) * 75 + '%' }" aria-hidden="true" />
         <li v-for="(s, i) in steps" :key="s.n" class="relative flex flex-col items-center text-center">
           <button role="tab" :aria-selected="sel === i" :aria-label="'Stage ' + s.n + ': ' + s.t" class="relative z-10 grid h-14 w-14 cursor-pointer place-items-center rounded-full border-[3px] text-sm font-bold transition-all duration-500 hover:scale-110" :class="i <= sel ? 'border-forest bg-lime text-forest' : 'border-forest/20 bg-white text-forest/70'" :style="sel === i ? 'box-shadow:0 0 0 8px rgba(198,240,74,.35)' : ''" @click="go(i)">{{ s.n }}</button>
           <span class="mt-3 hidden max-w-[10rem] text-sm font-semibold transition-colors md:block" :class="sel === i ? 'text-forest' : 'text-forest/70'">{{ s.t }}</span>
@@ -60,9 +60,9 @@ const go = (i: number) => { sel.value = (i + steps.length) % steps.length }
 <style>
 .jn-btn { display: grid; height: 3rem; width: 3rem; cursor: pointer; place-items: center; border-radius: 9999px; border: 1px solid rgba(14,42,28,.25); transition: background .2s, color .2s, transform .2s; }
 .jn-btn:hover { background: #0E2A1C; color: #C6F04A; transform: scale(1.08); }
-.jn-img { opacity: 0; transform: scale(1.06); transition: opacity .6s, transform 1s cubic-bezier(.2,.8,.2,1); }
+.jn-img { opacity: 0; transform: scale(1.06); transition: opacity .6s, transform .9s var(--ease); }
 .jn-img.is-on { opacity: 1; transform: scale(1); }
-.jn-text { animation: jnin .55s cubic-bezier(.2,.9,.2,1); }
+.jn-text { animation: jnin .55s var(--ease); }
 @keyframes jnin { from { opacity: 0; transform: translateY(14px); } }
 @media (prefers-reduced-motion: reduce) { .jn-img, .jn-text { transition: none; animation: none; } }
 </style>

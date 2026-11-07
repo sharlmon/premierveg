@@ -35,7 +35,7 @@
                   <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full transition-all duration-300" :class="openIdx === i ? 'rotate-45 bg-forest text-lime' : 'bg-white text-forest'" aria-hidden="true">+</span>
                 </button>
               </h3>
-              <div :id="'feat-' + i" class="grid transition-[grid-template-rows] duration-500 ease-out" :class="openIdx === i ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'">
+              <div :id="'feat-' + i" class="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.2,.8,.2,1)]" :class="openIdx === i ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'">
                 <p class="overflow-hidden text-sm leading-relaxed text-ink/70"><span class="block pb-5 pr-12">{{ f.d }}</span></p>
               </div>
             </li>

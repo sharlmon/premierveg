@@ -64,7 +64,7 @@ watch(() => route.path, (p) => { if (p === '/contact') show.value = false })
 watch(state, (v) => { if (v) show.value = false })
 </script>
 <style>
-.toast-enter-active { transition: transform .6s cubic-bezier(.2,.9,.2,1), opacity .4s; }
+.toast-enter-active { transition: transform .5s var(--ease), opacity .4s; }
 .toast-leave-active { transition: opacity .25s; }
 .toast-enter-from, .toast-leave-to { opacity: 0; }
 </style>

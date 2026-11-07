@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+:root { --ease: cubic-bezier(.2,.8,.2,1); } /* one easing for every transition; durations: .25s small UI, .5s default, .9s large image reveals */
 html { scroll-behavior: auto; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -30,7 +31,7 @@ body { @apply bg-cream text-ink font-sans antialiased; overflow-x: hidden; }
 .marquee { display: flex; width: max-content; animation: marquee 38s linear infinite; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
-.card-lift { transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s; }
+.card-lift { transition: transform .5s var(--ease), box-shadow .5s; }
 .card-lift:hover { transform: translateY(-8px) rotate(-.6deg); box-shadow: 0 30px 60px -25px rgba(14,42,28,.45); }
 
 .tap { display: inline-block; padding-block: .95rem; margin-block: -.95rem; }
@@ -44,7 +45,7 @@ body { @apply bg-cream text-ink font-sans antialiased; overflow-x: hidden; }
   .reveal { opacity: 1; transform: none; }
 }
 
-.page-enter-active { transition: opacity .5s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+.page-enter-active { transition: opacity .5s ease, transform .5s var(--ease); }
 .page-leave-active { transition: opacity .25s ease; }
 .page-enter-from { opacity: 0; transform: translateY(24px); }
 .page-leave-to { opacity: 0; }
@@ -75,6 +76,7 @@ html.a11y-cursor, html.a11y-cursor * { cursor: url("data:image/svg+xml;utf8,<svg
 /* high contrast: black and white, yellow for links and buttons; photos are left alone */
 html.a11y-contrast, html.a11y-contrast body { background: #000 !important; color: #fff !important; }
 html.a11y-contrast body *:not(img):not(canvas):not(svg):not(svg *):not(video) { background-color: #000 !important; background-image: none !important; color: #fff !important; border-color: #fff !important; box-shadow: none !important; text-shadow: none !important; }
+html.a11y-contrast .search-ico { color: #ffe600 !important; }
 html.a11y-contrast a, html.a11y-contrast button { color: #ffe600 !important; }
 html.a11y-contrast a:not(.btn) { text-decoration: underline; }
 html.a11y-contrast .btn, html.a11y-contrast button:not([role="switch"]) { border: 2px solid #ffe600 !important; }
