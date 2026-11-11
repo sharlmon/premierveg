@@ -81,6 +81,7 @@ export const categories = [
 
 export const gallery = [
   { src: 'img/about/packhouse.jpg', alt: 'The Premier Veg pack-house team at work', cap: 'The pack-house: sorting, grading and packing the day-to-day orders', tag: 'Pack-house' },
+  { src: 'img/about/mangetout-packing.jpg', alt: 'A Premier Veg team member in a white coat and cap arranging trays of fresh mangetouts in the pack-house', cap: 'Mangetouts, laid out by hand in the pack-house', tag: 'Hand-packed', pos: '50% 35%' },
   { src: 'img/hero-workers.webp', alt: 'Premier Veg team sorting haricot verts', cap: 'Our team sorting and packing haricot verts', tag: 'Our team' },
   { src: 'img/beans-bunch.webp', alt: 'Freshly harvested haricot verts', cap: 'Haricot verts, freshly harvested', tag: 'Haricot verts' },
   { src: 'img/snow-peas.webp', alt: 'Tray of snow peas', cap: 'Mangetouts, packed in retail trays', tag: 'Mangetouts' },
