@@ -64,7 +64,7 @@
                 <p v-if="cur.quote" class="display mt-3 text-lg italic text-cream/85">“{{ cur.quote }}”</p>
                 <div class="mt-5 flex flex-wrap gap-2">
                   <button class="btn btn-lime !px-5 !py-3.5 text-xs" @click="open({ type: 'team', item: cur })">Read bio →</button>
-                  <button class="btn btn-ghost !px-5 !py-3.5 text-xs" @click="copy(cur.email)">{{ copied === cur.email ? 'Copied ✓' : 'Copy email' }}</button>
+                  <button class="btn btn-ghost !px-5 !py-3.5 text-xs" @click="copy(cur.email || cur.phone)">{{ copied === (cur.email || cur.phone) ? 'Copied ✓' : cur.email ? 'Copy email' : 'Copy number' }}</button>
                   <NuxtLink v-if="cur.card" :to="cur.card" class="btn btn-ghost !px-5 !py-3.5 text-xs">Digital card →</NuxtLink>
                 </div>
               </div>
@@ -79,13 +79,13 @@
       <div class="mx-auto max-w-7xl px-5 md:px-10">
         <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <h2 class="display text-3xl md:text-5xl" data-lines><span class="line-mask"><span class="line-inner">Talk to the right</span></span><span class="line-mask"><span class="line-inner italic text-lime">person, directly.</span></span></h2>
-          <p class="max-w-xs text-sm text-cream/70" data-reveal>Click a card to copy an email address.</p>
+          <p class="max-w-xs text-sm text-cream/70" data-reveal>Click a card to copy an email address or phone number.</p>
         </div>
         <ul class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
-          <li v-for="m in team" :key="m.email" class="reveal">
-            <button v-spot class="spot group flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl border border-white/15 bg-white/5 p-5 text-left transition hover:border-lime/60" :aria-label="'Copy email for ' + m.name" @click="copy(m.email)">
-              <span class="min-w-0"><span class="eyebrow block text-cream/70">{{ m.role }}</span><span class="display mt-1 block text-xl">{{ m.name }}</span><span class="mt-1 block truncate text-sm text-lime">{{ m.email }}</span><span v-if="m.phone" class="block text-xs text-cream/70">{{ m.phone }}</span></span>
-              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold transition group-hover:bg-lime group-hover:text-forest">{{ copied === m.email ? '✓' : '⧉' }}</span>
+          <li v-for="m in team" :key="m.name" class="reveal">
+            <button v-spot class="spot group flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl border border-white/15 bg-white/5 p-5 text-left transition hover:border-lime/60" :aria-label="(m.email ? 'Copy email for ' : 'Copy phone number for ') + m.name" @click="copy(m.email || m.phone)">
+              <span class="min-w-0"><span class="eyebrow block text-cream/70">{{ m.role }}</span><span class="display mt-1 block text-xl">{{ m.name }}</span><span v-if="m.email" class="mt-1 block truncate text-sm text-lime">{{ m.email }}</span><span v-if="m.phone" class="block text-xs" :class="m.email ? 'text-cream/70' : 'mt-1 text-sm text-lime'">{{ m.phone }}</span></span>
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold transition group-hover:bg-lime group-hover:text-forest">{{ copied === (m.email || m.phone) ? '✓' : '⧉' }}</span>
             </button>
           </li>
         </ul>
@@ -100,7 +100,7 @@ const asset = useAsset(); const { open } = useModal()
 const sel = ref(0); const cur = computed(() => team[sel.value])
 const initials = (n: string) => n.split(' ').map((w) => w[0]).join('')
 const copied = ref(''); let t: ReturnType<typeof setTimeout>
-const copy = async (v: string) => { try { await navigator.clipboard.writeText(v) } catch { window.location.href = 'mailto:' + v } copied.value = v; clearTimeout(t); t = setTimeout(() => (copied.value = ''), 1800) }
+const copy = async (v: string) => { try { await navigator.clipboard.writeText(v) } catch { if (v.includes('@')) window.location.href = 'mailto:' + v } copied.value = v; clearTimeout(t); t = setTimeout(() => (copied.value = ''), 1800) }
 </script>
 <style>
 .team-hero-img { object-position: 50% 62%; }

@@ -4,7 +4,7 @@
 // Anything left empty shows as "On request" in the product popup and the PDF spec sheet.
 export type Product = { code: string; name: string; cat: 'Vegetables' | 'Fruits' | 'Herbs'; blurb: string; color: string; img: string; pack: string[]; specs?: { shelfLife?: string; sizes?: string } }
 export type Pack = { id: string; code: string; name: string; note: string; kind: 'Carton' | 'Top cover' | 'Punnet'; img: string; photo?: string; product?: string }
-export type Member = { name: string; role: string; email: string; phone: string; quote?: string; photo?: string; card?: string; bio: string[] }
+export type Member = { name: string; role: string; email?: string; phone: string; quote?: string; photo?: string; card?: string; bio: string[] }
 
 export const products: Product[] = [
   { code: 'PVHV100', name: 'Haricot Verts', cat: 'Vegetables', blurb: 'Also known as French beans, they are planted from seedling and give tender produce and a dependable supply.', color: '#1F5B3A', img: 'img/products/haricot-verts.webp', pack: ['CHV001', 'PXF001'] },
@@ -50,6 +50,11 @@ export const team: Member[] = [
       'He guides farms and packing facilities through the complexities of major international frameworks including GlobalG.A.P., BRC, SMETA, and GRASP. By building robust QA systems that link field agronomy with packhouse operations, he collaborates directly with harvesting and production teams to fine-tune growing practices, minimize waste, and meet target yields safely.',
       'Ultimately, he turns compliance from a yearly stress into a daily habit, conducting pre-audit assessments and training local teams to ensure every shipment strictly matches customer size, grade, safety, shelf-life, and individual customer specifications.'] },
 
+  { name: 'Susan Ayoo', role: 'Quality Assurance Manager', phone: '+254 707 498 237', photo: 'img/team/susan.jpg', quote: 'Committed to food safety, quality and customer satisfaction',
+    bio: ['Susan Ayoo is an accomplished Quality Assurance professional with 8 years of experience in quality management within the food industry.',
+      'She is an expert in food safety standards, including BRCGS, well versed in HACCP systems, and customer-specific quality requirements.',
+      'Her key expertise covers the BRCGS Food Safety Standard, HACCP system implementation, customer quality specifications, food safety and regulatory compliance, and quality assurance and continuous improvement.'] },
+
   { name: 'Allan Omondi', role: 'Operations Personnel', email: 'allan@premierveg.com', phone: '+254 721 730 756', photo: 'img/team/allan.jpg', quote: 'Compliance with industry regulation',
     bio: ['Allan Omondi serves as Operations Personnel at Premier Veg Mondo Limited, where he is responsible for ensuring that all fresh produce meets the required quality, safety, and regulatory standards for both local and international markets.',
       'In his role, Allan oversees product inspection and coordinates the collection and submission of fresh produce samples for laboratory testing to ensure compliance with industry regulations and export requirements. He works closely with relevant regulatory bodies and testing facilities to verify that all products meet the necessary food safety and phytosanitary standards before shipment.',
@@ -81,7 +86,7 @@ export const categories = [
 
 export const gallery = [
   { src: 'img/about/packhouse.jpg', alt: 'The Premier Veg pack-house team at work', cap: 'The pack-house: sorting, grading and packing the day-to-day orders', tag: 'Pack-house' },
-  { src: 'img/about/mangetout-packing.jpg', alt: 'A Premier Veg team member in a white coat and cap arranging trays of fresh mangetouts in the pack-house', cap: 'Mangetouts, laid out by hand in the pack-house', tag: 'Hand-packed', pos: '50% 35%' },
+  { src: 'img/about/mangetout-packing.jpg', alt: 'Susan Ayoo, Quality Assurance Manager, arranging trays of fresh mangetouts in the pack-house', cap: 'Mangetouts, laid out by hand in the pack-house', tag: 'Hand-packed', pos: '50% 35%' },
   { src: 'img/hero-workers.webp', alt: 'Premier Veg team sorting haricot verts', cap: 'Our team sorting and packing haricot verts', tag: 'Our team' },
   { src: 'img/beans-bunch.webp', alt: 'Freshly harvested haricot verts', cap: 'Haricot verts, freshly harvested', tag: 'Haricot verts' },
   { src: 'img/snow-peas.webp', alt: 'Tray of snow peas', cap: 'Mangetouts, packed in retail trays', tag: 'Mangetouts' },

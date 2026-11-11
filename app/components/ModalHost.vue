@@ -75,7 +75,7 @@
               <p v-if="state.item.quote" class="display mt-4 text-lg italic text-forest">“{{ state.item.quote }}”</p>
               <p v-for="(p, i) in state.item.bio" :key="i" class="mt-4 text-sm leading-relaxed text-ink/75">{{ p }}</p>
               <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
-                <a :href="'mailto:' + state.item.email" class="underline-offset-4 hover:underline">{{ state.item.email }}</a>
+                <a v-if="state.item.email" :href="'mailto:' + state.item.email" class="underline-offset-4 hover:underline">{{ state.item.email }}</a>
                 <a :href="'tel:' + state.item.phone.replace(/\s/g, '')" class="underline-offset-4 hover:underline">{{ state.item.phone }}</a>
               </div>
             </div>
