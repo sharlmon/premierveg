@@ -103,6 +103,21 @@ export const exportShots = [
   { src: 'img/export-haricot-warehouse.webp', alt: 'A full pallet of haricots verts cartons in the warehouse', cap: 'A full pallet of 12 × 250 g haricots verts cartons', tag: 'Warehouse', w: 1200, h: 1488 }
 ]
 
+// Short, page-specific FAQs (shown on the page and sent to search engines as FAQ structured data). Same rule: only confirmed facts.
+export const productFaqs: { q: string; a: string }[] = [
+  { q: 'Which vegetables does Premier Veg export?', a: 'Haricot verts, mangetouts, sugar snaps, baby corn and carrots, all exported fresh from Kenya.' },
+  { q: 'Which fruits and herbs do you supply?', a: 'Fruits: avocados, mangoes and passion fruit. Herbs: chillies, rosemary and chives.' },
+  { q: 'Is supply available all year?', a: 'Yes. All of our products are supplied year-round.' },
+  { q: 'Which countries do you export to?', a: 'We currently supply customers in France, the Netherlands and Switzerland.' },
+  { q: 'How is the produce packed?', a: 'In branded export cartons and retail punnets, built into secured pallets before leaving our Nairobi export office.' }
+]
+export const contactFaqs: { q: string; a: string }[] = [
+  { q: 'How do I request a quote or place an order?', a: 'Use the quote form on this page, email info@premierveg.com or message us on WhatsApp. We respond within 24 hours.' },
+  { q: 'How quickly will I get a reply?', a: 'We respond to every quote request within 24 hours.' },
+  { q: 'Where is Premier Veg based?', a: 'Trystar Go Down, Airport North Road, P.O. Box 3468-00200, Nairobi, Kenya, with operations also in Italy.' },
+  { q: 'Can I call or message you directly?', a: 'Yes. Call or message us on WhatsApp on +39 351 215 1931, or email info@premierveg.com.' }
+]
+
 // Shown on the About page and sent to search engines as FAQ structured data. Only confirmed facts belong here.
 export const faqs: { q: string; a: string }[] = [
   { q: 'What does Premier Veg Mondo Limited do?', a: 'We export fresh vegetables, fruit and herbs from Kenya, working closely with growers and packing in our own pack-house in Nairobi.' },

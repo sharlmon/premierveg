@@ -17,6 +17,7 @@
         <h1 class="display text-[clamp(2.7rem,5.6vw,5.4rem)]">
           <span class="line-mask"><span class="line-inner hero-line">As fresh</span></span>
           <span class="line-mask"><span class="line-inner hero-line">as it <em class="text-lime">gets.</em></span></span>
+          <span class="sr-only"> Premier Veg exports fresh fruit, vegetables and herbs from Kenya.</span>
         </h1>
         <p class="hero-fade mt-6 max-w-md text-base text-cream md:ml-auto md:text-lg [text-shadow:0_1px_12px_rgba(7,24,15,.8)]">Trusted exporter of fresh fruits, vegetables and herbs. Whatever we grow, you receive it fresh.</p>
         <div class="hero-fade mt-7 flex flex-wrap gap-3 md:justify-end">
